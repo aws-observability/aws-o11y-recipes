@@ -59,7 +59,7 @@ Alternatively, you can search the site pressing `/` or the `s` key:
 
 ## How to contribute
 
-Raise issues or send in pull requests against the repo.
+Start a [discussion][discussion] on what you plan to do and we take it from there.
 
 [aes]: https://aws.amazon.com/elasticsearch-service/ "Amazon Elasticsearch Service"
 [adot]: https://aws-otel.github.io/ "AWS Distro for OpenTelemetry"
@@ -88,3 +88,4 @@ Raise issues or send in pull requests against the repo.
 [sqstrace]: https://docs.aws.amazon.com/xray/latest/devguide/xray-services-sqs.html "Amazon SQS and AWS X-Ray"
 [vpcfl]: https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html "VPC Flow Logs"
 [xray]: https://aws.amazon.com/xray/ "AWS X-Ray"
+[discussion]: https://github.com/aws-observability/aws-o11y-recipes/discussions
