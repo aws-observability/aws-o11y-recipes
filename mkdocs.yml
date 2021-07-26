@@ -1,6 +1,8 @@
 site_name: 'AWS Observability Recipes'
 site_author: 'AWS'
 site_url: 'https://aws-observability.github.io/aws-o11y-recipes/'
+repo_name: 'aws-observability/aws-o11y-recipes'
+repo_url: 'https://github.com/aws-observability/aws-o11y-recipes'
 copyright: 'Copyright &copy; Amazon 2021 '
 nav:
 - Home:
