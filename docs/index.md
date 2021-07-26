@@ -61,6 +61,20 @@ Alternatively, you can search the site pressing `/` or the `s` key:
 
 Start a [discussion][discussion] on what you plan to do and we take it from there.
 
+## Learn more
+
+The recipes on this site are a good practices collection. In addition, there 
+are a number of places where you can learn more about the status of open source
+projects we use as well as about the managed services from the recipes, so 
+check out:
+
+- [observability @ aws][o11yataws], a playlist of AWS folks talking about 
+  their projects and services.
+- [AWS observability workshops](workshops/), to try out the offerings in a
+  structured manner.
+- The [AWS monitoring and observability][o11yhome] homepage with pointers
+  to case studies and partners.
+
 [aes]: https://aws.amazon.com/elasticsearch-service/ "Amazon Elasticsearch Service"
 [adot]: https://aws-otel.github.io/ "AWS Distro for OpenTelemetry"
 [amg]: https://aws.amazon.com/grafana/ "Amazon Managed Service for Grafana"
@@ -89,3 +103,5 @@ Start a [discussion][discussion] on what you plan to do and we take it from ther
 [vpcfl]: https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html "VPC Flow Logs"
 [xray]: https://aws.amazon.com/xray/ "AWS X-Ray"
 [discussion]: https://github.com/aws-observability/aws-o11y-recipes/discussions
+[o11yataws]: https://www.youtube.com/playlist?list=PLaiiCkpc1U7Wy7XwkpfgyOhIf_06IK3U_
+[o11yhome]: https://aws.amazon.com/products/management-and-governance/use-cases/monitoring-and-observability/
