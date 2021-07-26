@@ -17,6 +17,7 @@
 - [Monitoring with Managed Prometheus and Managed Grafana][eks-ws-amp-amg]
 - [CloudWatch Container Insights][eks-ws-cw-ci]
 - [Set up cross-region metrics collection for AMP workspaces][amp-xregion]
+- [Monitoring App Mesh environment on EKS using Amazon Managed Service for Prometheus][eks-am-amp-amg]
 
 ### Traces
 
@@ -54,3 +55,4 @@
 [eks-ws-xray]: https://www.eksworkshop.com/intermediate/245_x-ray/x-ray/
 [eks-fargate-logging]: https://aws.amazon.com/blogs/containers/fluent-bit-for-amazon-eks-on-aws-fargate-is-here/
 [eks-fb-example]: https://github.com/aws-samples/amazon-eks-fluent-logging-examples
+[eks-am-amp-amg]: recipes/servicemesh-monitoring-ampamg.md
