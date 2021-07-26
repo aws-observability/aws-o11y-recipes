@@ -1,0 +1,46 @@
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: amp-eks-fargate
+  region: eu-west-1
+  version: '1.18'
+iam:
+  withOIDC: true
+  serviceAccounts:
+  - metadata:
+      name: adot-collector
+      namespace: ho11y
+      labels: {aws-usage: "application"}
+    attachPolicy:
+      Version: "2012-10-17"
+      Statement:
+      - Effect: Allow
+        Action:
+        - "aps:RemoteWrite"
+        - "aps:GetSeries"
+        - "aps:GetLabels"
+        - "aps:GetMetricMetadata"
+        - "aps:QueryMetrics"
+        - "logs:PutLogEvents"
+        - "logs:CreateLogGroup"
+        - "logs:CreateLogStream"
+        - "logs:DescribeLogStreams"
+        - "logs:DescribeLogGroups"
+        - "xray:PutTraceSegments"
+        - "xray:PutTelemetryRecord"
+        - "xray:GetSamplingRules"
+        - "xray:GetSamplingTargets"
+        - "xray:GetSamplingStatisticSummaries"
+        - "ssm:GetParameters"
+        Resource: "*"
+fargateProfiles:
+  - name: defaultfp
+    selectors:
+      - namespace: prometheus
+      - namespace: kube-system
+      - namespace: adot-col
+      - namespace: aoc-prometheus-pipeline-demo
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]

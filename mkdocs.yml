@@ -1,0 +1,59 @@
+site_name: 'AWS Observability Recipes'
+site_author: 'AWS'
+site_url: 'https://aws-observability.github.io/aws-o11y-recipes/'
+copyright: 'Copyright &copy; Amazon 2021 '
+nav:
+- Home:
+  - index.md
+  - dimensions.md
+  - telemetry.md
+- 'By Compute':
+  - EKS: eks.md
+  - ECS: ecs.md
+  - Lambda: lambda.md
+- 'By Infra & Databases':
+  - Infra: infra.md
+  - Databases:
+     - RDS: rds.md
+     - DynamoDB: dynamodb.md
+     - MSK: msk.md
+- 'By Language':
+  - Java: java.md
+  - Node.js: nodejs.md
+- 'By Destination':
+  - CW: cw.md
+  - AMP: amp.md
+  - AMG: amg.md
+  - AES: aes.md
+- 'Tasks':
+  - 'Anomaly Detection': anomaly-detection.md
+  - 'Alerting': alerting.md
+  - 'Troubleshooting': troubleshooting.md
+  - 'Workshops': workshops.md
+theme:
+  name: 'material'
+  features:
+    - navigation.instant
+    - navigation.tabs
+  icon:
+    logo: 'fontawesome/solid/file-invoice'
+  font:
+    text: 'Lato'
+    code: 'PT Mono'
+  palette:
+    scheme: slate
+    primary: orange
+    accent: blue
+  highlightjs: true
+  hljs_languages:
+  - yaml
+  - json
+  - bash
+markdown_extensions:
+- toc:
+    permalink: true
+- admonition
+- codehilite:
+    linenums: true
+- pymdownx.details
+- pymdownx.superfences

@@ -1,11 +1,7 @@
-## My Project
+## AWS o11y recipes
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+See
+[aws-observability.github.io/aws-o11y-recipes/](https://aws-observability.github.io/aws-o11y-recipes/)
 
 ## Security
 
