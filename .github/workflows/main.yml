@@ -1,0 +1,24 @@
+name: publish website with mkdocs
+on:
+  # enable manual trigger via button in GitHub actions
+  workflow_dispatch:
+  # enable auto trigger based on path and branch
+  push:
+    # for main branch
+    branches:
+      - main
+    # if something has changed under this directory
+    paths:
+      - 'docs/**'
+jobs:
+  build:
+    name: deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout master
+        uses: actions/checkout@v2
+      - name: mkdocs gh-deploy
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CONFIG_FILE: mkdocs.yml
