@@ -57,6 +57,11 @@ Alternatively, you can search the site pressing `/` or the `s` key:
 
 ![o11y space](images/search.png)
 
+!!! info "License"
+    All recipes published on this site are available via the 
+	[MIT-0][mit0] license, a modification to the usual MIT license 
+	that removes the requirement for attribution.
+
 ## How to contribute
 
 Start a [discussion][discussion] on what you plan to do and we take it from there.
@@ -102,6 +107,7 @@ check out:
 [sqstrace]: https://docs.aws.amazon.com/xray/latest/devguide/xray-services-sqs.html "Amazon SQS and AWS X-Ray"
 [vpcfl]: https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html "VPC Flow Logs"
 [xray]: https://aws.amazon.com/xray/ "AWS X-Ray"
+[mit0]: https://github.com/aws/mit-0
 [discussion]: https://github.com/aws-observability/aws-o11y-recipes/discussions
 [o11yataws]: https://www.youtube.com/playlist?list=PLaiiCkpc1U7Wy7XwkpfgyOhIf_06IK3U_
 [o11yhome]: https://aws.amazon.com/products/management-and-governance/use-cases/monitoring-and-observability/
