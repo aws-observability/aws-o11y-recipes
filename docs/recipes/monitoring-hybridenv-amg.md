@@ -19,8 +19,6 @@ In the following section we will be setting up the infrastructure for this recip
 ### Architecture
 
 
-![Architecture]
-
 First, create an AMG workspace to visualize the metrics from Azure Monitor. Follow the steps in the [Getting Started with Amazon Managed Service for Grafana](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) blog post. After you create the workspace, you can assign access to the Grafana workspace to an individual user or a user group. By default, the user has a user type of viewer. Change the user type based on the user role.
 
 !!! Note 
