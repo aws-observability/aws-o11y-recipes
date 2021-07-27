@@ -35,21 +35,21 @@ Now, under Data sources, configure the Azure Monitor plugin to start querying an
 ![datasources](../images/datasource.png)
 
 In Add data source, search for Azure Monitor and then configure the parameters from the app registration console in the Azure environment.
-!Add data source](../images/datasource-addition.png)
+[!Add data source](../images/datasource-addition.png)
 
 To configure the Azure Monitor plugin, you need the directory (tenant) ID and the application (client) ID. For instructions, see the [article](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) about creating an Azure AD application and service principal. It explains how to register the app and grant access to Grafana to query the data.
 
-[!Azure Monitor metrics details](../images/azure-monitor-metrics.png)
+[!Azure-Monitor-metrics](../images/azure-monitor-metrics.png)
 
 After the data source is configured, import a custom dashboard to analyze the Azure metrics. In the left pane, choose the + icon, and then choose Import.
 
 In Import via grafana.com, enter the dashboard ID, 10532.
 
-[!Importing dashboard](../images/import-dashboard.png)
+[!Importing-dashboard](../images/import-dashboard.png)
 
 This will import the Azure Virtual Machine dashboard where you can start analyzing the Azure Monitor metrics. In my setup, I have a virtual machine running in the Azure environment.
 
-[!Azure Monitor Dashbaord](../images/azure-dashboard.png)
+[!Azure-Monitor-Dashbaord](../images/azure-dashboard.png)
 
 
 ### Configure the notification channels on AMG
