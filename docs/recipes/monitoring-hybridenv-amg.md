@@ -73,7 +73,7 @@ To configure a Slack notification channel, create a Slack workspace or use an ex
 
 After you’ve configured the workspace, you should be able to get a webhook URL that will be used in the Grafana dashboard.
 
-![Slack notification Channel](../images/slack-notificaiton.png)
+![Slack notification Channel](../images/slack-notification.png)
 
 
 
