@@ -35,21 +35,21 @@ Now, under Data sources, configure the Azure Monitor plugin to start querying an
 ![datasources](../images/datasource.png)
 
 In Add data source, search for Azure Monitor and then configure the parameters from the app registration console in the Azure environment.
-[!Add data source](../images/datasource-addition.png)
+![Add data source](../images/datasource-addition.png)
 
 To configure the Azure Monitor plugin, you need the directory (tenant) ID and the application (client) ID. For instructions, see the [article](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) about creating an Azure AD application and service principal. It explains how to register the app and grant access to Grafana to query the data.
 
-[!Azure-Monitor-metrics](../images/azure-monitor-metrics.png)
+![Azure-Monitor-metrics](../images/azure-monitor-metrics.png)
 
 After the data source is configured, import a custom dashboard to analyze the Azure metrics. In the left pane, choose the + icon, and then choose Import.
 
 In Import via grafana.com, enter the dashboard ID, 10532.
 
-[!Importing-dashboard](../images/import-dashboard.png)
+![Importing-dashboard](../images/import-dashboard.png)
 
 This will import the Azure Virtual Machine dashboard where you can start analyzing the Azure Monitor metrics. In my setup, I have a virtual machine running in the Azure environment.
 
-[!Azure-Monitor-Dashbaord](../images/azure-dashboard.png)
+![Azure-Monitor-Dashbaord](../images/azure-dashboard.png)
 
 
 ### Configure the notification channels on AMG
@@ -66,14 +66,14 @@ aws sns subscribe --topic-arn arn:aws:sns:<region>:<account-id>:grafana-notifica
 In the left pane, choose the bell icon to add a new notification channel.
 Now configure the grafana-notification notification channel. On Edit notification channel, for Type, choose AWS SNS. For Topic, use the ARN of the SNS topic you just created. For Auth Provider, choose the workspace IAM role.
 
-[!Notification Channels](../images/notification-channels.png)
+![Notification Channels](../images/notification-channels.png)
 
 ### Slack notification channel 
 To configure a Slack notification channel, create a Slack workspace or use an existing one. Enable Incoming Webhooks as described in [Sending messages using Incoming Webhooks](https://api.slack.com/messaging/webhooks).
 
 After you’ve configured the workspace, you should be able to get a webhook URL that will be used in the Grafana dashboard.
 
-[!Slack notification Channel](../images/slack-notificaiton.png)
+![Slack notification Channel](../images/slack-notificaiton.png)
 
 
 
@@ -87,7 +87,7 @@ In the dashboard, choose CPU utilization from the dropdown, and then choose Edit
 
 In the following configuration, an alert is created if the CPU utilization exceeds 50%. Notifications will be sent to the grafana-alert-notification and slack-alert-notification channels.
 
-[!Azure VM Edit panel](../images/alert-config.png)
+![Azure VM Edit panel](../images/alert-config.png)
 
 Now, you can sign in to the Azure virtual machine and initiate stress testing using tools like stress. When the CPU utilization exceeds the threshold, you will receive notifications on both channels.
 
