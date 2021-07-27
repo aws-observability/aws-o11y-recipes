@@ -8,6 +8,6 @@
 
 
 [amg-gettingstarted]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/
-[amg-hybridenvs]: https://aws.amazon.com/blogs/mt/monitoring-hybrid-environments-using-amazon-managed-service-for-grafana/
+[amg-hybridenvs]: recipes/monitoring-hybridenv-amg.md
 [amg-idps]: https://aws.amazon.com/blogs/opensource/integrating-identity-providers-such-as-onelogin-ping-identity-okta-and-azure-ad-to-sso-into-aws-managed-service-for-grafana/
 [amg-oow]: https://observability.workshop.aws/en/amg.html
