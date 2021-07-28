@@ -32,6 +32,7 @@ nav:
   - 'Alerting': alerting.md
   - 'Troubleshooting': troubleshooting.md
   - 'Workshops': workshops.md
+- about.md
 theme:
   name: 'material'
   features:
