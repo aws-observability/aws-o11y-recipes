@@ -6,7 +6,7 @@
 - [Create Canaries via CW Synthetics][cw-synths]
 - [Cloudwatch Logs Insights for Quering Logs][cw-logsi]
 - [Lamda Insights][cw-lambda]
-- [Anamoly Detection vi CloudWatch][cw-am]
+- [Anomaly Detection via CloudWatch][cw-am]
 - [Metrics Alarms via CloudWatch][cw-alarms]
 
 
