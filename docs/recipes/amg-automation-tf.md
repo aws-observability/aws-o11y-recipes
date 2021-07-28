@@ -102,8 +102,9 @@ In the Prometheus resource section, insert the `url` which is the AMP
 workspace URL in the form of 
 `https://aps-workspaces.eu-west-1.amazonaws.com/workspaces/ws-xxxxxxxxx`.
 
-If you're using AMG in a different region than the one shown in the file, you
-will have to, in addition to above, also set the `sigv4_region` to your region.
+!!! note
+    If you're using AMG in a different region than the one shown in the file, you
+    will have to, in addition to above, also set the `sigv4_region` to your region.
 
 To wrap up the preparation phase, let's now initialize Terraform:
 
@@ -240,6 +241,6 @@ Remove the AMG workspace by removing it from the console.
 [tf]: https://www.terraform.io/downloads.html
 [amg-getting-started]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/
 [grafana-authn]: https://grafana.com/docs/grafana/latest/http_api/auth/
-[rfc6750]: https://datatracker.ietf.org/doc/html/rfc6750)
+[rfc6750]: https://datatracker.ietf.org/doc/html/rfc6750
 [tf-grafana-provider]: https://registry.terraform.io/providers/grafana/grafana/latest/docs
 [tf-ds]: https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source
