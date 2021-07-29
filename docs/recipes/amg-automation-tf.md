@@ -37,6 +37,9 @@ hand, assign it `Admin` role and set the duration time to, for example, one day:
 
 ![API key creation](../images/api-key-creation.png)
 
+!!! info
+    The API key is valid for a limited time, in AMG you can use values up to 30 days.
+
 Once you hit the `Add` button you should see a pop-up dialog that contains the
 API key:
 
@@ -54,7 +57,7 @@ for automation, so let's move on to this step.
 ### Preparing Terraform
 
 For Terraform to be able to interact with Grafana, we're using the official
-[Grafana Provider][tf-grafana-provider] in version 1.13.3 or above.
+[Grafana provider][tf-grafana-provider] in version 1.13.3 or above.
 
 In the following, we want to automate the creation of a data source, in our
 case we want to add a Prometheus [data source][tf-ds], to be exact, an
@@ -231,6 +234,16 @@ like the following:
 To verify if your newly created data source works, you can hit the blue `Save &
 test` button at the bottom and you should see a `Data source is working`
 confirmation message as a result here.
+
+You can use Terraform also to automate other things, for example, the [Grafana 
+provider][tf-grafana-provider] supports managing dashboards. Say you have 
+
+```
+resource "grafana_dashboard" "exampledashboard" {
+  config_json = file("example-dashboard.json")
+}
+```
+
 
 ## Cleanup
 
