@@ -236,14 +236,31 @@ test` button at the bottom and you should see a `Data source is working`
 confirmation message as a result here.
 
 You can use Terraform also to automate other things, for example, the [Grafana 
-provider][tf-grafana-provider] supports managing dashboards. Say you have 
+provider][tf-grafana-provider] supports managing folders and dashboards.
+
+Let's say you want to create a folder to organize your dashboards, for example:
+
+```
+resource "grafana_folder" "examplefolder" {
+  title = "devops"
+}
+```
+
+Further, say you have a dashboard called `example-dashboard.json`, and you want
+to create it in the folder from above, then you would use the following snippet:
 
 ```
 resource "grafana_dashboard" "exampledashboard" {
+  folder = grafana_folder.examplefolder.id
   config_json = file("example-dashboard.json")
 }
 ```
 
+Terraform is a powerful tool for automation and you can use it as shown here
+to manage your Grafana resources. Keep in mind, though, that the [state in
+Terraform][tf-state], by default, is managed locally. This means, if you plan
+to collaboratively work with Terraform, you need to pick one of the options
+available that allow you to share the state across a team.
 
 ## Cleanup
 
@@ -257,3 +274,4 @@ Remove the AMG workspace by removing it from the console.
 [rfc6750]: https://datatracker.ietf.org/doc/html/rfc6750
 [tf-grafana-provider]: https://registry.terraform.io/providers/grafana/grafana/latest/docs
 [tf-ds]: https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source
+[tf-state]: https://www.terraform.io/docs/language/state/remote.html
