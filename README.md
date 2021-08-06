@@ -35,6 +35,9 @@ INFO     -  Cleaning site directory
 ...
 ```
 
+Now head over to `http://127.0.0.1:8000/aws-o11y-recipes/` where you should
+find the local preview of the recipes site.
+
 If you are looking for formatting tips, check out the [Material theme
 reference][material-formatting].
 
@@ -61,7 +64,8 @@ formatting, such as code, displays as you would expect.
 ### Publishing
 
 Once you PR the repo, we will review and test the recipes and the merge of
-your PR kicks of a [GitHub action] that publishes your recipe automatically.
+your PR kicks of a [GitHub action][publishing-ghaction] that publishes your 
+recipe automatically.
 
 [recipes-live]: https://aws-observability.github.io/aws-o11y-recipes/
 [mkdocs]: https://www.mkdocs.org/
