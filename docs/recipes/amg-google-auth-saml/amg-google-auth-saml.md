@@ -40,10 +40,9 @@ In the **Attribute mapping** screen, make the mapping between **Google Directory
 
 ![Google Workspace - Add custom SAML app - Attribute mapping](../../images/amg-saml-google-auth/10.png)
 
-For users logging in through Google authentication to have **Admin** privileges in **AMG,** set the **Department** field’s value as ***monitoring*.**
+For users logging in through Google authentication to have **Admin** privileges in **AMG,** set the **Department** field’s value as ***monitoring*.** You can choose any field and any value for this. Whatever you choose to use on the Google Workspaces side, make sure you make the mapping on AMG SAML settings to reflect that.
 
 ### Upload SAML Metadata into AMG
-
 
  Now on the AMG console, click **Upload or copy/paste** option and select **Choose file** button to upload the SAML metadata file downloaded from Google Workspaces earlier. 
 
