@@ -3,10 +3,10 @@
 - [Getting Started with AMP][amp-gettingstarted]
 - [Using ADOT in EKS on EC2 to ingest to AMP and visualize in AMG](recipes/ec2-eks-metrics-go-adot-ampamg.md)
 - [Setting up cross-account ingestion into AMP][amp-xaccount]
-- [Metrics collection from Amazon ECS using AMP][amp-ecs-metrics]
+- [Metrics collection from ECS using AMP][amp-ecs-metrics]
 - [Configuring Grafana Cloud Agent for AMP][amp-gcwa]
 - [Set up cross-region metrics collection for AMP workspaces][amp-xregion-metrics]
-- [Best practices for migrating self-hosted Prometheus on Amazon EKS to Amazon Managed Service for Prometheus][amp-migration]
+- [Best practices for migrating self-hosted Prometheus on EKS to AMP][amp-migration]
 - [Workshop for Getting Started with AMP][amp-oow]
 
 [amp-gettingstarted]: https://aws.amazon.com/blogs/mt/getting-started-amazon-managed-service-for-prometheus/
