@@ -13,6 +13,7 @@ people:
 * Michael Hausenblas
 * Sheetal Joshi
 * Vikram Venkataraman
+* Imaya Kumar Jagannathan
 
 Note that all recipes published on this site are available via the 
 [MIT-0][mit0] license, a modification to the usual MIT license 
