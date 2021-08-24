@@ -3,7 +3,7 @@
 In this recipe we show you how to instrument a [sample Go application](https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/prometheus) and
 use [AWS Distro for OpenTelemetry (ADOT)](https://aws.amazon.com/otel) to ingest metrics into
 [Amazon Managed Service for Prometheus (AMP)](https://aws.amazon.com/prometheus/) .
-Then we're using [Amazon Managed Service for Grafana (AMG)](https://aws.amazon.com/grafana/) to visualize the metrics.
+Then we're using [Amazon Managed Grafana (AMG)](https://aws.amazon.com/grafana/) to visualize the metrics.
 
 We will be setting up an [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) cluster and [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) repository to demonstrate a complete scenario.
 
@@ -124,7 +124,7 @@ kubectl apply -f prometheus-fargate.yaml
 
 ### Setup AMG
 
-Setup a new AMG workspace using the [Amazon Managed Service for Grafana – Getting Started](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) guide.
+Setup a new AMG workspace using the [Amazon Managed Grafana – Getting Started](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) guide.
 
 Make sure to add "Amazon Managed Service for Prometheus" as a datasource during creation.
 

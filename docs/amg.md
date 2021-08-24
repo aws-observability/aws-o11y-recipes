@@ -1,8 +1,7 @@
-# Amazon Managed Service for Grafana (AMG)
-
+# Amazon Managed Grafana (AMG)
 
 - [Getting Started with AMG][amg-gettingstarted]
-- [Monitoring hybrid environments using Amazon Managed Service for Grafana][amg-hybridenvs]
+- [Monitoring hybrid environments using AMG][amg-hybridenvs]
 - [Integrating identity providers (OneLogin, Ping Identity, Okta, and Azure AD) to SSO into AMG][amg-idps]
 - [Workshop for Getting Started with AMG][amg-oow]
 

@@ -95,7 +95,7 @@ you use, the telemetry part might already be part of the offering, for example,
 
 [aes]: https://aws.amazon.com/elasticsearch-service/ "Amazon Elasticsearch Service"
 [adot]: https://aws-otel.github.io/ "AWS Distro for OpenTelemetry"
-[amg]: https://aws.amazon.com/grafana/ "Amazon Managed Service for Grafana"
+[amg]: https://aws.amazon.com/grafana/ "Amazon Managed Grafana"
 [amp]: https://aws.amazon.com/prometheus/ "Amazon Managed Service for Prometheus"
 [batch]: https://aws.amazon.com/batch/ "AWS Batch"
 [beans]: https://aws.amazon.com/elasticbeanstalk/ "AWS Elastic Beanstalk"

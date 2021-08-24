@@ -82,7 +82,7 @@ check out:
 
 [aes]: https://aws.amazon.com/elasticsearch-service/ "Amazon Elasticsearch Service"
 [adot]: https://aws-otel.github.io/ "AWS Distro for OpenTelemetry"
-[amg]: https://aws.amazon.com/grafana/ "Amazon Managed Service for Grafana"
+[amg]: https://aws.amazon.com/grafana/ "Amazon Managed Grafana"
 [amp]: https://aws.amazon.com/prometheus/ "Amazon Managed Service for Prometheus"
 [batch]: https://aws.amazon.com/batch/ "AWS Batch"
 [beans]: https://aws.amazon.com/elasticbeanstalk/ "AWS Elastic Beanstalk"
@@ -107,7 +107,7 @@ check out:
 [sqstrace]: https://docs.aws.amazon.com/xray/latest/devguide/xray-services-sqs.html "Amazon SQS and AWS X-Ray"
 [vpcfl]: https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html "VPC Flow Logs"
 [xray]: https://aws.amazon.com/xray/ "AWS X-Ray"
-[mit0]: https://github.com/aws/mit-0
-[discussion]: https://github.com/aws-observability/aws-o11y-recipes/discussions
-[o11yataws]: https://www.youtube.com/playlist?list=PLaiiCkpc1U7Wy7XwkpfgyOhIf_06IK3U_
-[o11yhome]: https://aws.amazon.com/products/management-and-governance/use-cases/monitoring-and-observability/
+[mit0]: https://github.com/aws/mit-0 "MIT-0"
+[discussion]: https://github.com/aws-observability/aws-o11y-recipes/discussions "Discussions"
+[o11yataws]: https://www.youtube.com/playlist?list=PLaiiCkpc1U7Wy7XwkpfgyOhIf_06IK3U_ "Observability @ AWS YouTube playlist"
+[o11yhome]: https://aws.amazon.com/products/management-and-governance/use-cases/monitoring-and-observability/ "AWS Observability home"
