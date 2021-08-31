@@ -20,6 +20,7 @@ Check out the following recipes, grouped by compute engine:
 ## ECS on Fargate
 
 ### Logs
+
 - [Sample logging architectures for FireLens on Amazon ECS and AWS Fargate using Fluent Bit][firelens-fb]
 
 [ecs-main]: https://aws.amazon.com/ecs/
