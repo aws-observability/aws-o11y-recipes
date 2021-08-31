@@ -2,8 +2,8 @@
 
 We are covering recipes for observability (o11y) solutions at AWS on this site.
 This includes managed services such as [Amazon Managed Service for Prometheus][amp]
-(AMP) as well as libraries & agents, for example as provided by [OpenTelemetry][otel]
-or [Fluent Bit][fluentbit]. We want to address the needs of both developers and
+and [Amazon Managed Grafana][amg] as well as agents, for example [OpenTelemetry][otel]
+and [Fluent Bit][fluentbit]. We want to address the needs of both developers and
 infrastructure folks.
 
 The way we think about the o11y space is as follows: we decompose it into
@@ -11,10 +11,10 @@ The way we think about the o11y space is as follows: we decompose it into
 
 | **dimension** | **examples** |
 |---------------|--------------|
-| destinations  | [AMP][amp] &middot; [AMG][amg] &middot; [CW][cw] &middot; [X-Ray][xray] &middot; [Jaeger][jaeger] |
-|               | [AES][aes] &middot; [S3][s3] &middot; [Kafka][kafka] |
+| destinations  | [Prometheus][amp] &middot; [Grafana][amg] &middot; [CloudWatch][cw] &middot; [X-Ray][xray] &middot; [Jaeger][jaeger] |
+|               | [OpenSearch][aes] &middot; [S3][s3] &middot; [Kafka][kafka] |
 | agents        | [ADOT][adot] &middot; [Fluent Bit][fluentbit] &middot; CW agent &middot; X-Ray agent |
-| languages     | Java &middot; Python &middot; .NET &middot; JavaScript &middot; Go &middot; Rust |
+| languages     | [Java][java] &middot; Python &middot; .NET &middot; [JavaScript][nodejs] &middot; Go &middot; Rust |
 | infra & databases  | [VPC flow logs][vpcfl] &middot; [EKS CP][kubecpl] &middot;  [exporters][promex]  |
 |                         | [S3 mon][s3mon] &middot; [SQS tracing][sqstrace] &middot; [RDS mon][rdsmon] &middot; [DynamoDB][dynamodb] |
 | compute unit | [Batch][batch] &middot; [ECS][ecs] &middot; [EKS][eks] &middot; [AEB][beans] &middot; [Lambda][lambda] |
@@ -80,26 +80,28 @@ check out:
 - The [AWS monitoring and observability][o11yhome] homepage with pointers
   to case studies and partners.
 
-[aes]: https://aws.amazon.com/elasticsearch-service/ "Amazon Elasticsearch Service"
+[aes]: aes.md "Amazon Elasticsearch Service"
 [adot]: https://aws-otel.github.io/ "AWS Distro for OpenTelemetry"
-[amg]: https://aws.amazon.com/grafana/ "Amazon Managed Grafana"
-[amp]: https://aws.amazon.com/prometheus/ "Amazon Managed Service for Prometheus"
+[amg]: amg.md "Amazon Managed Grafana"
+[amp]: amp.md "Amazon Managed Service for Prometheus"
 [batch]: https://aws.amazon.com/batch/ "AWS Batch"
 [beans]: https://aws.amazon.com/elasticbeanstalk/ "AWS Elastic Beanstalk"
-[cw]: https://aws.amazon.com/cloudwatch/ "Amazon CloudWatch"
-[dimensions]: ../dimensions
+[cw]: cw.md "Amazon CloudWatch"
+[dimensions]: dimensions.md
 [dynamodb]: https://aws.amazon.com/dynamodb/ "Amazon DynamoDB"
 [ec2]: https://aws.amazon.com/ec2/ "Amazon EC2"
-[ecs]: https://aws.amazon.com/ecs/ "Amazon Elastic Container Service"
-[eks]: https://aws.amazon.com/eks/ "Amazon Elastic Kubernetes Service"
+[ecs]: ecs.md "Amazon Elastic Container Service"
+[eks]: eks.md "Amazon Elastic Kubernetes Service"
 [fargate]: https://aws.amazon.com/fargate/ "AWS Fargate"
 [fluentbit]: https://fluentbit.io/ "Fluent Bit"
 [jaeger]: https://www.jaegertracing.io/ "Jaeger"
 [kafka]: https://kafka.apache.org/ "Apache Kafka"
 [kubecpl]: https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html "Amazon EKS control plane logging"
-[lambda]: https://aws.amazon.com/lambda/ "AWS Lambda"
+[lambda]: lambda.md "AWS Lambda"
 [lightsail]: https://aws.amazon.com/lightsail/ "Amazon Lightsail"
 [otel]: https://opentelemetry.io/ "OpenTelemetry"
+[java]: java.md
+[nodejs]: nodejs.md
 [promex]: https://prometheus.io/docs/instrumenting/exporters/ "Prometheus exporters and integrations"
 [rdsmon]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.LoggingAndMonitoring.html "Logging and monitoring in Amazon RDS"
 [s3]: https://aws.amazon.com/s3/ "Amazon S3"
