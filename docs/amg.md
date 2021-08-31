@@ -3,7 +3,7 @@
 
 - [Getting Started with AMG][amg-gettingstarted]
 - [Using Terraform for AMG automation][amg-automation-tf]
-- [Monitoring hybrid environments using Amazon Managed Service for Grafana][amg-hybridenvs]
+- [Monitoring hybrid environments using AMG][amg-hybridenvs]
 - [Integrating identity providers (OneLogin, Ping Identity, Okta, and Azure AD) to SSO into AMG][amg-idps]
 - [Workshop for Getting Started with AMG][amg-oow]
 
