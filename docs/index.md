@@ -11,12 +11,10 @@ The way we think about the o11y space is as follows: we decompose it into
 
 | **dimension** | **examples** |
 |---------------|--------------|
-| destinations  | [Prometheus][amp] &middot; [Grafana][amg] &middot; [CloudWatch][cw] &middot; [X-Ray][xray] &middot; [Jaeger][jaeger] |
-|               | [OpenSearch][aes] &middot; [S3][s3] &middot; [Kafka][kafka] |
+| destinations  | [Prometheus][amp] &middot; [Grafana][amg] &middot; [OpenSearch][aes] &middot; [CloudWatch][cw] &middot; [Jaeger][jaeger] |
 | agents        | [ADOT][adot] &middot; [Fluent Bit][fluentbit] &middot; CW agent &middot; X-Ray agent |
 | languages     | [Java][java] &middot; Python &middot; .NET &middot; [JavaScript][nodejs] &middot; Go &middot; Rust |
-| infra & databases  | [VPC flow logs][vpcfl] &middot; [EKS CP][kubecpl] &middot;  [exporters][promex]  |
-|                         | [S3 mon][s3mon] &middot; [SQS tracing][sqstrace] &middot; [RDS mon][rdsmon] &middot; [DynamoDB][dynamodb] |
+| infra & databases  |  [RDS][rds] &middot; [DynamoDB][dynamodb] &middot; [MSK][msk] |
 | compute unit | [Batch][batch] &middot; [ECS][ecs] &middot; [EKS][eks] &middot; [AEB][beans] &middot; [Lambda][lambda] |
 | compute engine | [Fargate][fargate] &middot; [EC2][ec2] &middot; [Lightsail][lightsail] |
 
@@ -88,7 +86,7 @@ check out:
 [beans]: https://aws.amazon.com/elasticbeanstalk/ "AWS Elastic Beanstalk"
 [cw]: cw.md "Amazon CloudWatch"
 [dimensions]: dimensions.md
-[dynamodb]: https://aws.amazon.com/dynamodb/ "Amazon DynamoDB"
+[dynamodb]: dynamodb.md "Amazon DynamoDB"
 [ec2]: https://aws.amazon.com/ec2/ "Amazon EC2"
 [ecs]: ecs.md "Amazon Elastic Container Service"
 [eks]: eks.md "Amazon Elastic Kubernetes Service"
@@ -96,19 +94,13 @@ check out:
 [fluentbit]: https://fluentbit.io/ "Fluent Bit"
 [jaeger]: https://www.jaegertracing.io/ "Jaeger"
 [kafka]: https://kafka.apache.org/ "Apache Kafka"
-[kubecpl]: https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html "Amazon EKS control plane logging"
 [lambda]: lambda.md "AWS Lambda"
 [lightsail]: https://aws.amazon.com/lightsail/ "Amazon Lightsail"
 [otel]: https://opentelemetry.io/ "OpenTelemetry"
 [java]: java.md
 [nodejs]: nodejs.md
-[promex]: https://prometheus.io/docs/instrumenting/exporters/ "Prometheus exporters and integrations"
-[rdsmon]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.LoggingAndMonitoring.html "Logging and monitoring in Amazon RDS"
-[s3]: https://aws.amazon.com/s3/ "Amazon S3"
-[s3mon]: https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-incident-response.html "Logging and monitoring in Amazon S3"
-[sqstrace]: https://docs.aws.amazon.com/xray/latest/devguide/xray-services-sqs.html "Amazon SQS and AWS X-Ray"
-[vpcfl]: https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html "VPC Flow Logs"
-[xray]: https://aws.amazon.com/xray/ "AWS X-Ray"
+[rds]: rds.md "Amazon Relational Database Service"
+[msk]: msk.md "Amazon Managed Streaming for Apache Kafka"
 [mit0]: https://github.com/aws/mit-0 "MIT-0"
 [discussion]: https://github.com/aws-observability/aws-o11y-recipes/discussions "Discussions"
 [o11yataws]: https://www.youtube.com/playlist?list=PLaiiCkpc1U7Wy7XwkpfgyOhIf_06IK3U_ "Observability @ AWS YouTube playlist"

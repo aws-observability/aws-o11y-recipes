@@ -10,15 +10,15 @@ nav:
   - dimensions.md
   - telemetry.md
 - 'By Compute':
-  - EKS: eks.md
-  - ECS: ecs.md
-  - Lambda: lambda.md
+  - eks.md
+  - ecs.md
+  - lambda.md
 - 'By Infra & Databases':
   - Infra: infra.md
   - Databases:
-     - RDS: rds.md
-     - DynamoDB: dynamodb.md
-     - MSK: msk.md
+     - rds.md
+     - dynamodb.md
+     - msk.md
 - 'By Language':
   - Java: java.md
   - Node.js: nodejs.md
