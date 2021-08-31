@@ -89,7 +89,7 @@ aws amp list-workspaces
 
 ### Setup ADOT Collector 
 
-Download the template file [prometheus-deamonset.yaml](./ec2-eks-metrics-go-adot-ampamg/prometheus-deamonset.yaml) and edit this file with the parameters described in the next steps.
+Download the template file [prometheus-daemonset.yaml](./ec2-eks-metrics-go-adot-ampamg/prometheus-daemonset.yaml) and edit this file with the parameters described in the next steps.
 
 In this example, the ADOT Collector configuration uses an annotation `(scrape=true)` to tell which target endpoints to scrape. This allows the ADOT Collector to distinguish the sample app endpoint from kube-system endpoints in your cluster. You can remove this from the re-label configurations if you want to scrape a different sample app. 
 

@@ -9,7 +9,7 @@ infrastructure folks.
 The way we think about the o11y space is as follows: we decompose it into
 [six dimensions][dimensions] you can then combine to arrive at a specifc solution:
 
-| **dimension** | **examples** |
+| dimension | examples |
 |---------------|--------------|
 | destinations  | [Prometheus][amp] &middot; [Grafana][amg] &middot; [OpenSearch][aes] &middot; [CloudWatch][cw] &middot; [Jaeger][jaeger] |
 | agents        | [ADOT][adot] &middot; [Fluent Bit][fluentbit] &middot; CW agent &middot; X-Ray agent |
