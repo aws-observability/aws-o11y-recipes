@@ -1,8 +1,9 @@
-# Using Terraform for AMG automation
+# Using Terraform for Amazon Managed Grafana automation
 
 In this recipe we show you how use Terraform to automate
-[Amazon Managed Service for Grafana (AMG)](https://aws.amazon.com/grafana/), 
-for example to add datasources or dashboards.
+[Amazon Managed Grafana](https://aws.amazon.com/grafana/), 
+for example to add datasources or dashboards consistently
+across a number of workspaces.
 
 !!! note
     This guide will take approximately 30 minutes to complete.
@@ -14,9 +15,9 @@ for example to add datasources or dashboards.
 * You have an [Amazon Managed Service for Prometheus (AMP)](../../amp/) workspace created and
   ready to use.
 
-## Set up AMG
+## Set up Amazon Managed Grafana
 
-We first need a Grafana instance, so go ahead and set up a new AMG workspace,
+We first need a Grafana instance, so go ahead and set up a new workspace,
 for example by using the [Getting Started][amg-getting-started] guide.
 
 In order for Terraform to [authenticate][grafana-authn] against Grafana, we are 
@@ -49,8 +50,8 @@ API key:
     This is the only time you will see the API key, so store it from here
     in a safe place, we will need it in the Terraform manifest later.
 
-With this we've set up everything we need in AMG in order to use Terraform
-for automation, so let's move on to this step.
+With this we've set up everything we need in Amazon Managed Grafana in order to
+use Terraform for automation, so let's move on to this step.
 
 ## Terraform
 
@@ -106,8 +107,9 @@ workspace URL in the form of
 `https://aps-workspaces.eu-west-1.amazonaws.com/workspaces/ws-xxxxxxxxx`.
 
 !!! note
-    If you're using AMG in a different region than the one shown in the file, you
-    will have to, in addition to above, also set the `sigv4_region` to your region.
+    If you're using Amazon Managed Grafana in a different region than the one
+    shown in the file, you will have to, in addition to above, also set the
+    `sigv4_region` to your region.
 
 To wrap up the preparation phase, let's now initialize Terraform:
 
@@ -264,7 +266,7 @@ available that allow you to share the state across a team.
 
 ## Cleanup
 
-Remove the AMG workspace by removing it from the console.
+Remove the Amazon Managed Grafana workspace by removing it from the console.
 
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 [aws-cli-conf]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
