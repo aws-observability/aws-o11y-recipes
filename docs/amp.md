@@ -1,4 +1,13 @@
-# Amazon Managed Service for Prometheus (AMP)
+# Amazon Managed Service for Prometheus
+
+[Amazon Managed Service for Prometheus][amp-main] (AMP) is a Prometheus-compatible
+monitoring service that makes it easy to monitor containerized applications at scale. 
+With AMP, you can use the Prometheus query language (PromQL) to monitor the
+performance of containerized workloads without having to manage the underlying 
+infrastructure required to manage the ingestion, storage, and querying of operational
+metrics.
+
+Check out the following recipes:
 
 - [Getting Started with AMP][amp-gettingstarted]
 - [Using ADOT in EKS on EC2 to ingest to AMP and visualize in AMG](recipes/ec2-eks-metrics-go-adot-ampamg.md)
@@ -9,6 +18,7 @@
 - [Best practices for migrating self-hosted Prometheus on EKS to AMP][amp-migration]
 - [Workshop for Getting Started with AMP][amp-oow]
 
+[amp-main]: https://aws.amazon.com/prometheus/
 [amp-gettingstarted]: https://aws.amazon.com/blogs/mt/getting-started-amazon-managed-service-for-prometheus/
 [amp-xaccount]: https://aws.amazon.com/blogs/opensource/setting-up-cross-account-ingestion-into-amazon-managed-service-for-prometheus/
 [amp-ecs-metrics]: https://aws.amazon.com/blogs/opensource/metrics-collection-from-amazon-ecs-using-amazon-managed-service-for-prometheus/
