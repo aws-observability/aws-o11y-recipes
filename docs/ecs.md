@@ -1,4 +1,10 @@
-# ECS
+# Amazon Elastic Container Service
+
+[Amazon Elastic Container Service][ecs-main] (ECS) is a fully managed container
+orchestration service that helps you easily deploy, manage, and scale 
+containerized applications, deeply integrating with the rest of AWS.
+
+Check out the following recipes, grouped by compute engine:
 
 ## ECS on EC2
 
@@ -16,7 +22,7 @@
 ### Logs
 - [Sample logging architectures for FireLens on Amazon ECS and AWS Fargate using Fluent Bit][firelens-fb]
 
-
+[ecs-main]: https://aws.amazon.com/ecs/
 [firelens-uth]: https://aws.amazon.com/blogs/containers/under-the-hood-firelens-for-amazon-ecs-tasks/
 [adot-xaccount-metrics]: https://aws.amazon.com/blogs/opensource/using-aws-distro-for-opentelemetry-collector-for-cross-account-metrics-collection-on-amazon-ecs/
 [ecs-amp]: https://aws.amazon.com/blogs/opensource/metrics-collection-from-amazon-ecs-using-amazon-managed-service-for-prometheus/

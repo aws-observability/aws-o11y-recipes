@@ -1,4 +1,9 @@
-# EKS
+# Amazon Elastic Kubernetes Service
+
+[Amazon Elastic Kubernetes Service][eks-main] (EKS) gives you the flexibility to 
+start, run, and scale Kubernetes applications in the AWS Cloud or on-premises. 
+
+Check out the following recipes, grouped by compute engine:
 
 ## EKS on EC2
 
@@ -37,10 +42,11 @@
 - [Set up cross-region metrics collection for AMP workspaces][amp-xregion]
 
 ### Traces
+
 - [Tracing with X-Ray][eks-ws-xray]
 
 
-
+[eks-main]: https://aws.amazon.com/eks/
 [eks-cw-fb]: https://aws.amazon.com/blogs/containers/fluent-bit-integration-in-cloudwatch-container-insights-for-eks/
 [eks-ws-efk]: https://www.eksworkshop.com/intermediate/230_logging/
 [eks-logging]: https://github.com/aws-samples/amazon-eks-fluent-logging-examples
