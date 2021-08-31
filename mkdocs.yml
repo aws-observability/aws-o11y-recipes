@@ -23,10 +23,10 @@ nav:
   - Java: java.md
   - Node.js: nodejs.md
 - 'By Destination':
-  - CW: cw.md
-  - AMP: amp.md
-  - AMG: amg.md
-  - AES: aes.md
+  - cw.md
+  - amp.md
+  - amg.md
+  - aes.md
 - 'Tasks':
   - 'Anomaly Detection': anomaly-detection.md
   - 'Alerting': alerting.md
