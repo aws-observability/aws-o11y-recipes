@@ -9,6 +9,7 @@ and services that run on AWS and on-premises servers.
 Check out the following recipes:
 
 - [Build proactive database monitoring for RDS with CW Logs, Lambda, and SNS][rds-cw]
+- [Implementing CloudWatch-centric observability for Kubernetes-native developers in EKS][swa-eks-cw]
 - [Create Canaries via CW Synthetics][cw-synths]
 - [Cloudwatch Logs Insights for Quering Logs][cw-logsi]
 - [Lambda Insights][cw-lambda]
@@ -22,6 +23,7 @@ Check out the following recipes:
 
 [cw-main]: https://aws.amazon.com/cloudwatch/
 [rds-cw]: https://aws.amazon.com/blogs/database/build-proactive-database-monitoring-for-amazon-rds-with-amazon-cloudwatch-logs-aws-lambda-and-amazon-sns/
+[swa-eks-cw]: https://aws.amazon.com/blogs/opensource/implementing-cloudwatch-centric-observability-for-kubernetes-native-developers-in-amazon-elastic-kubernetes-service/
 [cw-synths]: https://observability.workshop.aws/en/synthetics.html
 [cw-logsi]: https://observability.workshop.aws/en/logsinsights.html
 [cw-lambda]: https://observability.workshop.aws/en/logsinsights.html

@@ -14,6 +14,7 @@ Check out the following recipes:
 - [Integrating Google authentication via SAMLv2][amg-google-idps]
 - [Integrating identity providers (OneLogin, Ping Identity, Okta, and Azure AD) to SSO][amg-idps]
 - [Monitoring hybrid environments][amg-hybridenvs]
+- [Managing Grafana and Loki in a regulated multitenant environment][grafana-loki-regenv]
 - [Workshop for Getting Started][amg-oow]
 
 [amg-main]: https://aws.amazon.com/grafana/
@@ -22,4 +23,5 @@ Check out the following recipes:
 [amg-google-idps]: recipes/amg-google-auth-saml.md
 [amg-idps]: https://aws.amazon.com/blogs/opensource/integrating-identity-providers-such-as-onelogin-ping-identity-okta-and-azure-ad-to-sso-into-aws-managed-service-for-grafana/
 [amg-hybridenvs]: https://aws.amazon.com/blogs/mt/monitoring-hybrid-environments-using-amazon-managed-service-for-grafana/
+[grafana-loki-regenv]: https://aws.amazon.com/blogs/opensource/how-to-manage-grafana-and-loki-in-a-regulated-multitenant-environment/
 [amg-oow]: https://observability.workshop.aws/en/amg.html
