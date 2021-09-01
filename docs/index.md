@@ -7,7 +7,7 @@ and [Fluent Bit][fluentbit]. We want to address the needs of both developers and
 infrastructure folks.
 
 The way we think about the o11y space is as follows: we decompose it into
-[six dimensions][dimensions] you can then combine to arrive at a specifc solution:
+[six dimensions][dimensions] you can then combine to arrive at a specific solution:
 
 | dimension | examples |
 |---------------|--------------|
@@ -20,7 +20,7 @@ The way we think about the o11y space is as follows: we decompose it into
 
 For example, you might be looking for a solution to:
 
-!!! question "Examplary solution specification"
+!!! question "Exemplary solution specification"
     I need a logging solution for a Python app I'm running on EKS on Fargate
     with the goal to store the logs in an S3 bucket for further consumption
 
@@ -35,7 +35,7 @@ Not every dimension needs to be specified and sometimes it's hard to decide wher
 to start. Try different paths and compare the pros and cons of certain recipes.
 
 To simplify navigation, we're grouping the six dimension into the following
-catagories:
+categories:
 
 - **By Compute**: covering compute engines and units
 - **By Infra & Data**: covering infrastructure and databases
