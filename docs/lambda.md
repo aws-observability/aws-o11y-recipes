@@ -14,6 +14,11 @@ Check out the following recipes:
 
 - [Introducing CloudWatch Lambda Insights][lambda-cwi]
 
+## Traces
+
+- [Tracing AWS Lambda functions in AWS X-Ray with OpenTelemetry][lambda-xray-adot]
+
 [lambda-main]: https://aws.amazon.com/lambda/
 [aes-ws]: https://bookstore.aesworkshops.com/
 [lambda-cwi]: https://aws.amazon.com/blogs/mt/introducing-cloudwatch-lambda-insights/
+[lambda-xray-adot]: https://aws.amazon.com/blogs/opensource/tracing-aws-lambda-functions-in-aws-x-ray-with-opentelemetry/
