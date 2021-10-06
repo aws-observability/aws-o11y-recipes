@@ -16,7 +16,7 @@ Check out the following recipes, grouped by compute engine:
 ### Metrics
 
 - [Getting Started with Amazon Managed Service for Prometheus][amp-gettingstarted]
-- [Using ADOT in EKS on EC2 to ingest to AMP and visualize in AMG][ec2-eks-metrics-go-adot-ampamg]
+- [Using ADOT in EKS on EC2 to ingest metrics to AMP and visualize in AMG][ec2-eks-metrics-go-adot-ampamg]
 - [Configuring Grafana Cloud Agent for Amazon Managed Service for Prometheus][gcwa-amp]
 - [Monitoring cluster using Prometheus and Grafana][eks-ws-prom-grafana]
 - [Monitoring with Managed Prometheus and Managed Grafana][eks-ws-amp-amg]
@@ -38,6 +38,7 @@ Check out the following recipes, grouped by compute engine:
 
 ### Metrics
 
+- [Using ADOT in EKS on Fargate to ingest metrics to AMP and visualize in AMG][fargate-eks-metrics-go-adot-ampamg]
 - [CloudWatch Container Insights][eks-ws-cw-ci]
 - [Set up cross-region metrics collection for AMP workspaces][amp-xregion]
 
@@ -56,6 +57,7 @@ Check out the following recipes, grouped by compute engine:
 [eks-ws-prom-grafana]: https://www.eksworkshop.com/intermediate/240_monitoring/
 [eks-ws-amp-amg]: https://www.eksworkshop.com/intermediate/246_monitoring_amp_amg/
 [eks-ws-cw-ci]: https://www.eksworkshop.com/intermediate/250_cloudwatch_container_insights/
+[fargate-eks-metrics-go-adot-ampamg]: recipes/fargate-eks-metrics-go-adot-ampamg.md
 [amp-xregion]: https://aws.amazon.com/blogs/opensource/set-up-cross-region-metrics-collection-for-amazon-managed-service-for-prometheus-workspaces/
 [eks-otel-xray]: https://aws.amazon.com/blogs/opensource/migrating-x-ray-tracing-to-aws-distro-for-opentelemetry/
 [eks-ws-xray]: https://www.eksworkshop.com/intermediate/245_x-ray/x-ray/

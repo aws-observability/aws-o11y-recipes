@@ -1,11 +1,14 @@
-# Using AWS Distro for OpenTelemetry in EKS to ingest metrics into Amazon Managed Service for Prometheus
+# Using AWS Distro for OpenTelemetry in EKS on Fargate with Amazon Managed Service for Prometheus
 
 In this recipe we show you how to instrument a [sample Go application](https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/prometheus) and
 use [AWS Distro for OpenTelemetry (ADOT)](https://aws.amazon.com/otel) to ingest metrics into
 [Amazon Managed Service for Prometheus (AMP)](https://aws.amazon.com/prometheus/) .
 Then we're using [Amazon Managed Grafana (AMG)](https://aws.amazon.com/grafana/) to visualize the metrics.
 
-We will be setting up an [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) cluster and [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) repository to demonstrate a complete scenario.
+We will be setting up an [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
+on [AWS Fargate](https://aws.amazon.com/fargate/) cluster and use an
+[Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) repository
+to demonstrate a complete scenario.
 
 !!! note
     This guide will take approximately 1 hour to complete.
@@ -95,16 +98,31 @@ In this example, the ADOT Collector configuration uses an annotation `(scrape=tr
 
 Use the following steps to edit the downloaded file for your environment:
 
-1\. Replace `<REGION>` with your current Region. 
+1\. Replace `<REGION>` with your current region. 
 
-2\. Replace `<YOUR_ENDPOINT>`  with your AMP workspace endpoint URL.
+2\. Replace `<YOUR_ENDPOINT>` with the remote write URL of your workspace.
 
-Get your AMP endpoint url by executing the following query:
+Get your AMP remote write URL endpoint by executing the following queries. 
+
+First, get the workspace ID like so:
+
 ```
-aws amp describe-workspace \ 
-    --workspace-id `aws amp list-workspaces --alias prometheus-sample-app --query 'workspaces[0].workspaceId' --output text` \
-    --query 'workspace.prometheusEndpoint'
+YOUR_WORKSPACE_ID=$(aws amp list-workspaces \
+                    --alias o11y.apps-demo \
+                    --query 'workspaces[0].workspaceId' --output text)
 ```
+
+Now get the remote write URL endpoint URL for your workspace using:
+
+```
+YOUR_ENDPOINT=$(aws amp describe-workspace \
+                --workspace-id $YOUR_WORKSPACE_ID  \
+                --query 'workspace.prometheusEndpoint' --output text)api/v1/remote_write
+```
+
+!!! warning
+    Make sure that `YOUR_ENDPOINT` is in fact the remote write URL, that is, 
+    the URL should end in `/api/v1/remote_write`.
 
 3\. Finally replace your `<YOUR_ACCOUNT_ID>`  with your current account ID.
 
@@ -120,11 +138,12 @@ kubectl apply -f prometheus-fargate.yaml
 ```
 
 !!! info
-    For more information check out the [AWS Distro for OpenTelemetry (ADOT) Collector Setup](https://aws-otel.github.io/docs/getting-started/prometheus-remote-write-exporter/eks#aws-distro-for-opentelemetry-adot-collector-setup)
+    For more information check out the [AWS Distro for OpenTelemetry (ADOT) 
+    Collector Setup](https://aws-otel.github.io/docs/getting-started/prometheus-remote-write-exporter/eks#aws-distro-for-opentelemetry-adot-collector-setup).
 
-### Setup AMG
+### Set up AMG
 
-Setup a new AMG workspace using the [Amazon Managed Grafana – Getting Started](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) guide.
+Set up a new AMG workspace using the [Amazon Managed Grafana – Getting Started](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) guide.
 
 Make sure to add "Amazon Managed Service for Prometheus" as a datasource during creation.
 
@@ -150,7 +169,7 @@ docker build . -t prometheus-sample-app:latest
 ```
 
 !!! note
-    If go mod fails in your environment due to a proxy.golang.or i/o timeout,
+    If `go mod` fails in your environment due to a proxy.golang.or i/o timeout,
     you are able to bypass the go mod proxy by editing the Dockerfile.
 
     Change the following line in the Docker file:
