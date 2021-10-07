@@ -10,7 +10,7 @@ iam:
   serviceAccounts:
   - metadata:
       name: adot-collector
-      namespace: ho11y
+      namespace: adot-col
       labels: {aws-usage: "application"}
     attachPolicy:
       Version: "2012-10-17"

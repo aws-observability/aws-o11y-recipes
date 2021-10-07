@@ -4,13 +4,13 @@ kind: ClusterConfig
 metadata:
   name: amp-eks-fargate
   region: eu-west-1
-  version: '1.18'
+  version: '1.21'
 iam:
   withOIDC: true
   serviceAccounts:
   - metadata:
       name: adot-collector
-      namespace: ho11y
+      namespace: adot-col
       labels: {aws-usage: "application"}
     attachPolicy:
       Version: "2012-10-17"
