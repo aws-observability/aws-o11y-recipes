@@ -1,13 +1,4 @@
 ---
-# create adot-col namespace
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: adot-col
-  labels:
-    name: adot-col
-
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -44,7 +35,6 @@ data:
         aws_auth:
           region: "<YOUR_REGION>"
           service: "aps"
-        namespace: "adot"
       logging:
         loglevel: debug
     extensions:
@@ -59,16 +49,6 @@ data:
         metrics:
           receivers: [prometheus]
           exporters: [logging, awsprometheusremotewrite]
----
-# create adot-col service account and role binding
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: amp-iamproxy-ingest-service-account
-  namespace: adot-col
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::<YOUR_ACCOUNT_ID>:role/amp-iamproxy-ingest-role
-
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
@@ -90,7 +70,6 @@ rules:
     verbs: ["get", "list", "watch"]
   - nonResourceURLs: ["/metrics"]
     verbs: ["get"]
-
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -98,13 +77,12 @@ metadata:
   name: adotcol-admin-role-binding
 subjects:
   - kind: ServiceAccount
-    name: amp-iamproxy-ingest-service-account
+    name: adot-collector
     namespace: adot-col
 roleRef:
   kind: ClusterRole
   name: adotcol-admin-role
   apiGroup: rbac.authorization.k8s.io
-
 ---
 apiVersion: v1
 kind: Service
@@ -142,7 +120,7 @@ spec:
         app: aws-adot
         component: adot-collector
     spec:
-      serviceAccountName: amp-iamproxy-ingest-service-account
+      serviceAccountName: adot-collector
       containers:
       - command:
           - "/awscollector"

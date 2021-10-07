@@ -18,15 +18,19 @@ In the following section we will be setting up the infrastructure for this recip
 
 ### Architecture
 
-The ADOT-AMP pipeline enables us to use the [ADOT Collector](https://github.com/aws-observability/aws-otel-collector) to scrape a Prometheus-instrumented application, and send the scraped metrics to AMP. 
+The ADOT-AMP pipeline enables us to use the 
+[ADOT Collector](https://github.com/aws-observability/aws-otel-collector) to 
+scrape a Prometheus-instrumented application, and ingest the scraped metrics to
+AMP. 
 
 ![Architecture](../images/adot-metrics-pipeline.png)
 
-The ADOT Collector includes two AWS OpenTelemetry Collector components specific to Prometheus — the Prometheus Receiver and the AWS Prometheus Remote Write Exporter. 
+The ADOT Collector includes two AWS OpenTelemetry Collector components specific 
+to Prometheus: the Prometheus Receiver and the AWS Prometheus Remote Write Exporter. 
 
 !!! info 
     For more information on Prometheus Remote Write Exporter check out:
-    [Getting Started with Prometheus Remote Write Exporter for AMP](https://aws-otel.github.io/docs/getting-started/prometheus-remote-write-exporter)
+    [Getting Started with Prometheus Remote Write Exporter for AMP](https://aws-otel.github.io/docs/getting-started/prometheus-remote-write-exporter).
 
 
 ### Prerequisites
@@ -36,7 +40,7 @@ The ADOT Collector includes two AWS OpenTelemetry Collector components specific 
 * You need to install [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) in your environment. 
 * You have [docker](https://docs.docker.com/get-docker/) installed into your environment.
 
-### Setup an EKS cluster
+### Create an EKS on Fargate cluster
 
 Our demo application in this recipe will be running on top of EKS. 
 You can either use an existing EKS cluster or create one using [cluster_config.yaml](./fargate-eks-metrics-go-adot-ampamg/cluster-config.yaml).
@@ -51,17 +55,19 @@ Edit the template file and set your region to one of the available regions for A
 * `eu-central-1`
 * `eu-west-1`
 
-Make sure to overwrite this region in your session, for example in bash:
+Make sure to overwrite this region in your session, for example, in Bash:
+
 ```
 export AWS_DEFAULT_REGION=eu-west-1
 ```
 
-Create your cluster using the following command.
+Create your cluster using the following command:
+
 ```
 eksctl create cluster -f cluster-config.yaml
 ```
 
-### Setup an ECR repository
+### Create an ECR repository
 
 In order to deploy our application to EKS we need a container registry. 
 You can use the following command to create a new ECR registry in your account. 
@@ -73,15 +79,16 @@ aws ecr create-repository \
     --region eu-west-1
 ```
 
-### Setup AMP 
+### Set up AMP 
 
+First, create an AMP workspace using the AWS CLI with:
 
-create a workspace using the AWS CLI 
 ```
 aws amp create-workspace --alias prometheus-sample-app
 ```
 
 Verify the workspace is created using:
+
 ```
 aws amp list-workspaces
 ```
@@ -90,12 +97,15 @@ aws amp list-workspaces
     For more details check out the [AMP Getting started](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-getting-started.html) guide.
 
 
-### Setup ADOT Collector 
+### Set up ADOT Collector 
 
 Download [adot-collector-fargate.yaml](./fargate-eks-metrics-go-adot-ampamg/adot-collector-fargate.yaml) 
 and edit this YAML doc with the parameters described in the next steps.
 
-In this example, the ADOT Collector configuration uses an annotation `(scrape=true)` to tell which target endpoints to scrape. This allows the ADOT Collector to distinguish the sample app endpoint from kube-system endpoints in your cluster. You can remove this from the re-label configurations if you want to scrape a different sample app. 
+In this example, the ADOT Collector configuration uses an annotation `(scrape=true)` 
+to tell which target endpoints to scrape. This allows the ADOT Collector to distinguish 
+the sample app endpoint from kube-system endpoints in your cluster.
+You can remove this from the re-label configurations if you want to scrape a different sample app. 
 
 Use the following steps to edit the downloaded file for your environment:
 
@@ -128,6 +138,7 @@ YOUR_ENDPOINT=$(aws amp describe-workspace \
 3\. Finally replace your `<YOUR_ACCOUNT_ID>`  with your current account ID.
 
 The following command will return the account ID for the current session:
+
 ```
 aws sts get-caller-identity --query Account --output text
 ```
@@ -144,18 +155,21 @@ kubectl apply -f adot-collector-fargate.yaml
 
 ### Set up AMG
 
-Set up a new AMG workspace using the [Amazon Managed Grafana – Getting Started](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) guide.
+Set up a new AMG workspace using the 
+[Amazon Managed Grafana – Getting Started](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) guide.
 
 Make sure to add "Amazon Managed Service for Prometheus" as a datasource during creation.
 
 ![Service managed permission settings](../images/amg-console-create-workspace-managed-permissions.jpg)
 
-
 ## Application
 
-In this recipe we will be using a [sample application](https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/prometheus) from the AWS Observability repository.
+In this recipe we will be using a
+[sample application](https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/prometheus) 
+from the AWS Observability repository.
 
-This Prometheus sample app generates all four Prometheus metric types (counter, gauge, histogram, summary) and exposes them at the `/metrics`endpoint.
+This Prometheus sample app generates all four Prometheus metric types 
+(counter, gauge, histogram, summary) and exposes them at the `/metrics` endpoint.
 
 ### Build
 Clone the following Git repository
@@ -201,18 +215,20 @@ docker push "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/prometheus-sample-app:late
 ```
 
 ### Deploy
-Edit `prometheus-sample-app.yaml` to contain your ECR image path.
-
--> show line here.
+Edit [prometheus-sample-app.yaml](./fargate-eks-metrics-go-adot-ampamg/prometheus-sample-app.yaml)
+to contain your ECR image path.
 
 Deploy the sample app to your cluster:
+
 ```
 kubectl apply -f prometheus-sample-app.yaml
 ```
 
 ## End-to-end
 
-Now that you have the infrastructure and the application in place, we will test out the setup, sending metrics from the Go app running in EKS to AMP and visualize it in AMG.
+Now that you have the infrastructure and the application in place, we will
+test out the setup, sending metrics from the Go app running in EKS to AMP and
+visualize it in AMG.
 
 ### Verify your pipeline is working 
 
