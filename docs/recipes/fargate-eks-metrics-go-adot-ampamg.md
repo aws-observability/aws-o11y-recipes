@@ -20,7 +20,7 @@ In the following section we will be setting up the infrastructure for this recip
 
 The ADOT-AMP pipeline enables us to use the [ADOT Collector](https://github.com/aws-observability/aws-otel-collector) to scrape a Prometheus-instrumented application, and send the scraped metrics to AMP. 
 
-![Architecture](https://aws-otel.github.io/static/Prometheus_Pipeline-07344e5466b05299cff41d09a603e479.png)
+![Architecture](../images/adot-metrics-pipeline.png)
 
 The ADOT Collector includes two AWS OpenTelemetry Collector components specific to Prometheus — the Prometheus Receiver and the AWS Prometheus Remote Write Exporter. 
 
@@ -147,7 +147,7 @@ Set up a new AMG workspace using the [Amazon Managed Grafana – Getting Started
 
 Make sure to add "Amazon Managed Service for Prometheus" as a datasource during creation.
 
-![Service managed permission settings](https://d2908q01vomqb2.cloudfront.net/972a67c48192728a34979d9a35164c1295401b71/2020/12/09/image008-1024x870.jpg)
+![Service managed permission settings](../images/amg-console-create-workspace-managed-permissions.jpg)
 
 
 ## Application
@@ -270,9 +270,9 @@ Use the following guides to create your first dashboard:
 * [User Guide: Dashboards](https://docs.aws.amazon.com/grafana/latest/userguide/dashboard-overview.html)
 * [Best practices for creating dashboards](https://grafana.com/docs/grafana/latest/best-practices/best-practices-for-creating-dashboards/)
 
--> Put more content here.
+For example, the dashboard could look as follows:
 
-![placeholder-image](https://d1.awsstatic.com/products/grafana/amg-console-1.a9bcc3ab4dc86a378eb808851f54cee8a34cb300.png)
+![placeholder-image](../images/placeholder-grafana-dashboard.png)
 
 ## Cleanup
 
