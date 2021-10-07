@@ -92,7 +92,8 @@ aws amp list-workspaces
 
 ### Setup ADOT Collector 
 
-Download the template file [prometheus-fargate.yaml](./fargate-eks-metrics-go-adot-ampamg/prometheus-fargate.yaml) and edit this file with the parameters described in the next steps.
+Download [adot-collector-fargate.yaml](./fargate-eks-metrics-go-adot-ampamg/adot-collector-fargate.yaml) 
+and edit this YAML doc with the parameters described in the next steps.
 
 In this example, the ADOT Collector configuration uses an annotation `(scrape=true)` to tell which target endpoints to scrape. This allows the ADOT Collector to distinguish the sample app endpoint from kube-system endpoints in your cluster. You can remove this from the re-label configurations if you want to scrape a different sample app. 
 
@@ -108,7 +109,7 @@ First, get the workspace ID like so:
 
 ```
 YOUR_WORKSPACE_ID=$(aws amp list-workspaces \
-                    --alias o11y.apps-demo \
+                    --alias prometheus-sample-app \
                     --query 'workspaces[0].workspaceId' --output text)
 ```
 
@@ -134,7 +135,7 @@ aws sts get-caller-identity --query Account --output text
 After creating deployment file we can now apply this to our cluster by using the following command: 
 
 ```
-kubectl apply -f prometheus-fargate.yaml
+kubectl apply -f adot-collector-fargate.yaml
 ```
 
 !!! info
