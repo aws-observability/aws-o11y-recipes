@@ -171,16 +171,28 @@ from the AWS Observability repository.
 This Prometheus sample app generates all four Prometheus metric types 
 (counter, gauge, histogram, summary) and exposes them at the `/metrics` endpoint.
 
-### Build
-Clone the following Git repository
+### Build container image
+
+To build the container image, first clone the Git repository and change
+into the directory as follows:
+
 ```
-git clone git@github.com:aws-observability/aws-otel-community.git
+git clone https://github.com/aws-observability/aws-otel-community.git && \
+cd ./aws-otel-community/sample-apps/prometheus
 ```
 
-Build the container
+First, set the region and account ID to what is applicable in your case. For
+example, in the Bash shell this would look as follows:
+
 ```
-cd ./aws-otel-community/sample-apps/prometheus
-docker build . -t prometheus-sample-app:latest
+export REGION="eu-west-1"
+export ACCOUNTID=`aws sts get-caller-identity --query Account --output text`
+```
+
+Next, build the container image:
+
+```
+docker build . -t "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/prometheus-sample-app:latest"
 ```
 
 !!! note
@@ -196,29 +208,34 @@ docker build . -t prometheus-sample-app:latest
     RUN GOPROXY=direct GO111MODULE=on go mod download
     ```
 
-### Push
-Change the region variable to the region you selected in the beginning of this guide:
+Now you can push the container image to the ECR repo you created earlier on.
+
+For that, first log in to the default ECR registry:
+
 ```
-export REGION="eu-west-1"
-export ACCOUNTID=`aws sts get-caller-identity --query Account --output text`
+aws ecr get-login-password --region $REGION | \
+    docker login --username AWS --password-stdin \
+    "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com"
 ```
 
-Authenticate to your default registry:
-```
-aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com"
-```
+And finally, push the container image to the ECR repository you created, above:
 
-Push container to the ECR repository
 ```
-docker tag prometheus-sample-app:latest "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/prometheus-sample-app:latest"
 docker push "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/prometheus-sample-app:latest"
 ```
 
-### Deploy
-Edit [prometheus-sample-app.yaml](./fargate-eks-metrics-go-adot-ampamg/prometheus-sample-app.yaml)
-to contain your ECR image path.
+### Deploy sample app
 
-Deploy the sample app to your cluster:
+Edit [prometheus-sample-app.yaml](./fargate-eks-metrics-go-adot-ampamg/prometheus-sample-app.yaml)
+to contain your ECR image path. That is, replace `ACCOUNTID` and `REGION` in the
+file with your own values:
+
+``` 
+    # change the following to your container image:
+    image: "ACCOUNTID.dkr.ecr.REGION.amazonaws.com/prometheus-sample-app:latest"
+```
+
+Now you can deploy the sample app to your cluster using:
 
 ```
 kubectl apply -f prometheus-sample-app.yaml
