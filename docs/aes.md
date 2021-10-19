@@ -1,21 +1,28 @@
-# Amazon Elasticsearch Service
+# Amazon OpenSearch Service
 
-[Amazon Elasticsearch Service][aes-main] (AES) is a fully managed service that makes 
-it easy for you to deploy, secure, and run Elasticsearch cost effectively at scale. 
-The service provides support for open source Elasticsearch APIs, managed Kibana,
-integration with Logstash and other AWS services, and built-in alerting and SQL querying.
+[Amazon OpenSearch Service][aes-main] (AOS), successor to Amazon Elasticsearch Service,
+makes it easy for you to perform interactive log analytics, real-time application
+monitoring, website search, and more. OpenSearch is an open source, distributed 
+search and analytics suite derived from Elasticsearch. It offers the latest 
+versions of OpenSearch, support for 19 versions of Elasticsearch (1.5 to 7.10 versions),
+and visualization capabilities powered by OpenSearch Dashboards and Kibana 
+(1.5 to 7.10 versions). 
 
 Check out the following recipes:
 
-- [Getting started with AES][aes-ws]
-- [Log Analytics with AES][loan-ws]
+- [AOS tutorial: a quick start guide][aos-tut]
+- [Get started with AOS: T-shirt-size your domain][aos-gs]
+- [Getting started with AOS][aes-ws]
+- [Log Analytics with AOS][loan-ws]
 - [Getting started with Open Distro for Elasticsearch][od-ws]
 - [Know your data with Machine Learning][ml-ws]
-- [Send CloudTrail Logs to AES][ct-ws]
-- [Searching DynamoDB Data with AES][bs-ws]
-- [Getting Started with Trace Analytics in AES][tracing-aes]
+- [Send CloudTrail Logs to AOS][ct-ws]
+- [Searching DynamoDB Data with AOS][bs-ws]
+- [Getting Started with Trace Analytics in AOS][tracing-aes]
 
-[aes-main]: https://aws.amazon.com/elasticsearch-service/
+[aes-main]: https://aws.amazon.com/opensearch-service/
+[aos-gs]: https://aws.amazon.com/blogs/big-data/get-started-with-amazon-opensearch-service-t-shirt-size-your-domain/
+[aos-tut]: https://aws.amazon.com/blogs/big-data/amazon-opensearch-tutorial-a-quick-start-guide/
 [aes-ws]: https://intro.aesworkshops.com/
 [loan-ws]: https://aesworkshops.com/log-analytics/mainlab/
 [od-ws]: https://od4es.aesworkshops.com/
