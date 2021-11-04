@@ -4,7 +4,7 @@ kind: ClusterConfig
 metadata:
   name: amp-eks-ec2
   region: eu-west-1
-  version: '1.18'
+  version: '1.21'
 iam:
   withOIDC: true
   serviceAccounts:
@@ -39,8 +39,6 @@ nodeGroups:
     instanceType: t2.large
     desiredCapacity: 2
     volumeSize: 80
-    ssh:
-      allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
 cloudWatch:
   clusterLogging:
     enableTypes: ["*"]

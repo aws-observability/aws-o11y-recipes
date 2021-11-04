@@ -74,7 +74,7 @@ aws ecr create-repository \
     --region eu-west-1
 ```
 
-### Set up AMP 
+### Set up AMP
 
 First, create an Amazon Managed Service for Prometheus workspace using the AWS CLI with:
 
@@ -92,7 +92,7 @@ aws amp list-workspaces
     For more details check out the [AMP Getting started](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-getting-started.html) guide.
 
 
-### Set up ADOT Collector 
+### Set up ADOT Collector
 
 Download [adot-collector-fargate.yaml](./fargate-eks-metrics-go-adot-ampamg/adot-collector-fargate.yaml) 
 and edit this YAML doc with the parameters described in the next steps.
