@@ -44,6 +44,7 @@ Check out the following recipes, grouped by compute engine:
 
 ### Traces
 
+- [Using ADOT in EKS on Fargate with AWS X-Ray][fargate-eks-xray-go-adot-amg]
 - [Tracing with X-Ray][eks-ws-xray]
 
 
@@ -64,3 +65,4 @@ Check out the following recipes, grouped by compute engine:
 [eks-fargate-logging]: https://aws.amazon.com/blogs/containers/fluent-bit-for-amazon-eks-on-aws-fargate-is-here/
 [eks-fb-example]: https://github.com/aws-samples/amazon-eks-fluent-logging-examples
 [eks-am-amp-amg]: recipes/servicemesh-monitoring-ampamg.md
+[fargate-eks-xray-go-adot-amg]: recipes/fargate-eks-xray-go-adot-amg.md

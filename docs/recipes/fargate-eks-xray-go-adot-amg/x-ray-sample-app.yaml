@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adot-trace
+  namespace: example-app
+spec:
+  selector:
+    matchLabels:
+      app: sample
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample
+    spec:
+      containers:
+        - name: ho11y
+          image: public.ecr.aws/mhausenblas/ho11y:stable
+          ports:
+          - containerPort: 8765
+          env:
+          - name: OTEL_RESOURCE_ATTRIB
+            value: "frontend"
+          - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            value: "adot-collector.adot-col:4317"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  ports:
+  - port: 80
+    targetPort: 8765
+  selector:
+    app: frontend
+
