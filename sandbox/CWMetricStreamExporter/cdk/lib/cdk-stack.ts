@@ -16,7 +16,7 @@ export class CdkStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const INPUT_YAML_FILE = "config.yaml";
+    const INPUT_YAML_FILE = "config.yaml"; 
 
     const data = convertYamlToJson(INPUT_YAML_FILE, "/../../") as any;
 

@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  go_build:
-    name: Go Build
+  Build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
 
