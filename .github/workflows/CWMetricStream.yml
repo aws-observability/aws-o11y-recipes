@@ -1,0 +1,44 @@
+name: CW Metruc Stream 
+on:
+  # enable manual trigger via button in GitHub actions
+  workflow_dispatch:
+  # enable auto trigger based on path and branch
+  push:
+    branches: [ main ]
+    paths: 
+      - 'CWMetricStreamExporter'
+  pull_request:
+    branches: [ main ]
+    paths: 
+      - 'CWMetricStreamExporter'
+jobs:
+  Build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.17
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Get dependencies
+      run: cd lambda && go mod download
+
+    - name: Go Build
+      run: make go_build
+
+    - name: Go Test
+      run: make go_test
+
+    - name: NPM Build
+      run: make npm_build
+
+    - name: NPM Lint
+      run: make npm_lint
+      
+    - name: NPM Test
+      run: make npm_test
