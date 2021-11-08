@@ -4,11 +4,9 @@ on:
   workflow_dispatch:
   # enable auto trigger based on path and branch
   push:
-    branches: [ main ]
     paths: 
       - 'CWMetricStreamExporter'
   pull_request:
-    branches: [ main ]
     paths: 
       - 'CWMetricStreamExporter'
 jobs:
