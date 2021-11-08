@@ -1,4 +1,4 @@
-name: CW Metruc Stream 
+name: CW Metric Stream 
 on:
   # enable manual trigger via button in GitHub actions
   workflow_dispatch:
@@ -13,7 +13,6 @@ jobs:
   Build:
     name: Build
     runs-on: ubuntu-latest
-    env: sandbox/CWMetricStreamExporter
     steps:
 
     - name: Set up Go 1.x
