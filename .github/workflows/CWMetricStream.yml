@@ -6,14 +6,17 @@ on:
   push:
     paths: 
       - 'sandbox/CWMetricStreamExporter/**'
+      - '.github/workflows/**'
   pull_request:
     paths: 
       - 'sandbox/CWMetricStreamExporter/**'
+      - '.github/workflows/**'
 jobs:
   Build:
     name: Build
     runs-on: ubuntu-latest
-    env: sandbox/CWMetricStreamExporter
+    env: 
+      working-directory: './sandbox/CWMetricStreamExporter'
     steps:
 
     - name: Set up Go 1.x
@@ -25,19 +28,19 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Get dependencies
-      run: cd lambda && go mod download
+      run: cd ${{env.working-directory}} && cd lambda && go mod download
 
     - name: Go Build
-      run: make go_build
+      run: cd ${{env.working-directory}} && make go_build
 
     - name: Go Test
-      run: make go_test
+      run: cd ${{env.working-directory}} && make go_test
 
     - name: NPM Build
-      run: make npm_build
+      run: cd ${{env.working-directory}} && make npm_build
 
     - name: NPM Lint
-      run: make npm_lint
+      run: cd ${{env.working-directory}} && make npm_lint
       
     - name: NPM Test
-      run: make npm_test
+      run: cd ${{env.working-directory}} && make npm_test
