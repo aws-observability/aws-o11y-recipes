@@ -5,10 +5,10 @@ on:
   # enable auto trigger based on path and branch
   push:
     paths: 
-      - 'CWMetricStreamExporter'
+      - 'sandbox/CWMetricStreamExporter/**'
   pull_request:
     paths: 
-      - 'CWMetricStreamExporter'
+      - 'sandbox/CWMetricStreamExporter/**'
 jobs:
   Build:
     name: Build
