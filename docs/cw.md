@@ -19,6 +19,7 @@ Check out the following recipes:
 - [Introducing CloudWatch Container Insights Prometheus Support with AWS Distro for OpenTelemetry on ECS and EKS][cwci-adot]
 - [Monitoring ECS containerized Applications and Microservices using CW Container Insights][cwci-ecs]
 - [Monitoring EKS containerized Applications and Microservices using CW Container Insights][cwci-eks]
+- [Exporting Cloudwatch Metric Streams via Firehose and AWS Lambda to Amazon Managed Service for Prometheus](recipes/lambda-cw-metrics-go-amp.md)
 
 
 [cw-main]: https://aws.amazon.com/cloudwatch/

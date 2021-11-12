@@ -1,24 +1,3 @@
-searchTags:
-    key: env
-    value: production
-    metrics:
-      - name: FreeStorageSpace
-        statistics:
-        - Sum
-      - name: ClusterStatus.green
-        statistics:
-        - Minimum
-      - name: ClusterStatus.yellow
-        statistics:
-        - Maximum
-      - name: ClusterStatus.red
-        statistics:
-        - Maximum
-
-Credentials:
-    AWS_SECRET_KEY: secret_key
-    AWS_ACCESS_KEY: access_key
-        
 AMP:
     remote_write_url: "https://aps-workspaces.us-east-2.amazonaws.com/workspaces/{workspace}/api/v1/remote_write"
     region: REGION
@@ -27,4 +6,4 @@ Kinesis_Firehose:
     delivery_stream_name: Kinesis Firehose Stream
 
 S3:
-    s3_bucket_name: S3 Bucket Name
+    s3_bucket_name: S3 Bucket Name 

@@ -13,6 +13,7 @@ Check out the following recipes:
 ## Metrics
 
 - [Introducing CloudWatch Lambda Insights][lambda-cwi]
+- [Exporting Cloudwatch Metric Streams via Firehose and AWS Lambda to Amazon Managed Service for Prometheus](recipes/lambda-cw-metrics-go-amp.md)
 
 ## Traces
 
