@@ -17,7 +17,7 @@ Check out the following recipes:
 - [Set up cross-region metrics collection for AMP workspaces][amp-xregion-metrics]
 - [Best practices for migrating self-hosted Prometheus on EKS to AMP][amp-migration]
 - [Workshop for Getting Started with AMP][amp-oow]
-
+- [Exporting Cloudwatch Metric Streams via Firehose and AWS Lambda to Amazon Managed Service for Prometheus](recipes/lambda-cw-metrics-go-amp.md)
 [amp-main]: https://aws.amazon.com/prometheus/
 [amp-gettingstarted]: https://aws.amazon.com/blogs/mt/getting-started-amazon-managed-service-for-prometheus/
 [amp-xaccount]: https://aws.amazon.com/blogs/opensource/setting-up-cross-account-ingestion-into-amazon-managed-service-for-prometheus/
