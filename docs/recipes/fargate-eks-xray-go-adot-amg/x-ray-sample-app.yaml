@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: adot-trace
+  name: tracer
   namespace: example-app
 spec:
   selector:
@@ -14,24 +14,24 @@ spec:
         app: sample
     spec:
       containers:
-        - name: ho11y
-          image: public.ecr.aws/mhausenblas/ho11y:stable
+        - name: tracer
+          # change the following to your container image:
+          image: "ACCOUNTID.dkr.ecr.REGION.amazonaws.com/x-ray-sample-app:latest"
           ports:
-          - containerPort: 8765
+          - containerPort: 8080
           env:
-          - name: OTEL_RESOURCE_ATTRIB
-            value: "frontend"
           - name: OTEL_EXPORTER_OTLP_ENDPOINT
             value: "adot-collector.adot-col:4317"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+  name: tracer
+  namespace: example-app
 spec:
   ports:
   - port: 80
-    targetPort: 8765
+    targetPort: 8080
   selector:
-    app: frontend
+    app: sample
 

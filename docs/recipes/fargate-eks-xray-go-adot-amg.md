@@ -77,45 +77,44 @@ Make sure to add "Amazon Managed Service for Prometheus" as a datasource during 
 
 ## Application
 
+
+
+```
+go mod vendor && go run main.go
+```
+
+
 ### Build container image
 
-To build the container image, first clone the Git repository and change
-into the directory as follows:
+To build the container image for the example app, first, 
+clone the [aws-observability/aws-otel-go](https://github.com/aws-observability/aws-otel-go/)
+repo locally:
 
 ```
-git clone https://github.com/aws-observability/aws-otel-community.git && \
-cd ./aws-otel-community/sample-apps/prometheus
+git clone https://github.com/aws-observability/aws-otel-go.git
 ```
 
-First, set the region and account ID to what is applicable in your case. For
-example, in the Bash shell this would look as follows:
+Next, change into the `./aws-otel-go/sampleapp/` directory:
+
+```
+cd aws-otel-go/sampleapp/
+```
+
+Now, set the region and account ID. For example, in the Bash shell this would
+look as follows:
 
 ```
 export REGION="eu-west-1"
 export ACCOUNTID=`aws sts get-caller-identity --query Account --output text`
 ```
 
-Next, build the container image:
+Next, build the container image (assuming the Docker daemon is running):
 
 ```
-docker build . -t "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/prometheus-sample-app:latest"
+docker build . -t "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/x-ray-sample-app:latest"
 ```
-
-!!! note
-    If `go mod` fails in your environment due to a proxy.golang.or i/o timeout,
-    you are able to bypass the go mod proxy by editing the Dockerfile.
-
-    Change the following line in the Docker file:
-    ```
-    RUN GO111MODULE=on go mod download
-    ```
-    to:
-    ```
-    RUN GOPROXY=direct GO111MODULE=on go mod download
-    ```
 
 Now you can push the container image to the ECR repo you created earlier on.
-
 For that, first log in to the default ECR registry:
 
 ```
@@ -127,24 +126,24 @@ aws ecr get-login-password --region $REGION | \
 And finally, push the container image to the ECR repository you created, above:
 
 ```
-docker push "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/prometheus-sample-app:latest"
+docker push "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/x-ray-sample-app:latest"
 ```
 
 ### Deploy sample app
 
-Edit [prometheus-sample-app.yaml](./fargate-eks-metrics-go-adot-ampamg/prometheus-sample-app.yaml)
+Edit [x-ray-sample-app.yaml](./fargate-eks-xray-go-adot-amg/x-ray-sample-app.yaml)
 to contain your ECR image path. That is, replace `ACCOUNTID` and `REGION` in the
 file with your own values:
 
 ``` 
     # change the following to your container image:
-    image: "ACCOUNTID.dkr.ecr.REGION.amazonaws.com/prometheus-sample-app:latest"
+    image: "ACCOUNTID.dkr.ecr.REGION.amazonaws.com/x-ray-sample-app:latest"
 ```
 
 Now you can deploy the sample app to your cluster using:
 
 ```
-kubectl apply -f prometheus-sample-app.yaml
+kubectl apply -f x-ray-sample-app.yaml
 ```
 
 ## End-to-end
