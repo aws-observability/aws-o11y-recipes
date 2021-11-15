@@ -58,7 +58,7 @@ aws ecr create-repository \
 
 ### Set up ADOT Collector
 
-Download [adot-collector-fargate.yaml](./fargate-eks-metrics-go-adot-ampamg/adot-collector-fargate.yaml) 
+Download [adot-collector-fargate.yaml](./fargate-eks-xray-go-adot-amg/adot-collector-fargate.yaml) 
 and edit this YAML doc with the parameters described in the next steps.
 
 
