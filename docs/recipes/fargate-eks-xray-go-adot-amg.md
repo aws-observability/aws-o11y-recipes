@@ -31,6 +31,8 @@ collect traces from an instrumented app and ingest them into X-Ray:
 * You need to install the [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html) command in your environment.
 * You need to install [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) in your environment. 
 * You have [Docker](https://docs.docker.com/get-docker/) installed into your environment.
+* You have the [aws-observability/aws-o11y-recipes](https://github.com/aws-observability/aws-o11y-recipes/)
+  repo cloned into your local environment.
 
 ### Create EKS on Fargate cluster
 
@@ -46,14 +48,25 @@ eksctl create cluster -f cluster-config.yaml
 
 ### Create ECR repository
 
-In order to deploy our application to EKS we need a container repository. 
+In order to deploy our application to EKS we need a container repository. We
+will use the private ECR registry, but you can also use ECR Public, if you
+want to share the container image.
+
+First, set the environment variables, such as shown here (substitute for your
+region):
+
+```
+export REGION="eu-west-1"
+export ACCOUNTID=`aws sts get-caller-identity --query Account --output text`
+```
+
 You can use the following command to create a new ECR repository in your account: 
 
 ```
 aws ecr create-repository \
-    --repository-name x-ray-sample-app \
+    --repository-name ho11y \
     --image-scanning-configuration scanOnPush=true \
-    --region eu-west-1
+    --region $REGION
 ```
 
 ### Set up ADOT Collector
@@ -66,55 +79,44 @@ and edit this YAML doc with the parameters described in the next steps.
 kubectl apply -f adot-collector-fargate.yaml
 ```
 
-### Set up AMG
+### Set up Managed Grafana
 
-Set up a new AMG workspace using the 
-[Amazon Managed Grafana – Getting Started](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) guide.
+Set up a new workspace using the 
+[Amazon Managed Grafana – Getting Started](https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/) guide
+and add [X-Ray as a data source](https://docs.aws.amazon.com/grafana/latest/userguide/x-ray-data-source.html).
 
-Make sure to add "Amazon Managed Service for Prometheus" as a datasource during creation.
+## Signal generator
 
-![Service managed permission settings](../images/amg-console-create-workspace-managed-permissions.jpg)
-
-## Application
-
-
+We will be using `ho11y`, a synthetic signal generator available
+via the [sandbox](https://github.com/aws-observability/aws-o11y-recipes/tree/main/sandbox/ho11y)
+of the recipes repository. So, if you haven't cloned the repo into your local
+environment, do now:
 
 ```
-go mod vendor && go run main.go
+git clone https://github.com/aws-observability/aws-o11y-recipes.git
 ```
-
 
 ### Build container image
-
-To build the container image for the example app, first, 
-clone the [aws-observability/aws-otel-go](https://github.com/aws-observability/aws-otel-go/)
-repo locally:
-
-```
-git clone https://github.com/aws-observability/aws-otel-go.git
-```
-
-Next, change into the `./aws-otel-go/sampleapp/` directory:
-
-```
-cd aws-otel-go/sampleapp/
-```
-
-Now, set the region and account ID. For example, in the Bash shell this would
-look as follows:
+Make sure that your `ACCOUNTID` and `REGION` environment variables are set, 
+for example:
 
 ```
 export REGION="eu-west-1"
 export ACCOUNTID=`aws sts get-caller-identity --query Account --output text`
 ```
+To build the `ho11y` container image, first change into the `./sandbox/ho11y/`
+directory and build the container image :
 
-Next, build the container image (assuming the Docker daemon is running):
+!!! note
+    The following build step assumes that the Docker daemon or an equivalent OCI image 
+    build tool is running.
 
 ```
-docker build . -t "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/x-ray-sample-app:latest"
+docker build . -t "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/ho11y:latest"
 ```
 
-Now you can push the container image to the ECR repo you created earlier on.
+### Push container image
+Next, you can push the container image to the ECR repo you created earlier on.
 For that, first log in to the default ECR registry:
 
 ```
@@ -126,82 +128,85 @@ aws ecr get-login-password --region $REGION | \
 And finally, push the container image to the ECR repository you created, above:
 
 ```
-docker push "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/x-ray-sample-app:latest"
+docker push "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/ho11y:latest"
 ```
 
-### Deploy sample app
+### Deploy signal generator
 
 Edit [x-ray-sample-app.yaml](./fargate-eks-xray-go-adot-amg/x-ray-sample-app.yaml)
 to contain your ECR image path. That is, replace `ACCOUNTID` and `REGION` in the
-file with your own values:
+file with your own values (overall, in three locations):
 
 ``` 
     # change the following to your container image:
-    image: "ACCOUNTID.dkr.ecr.REGION.amazonaws.com/x-ray-sample-app:latest"
+    image: "ACCOUNTID.dkr.ecr.REGION.amazonaws.com/ho11y:latest"
 ```
 
 Now you can deploy the sample app to your cluster using:
 
 ```
-kubectl apply -f x-ray-sample-app.yaml
+kubectl -n example-app apply -f x-ray-sample-app.yaml
 ```
 
 ## End-to-end
 
 Now that you have the infrastructure and the application in place, we will
-test out the setup, sending metrics from the Go app running in EKS to AMP and
+test out the setup, sending traces from `ho11y` running in EKS to X-Ray and
 visualize it in AMG.
 
-### Verify your pipeline is working 
+### Verify pipeline
 
-To verify if the ADOT collector is scraping the pod of the sample app and
-ingests the metrics into AMP, we look at the collector logs.
+To verify if the ADOT collector is ingesting traces from `ho11y`, we make
+one of the services available locally and invoke it.
 
-Enter the following command to follow the ADOT collector logs:
-
-```
-kubectl -n adot-col logs adot-collector -f
-```
-
-One example output in the logs of the scraped metrics from the sample app 
-should look like the following:
+First, let's forward traffic as so:
 
 ```
-...
-Resource labels:
-     -> service.name: STRING(kubernetes-service-endpoints)
-     -> host.name: STRING(192.168.16.238)
-     -> port: STRING(8080)
-     -> scheme: STRING(http)
-InstrumentationLibraryMetrics #0
-Metric #0
-Descriptor:
-     -> Name: test_gauge0
-     -> Description: This is my gauge
-     -> Unit: 
-     -> DataType: DoubleGauge
-DoubleDataPoints #0
-StartTime: 0
-Timestamp: 1606511460471000000
-Value: 0.000000
-...
+kubectl -n example-app port-forward svc/frontend 8765:80
 ```
 
-### Create a Grafana dashboard
+With above command, the `frontend` microservice (a `ho11y` instance configured
+to talk to two other `ho11y` instances) is available in your local environment
+and you can invoke it as follows (triggering the creation of traces):
+
+```
+$ curl localhost:8765/
+{"traceId":"1-6193a9be-53693f29a0119ee4d661ba0d"}
+```
+
+!!! tip
+    If you want to automate the invocation, you can wrap the `curl` call into
+    a `while true` loop.
+
+To verify our setup, visit the [X-Ray view in CloudWatch](https://console.aws.amazon.com/cloudwatch/home#xray:service-map/)
+where you should see something like shown below:
+
+![Screen shot of the X-Ray console in CW](../images/x-ray-cw-ho11y.png)
+
+Now that we have the signal generator set up and active and the OpenTelemetry
+pipeline set up, let's see how to consume the traces in Grafana.
+
+### Grafana dashboard
 
 You can import an example dashboard, available via
-[prometheus-sample-app-dashboard.json](./fargate-eks-metrics-go-adot-ampamg/prometheus-sample-app-dashboard.json),
-for the sample app that looks as follows:
+[x-ray-sample-dashboard.json](./fargate-eks-xray-go-adot-amg/x-ray-sample-dashboard.json)
+that looks as follows:
 
-![Screen shot of the Prometheus sample app dashboard in AMG](../images/amg-prom-sample-app-dashboard.png)
+![Screen shot of the X-Ray dashboard in AMG](../images/x-ray-amg-ho11y-dashboard.png)
 
-Further, use the following guides to create your own dashboard in Amazon Managed Grafana:
+Further, when you click on any of the traces in the lower `downstreams` panel,
+you can dive into it and view it in the "Explore" tab like so:
+
+![Screen shot of the X-Ray dashboard in AMG](../images/x-ray-amg-ho11y-explore.png)
+
+From here, you can use the following guides to create your own dashboard in
+Amazon Managed Grafana:
 
 * [User Guide: Dashboards](https://docs.aws.amazon.com/grafana/latest/userguide/dashboard-overview.html)
 * [Best practices for creating dashboards](https://grafana.com/docs/grafana/latest/best-practices/best-practices-for-creating-dashboards/)
 
 That's it, congratulations you've learned how to use ADOT in EKS on Fargate to 
-ingest metrics.
+ingest traces.
 
 ## Cleanup
 
@@ -209,8 +214,6 @@ First remove the Kubernetes resources and destroy the EKS cluster:
 
 ```
 kubectl delete all --all && \
-eksctl delete cluster --name amp-eks-fargate
+eksctl delete cluster --name xray-eks-fargate
 ```
-
-
-Finally, remove the Amazon Managed Grafana  workspace by removing it via the AWS console. 
+Finally, remove the Amazon Managed Grafana workspace by removing it via the AWS console. 
