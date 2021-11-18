@@ -7,23 +7,13 @@ plugin available for you to use in any DIY Grafana instance as well as
 pre-installed in Amazon Managed Grafana.
 
 !!! note
-    This guide will take approximately 20 minutes to complete.
+    This guide will take approximately 10 minutes to complete.
 
 ## Prerequisites
 
-* The [AWS CLI][aws-cli] is installed and [configured][aws-cli-conf] in your environment.
 * You have access to Amazon Redshift from your account.
 
 ## Infrastructure
-
-Let's first set up the necessary infrastructure.
-
-### Set up Amazon Redshift
-
-Now that the data is available in Redshift, let's move on to Grafana.
-
-### Set up Amazon Managed Grafana
-
 We need a Grafana instance, so go ahead and set up a new [Amazon Managed Grafana
 workspace][amg-workspace], for example by using the [Getting Started][amg-getting-started] guide,
 or use an existing one.
@@ -44,20 +34,24 @@ following these steps:
 
 1. Click on the "Configurations" icon on the left-hand toolbar and then on "Add data source".
 1. Search for "Redshift".
-1. Click "Save & test"
+1. [OPTIONAL] Configure the authentication provider (recommended: workspace IAM
+   role).
+1. Provide the "Cluster Identifier", "Database", and "Database User" values.
+1. Click "Save & test".
 
 You should see something like the following:
 
 ![Screen shot of the Redshift data source config](../images/amg-plugin-redshift-ds.png)
 
 ## Usage
-The SQL query is as follows:
+We will be using the [Redshift Advance Monitoring][redshift-mon] setup.
+Since all is available out of the box, there's nothing else to configure at
+this point.
 
-You can import an example dashboard, available via
-[db-sample-dashboard.json](./amg-redshift-plugin/db-sample-dashboard.json)
-that looks as follows:
+You can import the Redshift monitoring dashboard, included in the Redshift
+plugin. Once imported you should see something like this:
 
-![Screen shot of the Redshift dashboard in AMG](../images/amg-redshift-dashboard.png)
+![Screen shot of the Redshift dashboard in AMG](../images/amg-redshift-mon-dashboard.png)
 
 From here, you can use the following guides to create your own dashboard in
 Amazon Managed Grafana:
@@ -79,4 +73,5 @@ the Amazon Managed Grafana workspace by removing it from the console.
 [aws-cli-conf]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 [amg-getting-started]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/
 [redshift-console]: https://console.aws.amazon.com/redshift/
+[redshift-mon]: https://github.com/awslabs/amazon-redshift-monitoring
 [amg-workspace]: https://console.aws.amazon.com/grafana/home#/workspaces

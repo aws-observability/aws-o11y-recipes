@@ -125,9 +125,9 @@ following these steps:
 1. [OPTIONAL] Configure the authentication provider (recommended: workspace IAM
    role).
 1. [OPTIONAL] Select your targeted Athena data source, database, and workgroup.
-5. [OPTIONAL] If your workgroup doesn't have an output location configured already,
+1. [OPTIONAL] If your workgroup doesn't have an output location configured already,
    specify the S3 bucket and folder to use for query results.
-6. Click "Save & test"
+1. Click "Save & test".
 
 You should see something like the following:
 
