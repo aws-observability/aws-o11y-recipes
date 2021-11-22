@@ -258,7 +258,9 @@ that looks as follows:
 ### Use VPC flow logs data
 
 To analyze the VPC flow log data, detecting SSH and RDP traffic, use the
-following SQL query:
+following SQL queries.
+
+Getting a tabular overview on SSH/RDP traffic:
 
 ```sql
 SELECT
@@ -271,7 +273,20 @@ dstport IN (22, 3389)
 ORDER BY start ASC;
 ```
 
-To visualize the VPC flow log data using above query, you can import an example dashboard, 
+Getting a time series view on bytes accepted and rejected:
+
+```sql
+SELECT
+from_unixtime(start), bytes, action
+FROM vpclogs
+WHERE
+srcport in (22,3389)
+OR
+dstport IN (22, 3389)
+ORDER BY start ASC;
+```
+
+To visualize the VPC flow log data, you can import an example dashboard, 
 available via [vpcfl-sample-dashboard.json](./amg-athena-plugin/vpcfl-sample-dashboard.json)
 that looks as follows:
 
