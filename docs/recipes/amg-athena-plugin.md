@@ -20,17 +20,28 @@ pre-installed in Amazon Managed Grafana.
 Let's first set up the necessary infrastructure.
 
 ### Set up Amazon Athena
-We will use [OpenStreetMap][osm] (OSM) data to demonstrate the usage of the
-Athena plugin. For that to work, we need to first get the OSM data into Athena.
 
-So, first off, create a new database in Athena. Go to the [Athena
-console][athena-console] and there use the following three 
-SQL queries to import the OSM data into the database.
+We want to see how to use Athena in two different scenarios: one scenario around
+geographical data along with the Geomap plugin, and one in a security-relevant
+scenario around VPC flow logs.
+
+First, let's make sure Athena is set up and the datasets are loaded.
 
 !!! warning
     You have to use the Amazon Athena console to execute these queries. Grafana
 	in general has read-only access to the data sources, so can not be used
 	to create or update data.
+
+#### Load geographical data
+
+In this first use case we use a dataset from the [Registry of Open Data on AWS][awsod].
+More specifically, we will use [OpenStreetMap][osm] (OSM) to demonstrate
+the usage of the Athena plugin for a geographical data motivated use case.
+For that to work, we need to first get the OSM data into Athena.
+
+So, first off, create a new database in Athena. Go to the [Athena
+console][athena-console] and there use the following three 
+SQL queries to import the OSM data into the database.
 
 Query 1:
 
@@ -97,9 +108,80 @@ STORED AS ORCFILE
 LOCATION 's3://osm-pds/changesets/';
 ```
 
-Now that the OSM data is available in Athena, let's move on to Grafana.
+#### Load VPC flow logs data
 
-### Set up Amazon Managed Grafana
+The second use case is a security-motivated one: analyzing network traffic
+using [VPC Flow Logs][vpcflowlogs].
+
+First, we need to tell EC2 to generate VPC Flow Logs for us. So, if you have 
+not done this already, you go ahead now and [create VPC flow logs][createvpcfl] 
+either on the network interfaces level, subnet level, or VPC level.
+
+!!! note
+    To improve query performance and minimize the storage footprint, we store
+    the VPC flow logs in [Parquet][parquet], a columnar storage format
+    that supports nested data.
+
+For our setup it doesn't matter what option you choose (network interfaces, 
+subnet, or VPC), as long as you publish them to an S3 bucket in Parquet format
+as shwon below:
+
+![Screen shot of the EC2 console "Create flow log" panel](../images/ec2-vpc-flowlogs-creation.png)
+
+Now, again via the [Athena console][athena-console] import the VPC flow logs
+data into the same database you imported the OSM data, or create a new one,
+if you prefer to do so.
+
+Use the following SQL query and make sure that you're replacing
+`VPC_FLOW_LOGS_LOCATION_IN_S3` with your own bucket/folder:
+
+
+```sql
+CREATE EXTERNAL TABLE vpclogs (
+  `version` int, 
+  `account_id` string, 
+  `interface_id` string, 
+  `srcaddr` string, 
+  `dstaddr` string, 
+  `srcport` int, 
+  `dstport` int, 
+  `protocol` bigint, 
+  `packets` bigint, 
+  `bytes` bigint, 
+  `start` bigint, 
+  `end` bigint, 
+  `action` string, 
+  `log_status` string, 
+  `vpc_id` string, 
+  `subnet_id` string, 
+  `instance_id` string, 
+  `tcp_flags` int, 
+  `type` string, 
+  `pkt_srcaddr` string, 
+  `pkt_dstaddr` string, 
+  `region` string, 
+  `az_id` string, 
+  `sublocation_type` string, 
+  `sublocation_id` string, 
+  `pkt_src_aws_service` string, 
+  `pkt_dst_aws_service` string, 
+  `flow_direction` string, 
+  `traffic_path` int
+)
+STORED AS PARQUET
+LOCATION 'VPC_FLOW_LOGS_LOCATION_IN_S3'
+```
+
+For example, `VPC_FLOW_LOGS_LOCATION_IN_S3` could look something like the
+following if you're using the S3 bucket `allmyflowlogs`:
+
+```
+s3://allmyflowlogs/AWSLogs/12345678901/vpcflowlogs/eu-west-1/2021/
+```
+
+Now that the datasets are available in Athena, let's move on to Grafana.
+
+### Set up Grafana
 
 We need a Grafana instance, so go ahead and set up a new [Amazon Managed Grafana
 workspace][amg-workspace], for example by using the [Getting Started][amg-getting-started] guide,
@@ -110,12 +192,10 @@ or use an existing one.
     console to enable service-mananged IAM roles that grant the workspace the 
     IAM policies necessary to read the Athena resources.
 
-
 To set up the Athena data source, use the left-hand toolbar and choose the 
 lower AWS icon and then choose "Athena". Select your default region you want 
 the plugin to discover the Athena data source to use, and then select the 
 accounts that you want, and finally choose "Add data source".
-
 
 Alternatively, you can manually add and configure the Athena data source by 
 following these steps:
@@ -134,11 +214,24 @@ You should see something like the following:
 ![Screen shot of the Athena data source config](../images/amg-plugin-athena-ds.png)
 
 ## Usage
-The SQL query is as follows:
 
+And now let's look at how to use our Athena datasets from Grafana.
+
+### Use geographical data
+
+The [OpenStreetMap][osm] (OSM) data in Athena can answer a number of questions,
+such as "where are certain amenities". Let's see that in action.
+
+For example, a SQL query against the OSM dataset to list places that offer food
+in the Las Vegas region is as follows:
 
 ```sql
-SELECT tags['amenity'] as amenity, tags['name'] as name, tags['website'] as website, lat, lon from planet
+SELECT 
+tags['amenity'] AS amenity,
+tags['name'] AS name,
+tags['website'] AS website,
+lat, lon
+FROM planet
 WHERE type = 'node'
   AND tags['amenity'] IN ('bar', 'pub', 'fast_food', 'restaurant')
   AND lon BETWEEN -115.5 AND -114.5
@@ -146,11 +239,43 @@ WHERE type = 'node'
 LIMIT 500;
 ```
 
-You can import an example dashboard, available via
-[osm-sample-dashboard.json](./amg-athena-plugin/osm-sample-dashboard.json)
+!!!info
+    The Las Vegas region in above query is defined as everything with a latitude 
+    between `36.1` and `36.3` as well as a longitude between `-115.5` and `-114.5`.
+	You could turn that into a set of variables (one for each corner) and make
+	the Geomap plugin adaptable to other regions.
+
+To visualize the OSM data using above query, you can import an example dashboard, 
+available via [osm-sample-dashboard.json](./amg-athena-plugin/osm-sample-dashboard.json)
 that looks as follows:
 
 ![Screen shot of the OSM dashboard in AMG](../images/amg-osm-dashboard.png)
+
+!!!note
+    In above screen shot we use the Geomap visualization (in the left panel) to
+    plot the data points.
+
+### Use VPC flow logs data
+
+To analyze the VPC flow log data, detecting SSH and RDP traffic, use the
+following SQL query:
+
+```sql
+SELECT
+srcaddr, dstaddr, account_id, action, protocol, bytes, log_status
+FROM vpclogs
+WHERE
+srcport in (22, 3389)
+OR
+dstport IN (22, 3389)
+ORDER BY start ASC;
+```
+
+To visualize the VPC flow log data using above query, you can import an example dashboard, 
+available via [vpcfl-sample-dashboard.json](./amg-athena-plugin/vpcfl-sample-dashboard.json)
+that looks as follows:
+
+![Screen shot of the VPC flow logs dashboard in AMG](../images/amg-vpcfl-dashboard.png)
 
 From here, you can use the following guides to create your own dashboard in
 Amazon Managed Grafana:
@@ -171,6 +296,10 @@ the Amazon Managed Grafana workspace by removing it from the console.
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 [aws-cli-conf]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 [amg-getting-started]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/
+[awsod]: https://registry.opendata.aws/
 [osm]: https://aws.amazon.com/blogs/big-data/querying-openstreetmap-with-amazon-athena/
+[vpcflowlogs]: https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
+[createvpcfl]: https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-s3.html#flow-logs-s3-create-flow-log
 [athena-console]: https://console.aws.amazon.com/athena/
 [amg-workspace]: https://console.aws.amazon.com/grafana/home#/workspaces
+[parquet]: https://github.com/apache/parquet-format
