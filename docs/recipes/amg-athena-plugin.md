@@ -277,12 +277,13 @@ Getting a time series view on bytes accepted and rejected:
 
 ```sql
 SELECT
-from_unixtime(start), bytes, action
+from_unixtime(start), sum(bytes), action
 FROM vpclogs
 WHERE
 srcport in (22,3389)
 OR
 dstport IN (22, 3389)
+GROUP BY start, action
 ORDER BY start ASC;
 ```
 
