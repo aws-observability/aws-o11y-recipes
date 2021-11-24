@@ -124,12 +124,12 @@ either on the network interfaces level, subnet level, or VPC level.
 
 For our setup it doesn't matter what option you choose (network interfaces, 
 subnet, or VPC), as long as you publish them to an S3 bucket in Parquet format
-as shwon below:
+as shown below:
 
 ![Screen shot of the EC2 console "Create flow log" panel](../images/ec2-vpc-flowlogs-creation.png)
 
-Now, again via the [Athena console][athena-console] import the VPC flow logs
-data into the same database you imported the OSM data, or create a new one,
+Now, again via the [Athena console][athena-console], create the table for the
+VPC flow logs data in the same database you imported the OSM data, or create a new one,
 if you prefer to do so.
 
 Use the following SQL query and make sure that you're replacing
@@ -187,10 +187,23 @@ We need a Grafana instance, so go ahead and set up a new [Amazon Managed Grafana
 workspace][amg-workspace], for example by using the [Getting Started][amg-getting-started] guide,
 or use an existing one.
 
-!!! note
+!!! warning
     To use AWS data source configuration, first go to the Amazon Managed Grafana
     console to enable service-mananged IAM roles that grant the workspace the 
     IAM policies necessary to read the Athena resources.
+    Further, note the following:
+
+	1. The Athena workgroup you plan to use needs to be tagged with the key 
+	`GrafanaDataSource` and value `true` for the service managed permissions
+	to be permitted to use the workgroup.
+	1. The service-managed IAM policy only grants access to query result buckets 
+	that start with `grafana-athena-query-results-`, so for any other bucket
+	you MUST add permissions manually.
+	1. You have to add the `s3:Get*` and `s3:List*` permissions for the underlying data source 
+	being queried manually.
+
+
+
 
 To set up the Athena data source, use the left-hand toolbar and choose the 
 lower AWS icon and then choose "Athena". Select your default region you want 
@@ -204,14 +217,19 @@ following these steps:
 1. Search for "Athena".
 1. [OPTIONAL] Configure the authentication provider (recommended: workspace IAM
    role).
-1. [OPTIONAL] Select your targeted Athena data source, database, and workgroup.
-1. [OPTIONAL] If your workgroup doesn't have an output location configured already,
-   specify the S3 bucket and folder to use for query results.
+1. Select your targeted Athena data source, database, and workgroup.
+1. If your workgroup doesn't have an output location configured already,
+   specify the S3 bucket and folder to use for query results. Note that the
+   bucket has to start with `grafana-athena-query-results-` if you want to
+   benefit from the service-managed policy.
 1. Click "Save & test".
 
 You should see something like the following:
 
 ![Screen shot of the Athena data source config](../images/amg-plugin-athena-ds.png)
+
+
+
 
 ## Usage
 
@@ -287,6 +305,10 @@ GROUP BY start, action
 ORDER BY start ASC;
 ```
 
+!!! tip
+    If you want to limit the amount of data queried in Athena, consider using
+	the `$__timeFilter` macro.
+
 To visualize the VPC flow log data, you can import an example dashboard, 
 available via [vpcfl-sample-dashboard.json](./amg-athena-plugin/vpcfl-sample-dashboard.json)
 that looks as follows:
@@ -308,7 +330,7 @@ the Amazon Managed Grafana workspace by removing it from the console.
 
 [athena]: https://aws.amazon.com/athena/
 [amg]: https://aws.amazon.com/grafana/
-[athena-ds]: https://github.com/grafana/athena-datasource
+[athena-ds]: https://grafana.com/grafana/plugins/grafana-athena-datasource/
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 [aws-cli-conf]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 [amg-getting-started]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/

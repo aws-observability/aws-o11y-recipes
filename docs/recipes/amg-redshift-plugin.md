@@ -68,7 +68,7 @@ the Amazon Managed Grafana workspace by removing it from the console.
 
 [redshift]: https://aws.amazon.com/redshift/
 [amg]: https://aws.amazon.com/grafana/
-[redshift-ds]: https://github.com/grafana/redshift-datasource
+[redshift-ds]: https://grafana.com/grafana/plugins/grafana-redshift-datasource/
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 [aws-cli-conf]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 [amg-getting-started]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/
