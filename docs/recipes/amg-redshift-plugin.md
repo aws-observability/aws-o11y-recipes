@@ -11,7 +11,19 @@ pre-installed in Amazon Managed Grafana.
 
 ## Prerequisites
 
-* You have access to Amazon Redshift from your account.
+1. You have admin access to Amazon Redshift from your account.
+1. Tag your Amazon Redshift cluster with `GrafanaDataSource: true`. 
+1. In order to benefit from the service-managed policies, create the database 
+   credentials in one of the following ways:
+    1. If you want to use the default mechanism, that is, the temporary credentials 
+    option, to authenticate against the Redshift database, you must create a database 
+    user named `redshift_data_api_user`.
+    1. If you want to use the credentials from Secrets Manager, you must tag the 
+    secret with `RedshiftQueryOwner: true`.
+
+!!! tip
+    For more information on how to work with the service-managed or custom policies,
+    see the [examples in the Amazon Managed Grafana docs][svpolicies].
 
 ## Infrastructure
 We need a Grafana instance, so go ahead and set up a new [Amazon Managed Grafana
@@ -68,6 +80,7 @@ the Amazon Managed Grafana workspace by removing it from the console.
 
 [redshift]: https://aws.amazon.com/redshift/
 [amg]: https://aws.amazon.com/grafana/
+[svpolicies]: https://docs.aws.amazon.com/grafana/latest/userguide/security_iam_id-based-policy-examples.html
 [redshift-ds]: https://grafana.com/grafana/plugins/grafana-redshift-datasource/
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 [aws-cli-conf]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
