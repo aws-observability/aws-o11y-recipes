@@ -47,13 +47,13 @@ The ADOT Collector includes two components specific to Prometheus:
 Our demo application is a Kubernetes app that we will run in an EKS on Fargate
 cluster. So, first create an EKS cluster using the
 provided [cluster-config.yaml](./fargate-eks-metrics-go-adot-ampamg/cluster-config.yaml)
-template file by changing your region to one of the
+template file by changing `<YOUR_REGION>` to one of the
 [supported regions for AMP](https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html#AMP-supported-Regions).
 
-Make sure to set your region in your shell session, for example, in Bash:
+Make sure to set `<YOUR_REGION>` in your shell session, for example, in Bash:
 
 ```
-export AWS_DEFAULT_REGION=eu-west-1
+export AWS_DEFAULT_REGION=<YOUR_REGION>
 ```
 
 Create your cluster using the following command:
@@ -104,7 +104,7 @@ You can remove this from the re-label configurations if you want to scrape a dif
 
 Use the following steps to edit the downloaded file for your environment:
 
-1\. Replace `<REGION>` with your current region. 
+1\. Replace `<YOUR_REGION>` with your current region. 
 
 2\. Replace `<YOUR_ENDPOINT>` with the remote write URL of your workspace.
 
