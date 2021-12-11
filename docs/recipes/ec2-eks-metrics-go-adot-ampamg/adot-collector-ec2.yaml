@@ -25,11 +25,11 @@ data:
               regex: true
     exporters:
       awsprometheusremotewrite:
-        # replace this with your endpoint:
-        endpoint: "YOUR_ENDPOINT"
+        # replace this with your endpoint, in double quotes:
+        endpoint: <YOUR_ENDPOINT>
         aws_auth:
-          # replace this with your region:
-          region: "YOUR_REGION"
+          # replace this with your region, in double quotes:
+          region: <YOUR_REGION>
           service: "aps"
       logging:
         loglevel: debug
