@@ -65,13 +65,14 @@ eksctl create cluster -f cluster-config.yaml
 ### Create ECR repository
 
 In order to deploy our application to EKS we need a container repository. 
-You can use the following command to create a new ECR repository in your account: 
+You can use the following command to create a new ECR repository in your account.
+Make sure to set `<YOUR_REGION>` as well.
 
 ```
 aws ecr create-repository \
     --repository-name prometheus-sample-app \
     --image-scanning-configuration scanOnPush=true \
-    --region eu-west-1
+    --region <YOUR_REGION>
 ```
 
 ### Set up AMP

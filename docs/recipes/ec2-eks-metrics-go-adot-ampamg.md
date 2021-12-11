@@ -59,6 +59,7 @@ eksctl create cluster -f cluster-config.yaml
 
 In order to deploy our application to EKS we need a container registry. 
 You can use the following command to create a new ECR registry in your account. 
+Make sure to set `<YOUR_REGION>` as well.
 
 ```
 aws ecr create-repository \
