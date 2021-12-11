@@ -46,7 +46,7 @@ The ADOT Collector includes two components specific to Prometheus:
 
 Our demo application is a Kubernetes app that we will run in an EKS on Fargate
 cluster. So, first create an EKS cluster using the
-provided [cluster_config.yaml](./fargate-eks-metrics-go-adot-ampamg/cluster-config.yaml)
+provided [cluster-config.yaml](./fargate-eks-metrics-go-adot-ampamg/cluster-config.yaml)
 template file by changing your region to one of the
 [supported regions for AMP](https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html#AMP-supported-Regions).
 

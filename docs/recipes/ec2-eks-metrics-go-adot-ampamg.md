@@ -38,7 +38,7 @@ The ADOT Collector includes two AWS OpenTelemetry Collector components specific 
 ### Create EKS on EC2 cluster
 
 Our demo application in this recipe will be running on top of EKS. 
-You can either use an existing EKS cluster or create one using [cluster_config.yaml](./ec2-eks-metrics-go-adot-ampamg/cluster-config.yaml).
+You can either use an existing EKS cluster or create one using [cluster-config.yaml](./ec2-eks-metrics-go-adot-ampamg/cluster-config.yaml).
 
 This template will create a new cluster with two EC2 `t2.large` nodes. 
 
