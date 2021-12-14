@@ -38,21 +38,16 @@ The ADOT Collector includes two AWS OpenTelemetry Collector components specific 
 ### Create EKS on EC2 cluster
 
 Our demo application in this recipe will be running on top of EKS. 
-You can either use an existing EKS cluster or create one using [cluster_config.yaml](./ec2-eks-metrics-go-adot-ampamg/cluster-config.yaml).
+You can either use an existing EKS cluster or create one using [cluster-config.yaml](./ec2-eks-metrics-go-adot-ampamg/cluster-config.yaml).
 
 This template will create a new cluster with two EC2 `t2.large` nodes. 
 
-Edit the template file and set your region to one of the available regions for AMP:
+Edit the template file and set `<YOUR_REGION>` to one of the
+[supported regions for AMP](https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html#AMP-supported-Regions).
 
-* `us-east-1`
-* `us-east-2`
-* `us-west-2`
-* `eu-central-1`
-* `eu-west-1`
-
-Make sure to overwrite this region in your session, for example in bash:
+Make sure to overwrite `<YOUR_REGION>` in your session, for example in bash:
 ```
-export AWS_DEFAULT_REGION=eu-west-1
+export AWS_DEFAULT_REGION=<YOUR_REGION>
 ```
 
 Create your cluster using the following command.
@@ -64,12 +59,13 @@ eksctl create cluster -f cluster-config.yaml
 
 In order to deploy our application to EKS we need a container registry. 
 You can use the following command to create a new ECR registry in your account. 
+Make sure to set `<YOUR_REGION>` as well.
 
 ```
 aws ecr create-repository \
     --repository-name prometheus-sample-app \
     --image-scanning-configuration scanOnPush=true \
-    --region eu-west-1
+    --region <YOUR_REGION>
 ```
 
 ### Set up AMP 
@@ -101,7 +97,7 @@ You can remove this from the re-label configurations if you want to scrape a dif
 
 Use the following steps to edit the downloaded file for your environment:
 
-1\. Replace `<REGION>` with your current region. 
+1\. Replace `<YOUR_REGION>` with your current region. 
 
 2\. Replace `<YOUR_ENDPOINT>` with the remote write URL of your workspace.
 

@@ -46,14 +46,14 @@ The ADOT Collector includes two components specific to Prometheus:
 
 Our demo application is a Kubernetes app that we will run in an EKS on Fargate
 cluster. So, first create an EKS cluster using the
-provided [cluster_config.yaml](./fargate-eks-metrics-go-adot-ampamg/cluster-config.yaml)
-template file by changing your region to one of the
+provided [cluster-config.yaml](./fargate-eks-metrics-go-adot-ampamg/cluster-config.yaml)
+template file by changing `<YOUR_REGION>` to one of the
 [supported regions for AMP](https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html#AMP-supported-Regions).
 
-Make sure to set your region in your shell session, for example, in Bash:
+Make sure to set `<YOUR_REGION>` in your shell session, for example, in Bash:
 
 ```
-export AWS_DEFAULT_REGION=eu-west-1
+export AWS_DEFAULT_REGION=<YOUR_REGION>
 ```
 
 Create your cluster using the following command:
@@ -65,13 +65,14 @@ eksctl create cluster -f cluster-config.yaml
 ### Create ECR repository
 
 In order to deploy our application to EKS we need a container repository. 
-You can use the following command to create a new ECR repository in your account: 
+You can use the following command to create a new ECR repository in your account.
+Make sure to set `<YOUR_REGION>` as well.
 
 ```
 aws ecr create-repository \
     --repository-name prometheus-sample-app \
     --image-scanning-configuration scanOnPush=true \
-    --region eu-west-1
+    --region <YOUR_REGION>
 ```
 
 ### Set up AMP
@@ -104,7 +105,7 @@ You can remove this from the re-label configurations if you want to scrape a dif
 
 Use the following steps to edit the downloaded file for your environment:
 
-1\. Replace `<REGION>` with your current region. 
+1\. Replace `<YOUR_REGION>` with your current region. 
 
 2\. Replace `<YOUR_ENDPOINT>` with the remote write URL of your workspace.
 

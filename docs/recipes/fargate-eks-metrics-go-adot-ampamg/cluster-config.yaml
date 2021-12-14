@@ -3,7 +3,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
   name: amp-eks-fargate
-  region: eu-west-1
+  region: <YOUR_REGION>
   version: '1.21'
 iam:
   withOIDC: true
