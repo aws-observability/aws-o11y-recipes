@@ -131,14 +131,6 @@ YOUR_ENDPOINT=$(aws amp describe-workspace \
     Make sure that `YOUR_ENDPOINT` is in fact the remote write URL, that is, 
     the URL should end in `/api/v1/remote_write`.
 
-3\. Finally replace your `<YOUR_ACCOUNT_ID>`  with your current account ID.
-
-The following command will return the account ID for the current session:
-
-```
-aws sts get-caller-identity --query Account --output text
-```
-
 After creating deployment file we can now apply this to our cluster by using the following command: 
 
 ```
@@ -177,18 +169,19 @@ git clone https://github.com/aws-observability/aws-otel-community.git && \
 cd ./aws-otel-community/sample-apps/prometheus
 ```
 
-First, set the region and account ID to what is applicable in your case. For
+First, set the region (if not already done above) and account ID to what is applicable in your case. 
+Replace `<YOUR_REGION>` with your current region. For
 example, in the Bash shell this would look as follows:
 
 ```
-export REGION="eu-west-1"
+export AWS_DEFAULT_REGION=<YOUR_REGION>
 export ACCOUNTID=`aws sts get-caller-identity --query Account --output text`
 ```
 
 Next, build the container image:
 
 ```
-docker build . -t "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/prometheus-sample-app:latest"
+docker build . -t "$ACCOUNTID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/prometheus-sample-app:latest"
 ```
 
 !!! note
@@ -209,26 +202,26 @@ Now you can push the container image to the ECR repo you created earlier on.
 For that, first log in to the default ECR registry:
 
 ```
-aws ecr get-login-password --region $REGION | \
+aws ecr get-login-password --region $AWS_DEFAULT_REGION | \
     docker login --username AWS --password-stdin \
-    "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com"
+    "$ACCOUNTID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
 ```
 
 And finally, push the container image to the ECR repository you created, above:
 
 ```
-docker push "$ACCOUNTID.dkr.ecr.$REGION.amazonaws.com/prometheus-sample-app:latest"
+docker push "$ACCOUNTID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/prometheus-sample-app:latest"
 ```
 
 ### Deploy sample app
 
 Edit [prometheus-sample-app.yaml](./fargate-eks-metrics-go-adot-ampamg/prometheus-sample-app.yaml)
-to contain your ECR image path. That is, replace `ACCOUNTID` and `REGION` in the
+to contain your ECR image path. That is, replace `ACCOUNTID` and `AWS_DEFAULT_REGION` in the
 file with your own values:
 
 ``` 
     # change the following to your container image:
-    image: "ACCOUNTID.dkr.ecr.REGION.amazonaws.com/prometheus-sample-app:latest"
+    image: "ACCOUNTID.dkr.ecr.AWS_DEFAULT_REGION.amazonaws.com/prometheus-sample-app:latest"
 ```
 
 Now you can deploy the sample app to your cluster using:
@@ -286,7 +279,7 @@ Value: 0.000000
 
     ```
     $ awscurl --service="aps" \ 
-            --region="$REGION" "https://$AMP_ENDPOINT/api/v1/query?query=adot_test_gauge0"
+            --region="$AWS_DEFAULT_REGION" "https://$AMP_ENDPOINT/api/v1/query?query=adot_test_gauge0"
     {"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"adot_test_gauge0"},"value":[1606512592.493,"16.87214000011479"]}]}}
     ```
 
