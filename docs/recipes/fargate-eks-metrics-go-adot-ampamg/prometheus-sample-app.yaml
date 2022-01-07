@@ -1,9 +1,8 @@
 ---
-# create a namespace
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: aoc-prometheus-pipeline-demo
+  name: prom-sample-app
   labels:
     name: prometheus-sample-app
 ---
@@ -11,7 +10,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prometheus-sample-app
-  namespace: aoc-prometheus-pipeline-demo
+  namespace: prom-sample-app
   labels:
     app: prometheus-sample-app
 spec:
@@ -26,7 +25,8 @@ spec:
     spec:
       containers:
       - name: prometheus-sample-app
-        image: "< enter image here>" # change to your local image
+        # change the following to your container image:
+        image: "ACCOUNTID.dkr.ecr.REGION.amazonaws.com/prometheus-sample-app:latest"
         command: ["/bin/main", "-listen_address=0.0.0.0:8080", "-metric_count=10"]
         ports:
         - name: web
@@ -36,7 +36,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: prometheus-sample-app-service
-  namespace: aoc-prometheus-pipeline-demo
+  namespace: prom-sample-app
   labels:
     app: prometheus-sample-app
   annotations:

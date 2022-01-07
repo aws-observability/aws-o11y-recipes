@@ -1,4 +1,9 @@
-# EKS
+# Amazon Elastic Kubernetes Service
+
+[Amazon Elastic Kubernetes Service][eks-main] (EKS) gives you the flexibility to 
+start, run, and scale Kubernetes applications in the AWS Cloud or on-premises. 
+
+Check out the following recipes, grouped by compute engine:
 
 ## EKS on EC2
 
@@ -11,7 +16,7 @@
 ### Metrics
 
 - [Getting Started with Amazon Managed Service for Prometheus][amp-gettingstarted]
-- [Using ADOT in EKS on EC2 to ingest to AMP and visualize in AMG][ec2-eks-metrics-go-adot-ampamg]
+- [Using ADOT in EKS on EC2 to ingest metrics to AMP and visualize in AMG][ec2-eks-metrics-go-adot-ampamg]
 - [Configuring Grafana Cloud Agent for Amazon Managed Service for Prometheus][gcwa-amp]
 - [Monitoring cluster using Prometheus and Grafana][eks-ws-prom-grafana]
 - [Monitoring with Managed Prometheus and Managed Grafana][eks-ws-amp-amg]
@@ -33,14 +38,17 @@
 
 ### Metrics
 
+- [Using ADOT in EKS on Fargate to ingest metrics to AMP and visualize in AMG][fargate-eks-metrics-go-adot-ampamg]
 - [CloudWatch Container Insights][eks-ws-cw-ci]
 - [Set up cross-region metrics collection for AMP workspaces][amp-xregion]
 
 ### Traces
+
+- [Using ADOT in EKS on Fargate with AWS X-Ray][fargate-eks-xray-go-adot-amg]
 - [Tracing with X-Ray][eks-ws-xray]
 
 
-
+[eks-main]: https://aws.amazon.com/eks/
 [eks-cw-fb]: https://aws.amazon.com/blogs/containers/fluent-bit-integration-in-cloudwatch-container-insights-for-eks/
 [eks-ws-efk]: https://www.eksworkshop.com/intermediate/230_logging/
 [eks-logging]: https://github.com/aws-samples/amazon-eks-fluent-logging-examples
@@ -50,9 +58,11 @@
 [eks-ws-prom-grafana]: https://www.eksworkshop.com/intermediate/240_monitoring/
 [eks-ws-amp-amg]: https://www.eksworkshop.com/intermediate/246_monitoring_amp_amg/
 [eks-ws-cw-ci]: https://www.eksworkshop.com/intermediate/250_cloudwatch_container_insights/
+[fargate-eks-metrics-go-adot-ampamg]: recipes/fargate-eks-metrics-go-adot-ampamg.md
 [amp-xregion]: https://aws.amazon.com/blogs/opensource/set-up-cross-region-metrics-collection-for-amazon-managed-service-for-prometheus-workspaces/
 [eks-otel-xray]: https://aws.amazon.com/blogs/opensource/migrating-x-ray-tracing-to-aws-distro-for-opentelemetry/
 [eks-ws-xray]: https://www.eksworkshop.com/intermediate/245_x-ray/x-ray/
 [eks-fargate-logging]: https://aws.amazon.com/blogs/containers/fluent-bit-for-amazon-eks-on-aws-fargate-is-here/
 [eks-fb-example]: https://github.com/aws-samples/amazon-eks-fluent-logging-examples
 [eks-am-amp-amg]: recipes/servicemesh-monitoring-ampamg.md
+[fargate-eks-xray-go-adot-amg]: recipes/fargate-eks-xray-go-adot-amg.md
