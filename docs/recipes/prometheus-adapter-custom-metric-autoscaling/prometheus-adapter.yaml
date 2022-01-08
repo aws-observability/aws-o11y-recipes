@@ -1,0 +1,141 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: custom-metrics-resource-reader
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - nodes
+  - nodes/stats
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: custom-metrics-resource-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: custom-metrics-resource-reader
+subjects:
+- kind: ServiceAccount
+  name: monitoring
+  namespace: monitoring
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: custom-metrics:system:auth-delegator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: monitoring
+  namespace: monitoring
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: custom-metrics-auth-reader
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: extension-apiserver-authentication-reader
+subjects:
+- kind: ServiceAccount
+  name: monitoring
+  namespace: monitoring
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: custom-metrics-apiserver
+  name: custom-metrics-apiserver
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-metrics-apiserver
+  template:
+    metadata:
+      labels:
+        app: custom-metrics-apiserver
+      name: custom-metrics-apiserver
+    spec:
+      serviceAccountName: monitoring
+      containers:
+      - name: custom-metrics-apiserver
+        image: directxman12/k8s-prometheus-adapter-amd64
+        args:
+        - /adapter
+        - --secure-port=6443
+        - --tls-cert-file=/var/run/serving-cert/serving.crt
+        - --tls-private-key-file=/var/run/serving-cert/serving.key
+        - --logtostderr=true
+        - --prometheus-url=http://localhost:8080/workspaces/$WORKSPACE
+        - --metrics-relist-interval=30s
+        - --v=10
+        - --config=/etc/adapter/config.yaml
+        ports:
+        - containerPort: 6443 
+        volumeMounts:
+        - mountPath: /var/run/serving-cert
+          name: volume-serving-cert
+          readOnly: true
+        - mountPath: /etc/adapter/
+          name: config
+          readOnly: true
+      - name: aws-iamproxy
+        image: public.ecr.aws/aws-observability/aws-sigv4-proxy:1.0
+        args:
+          - --name
+          - aps
+          - --region
+          - us-east-1
+          - --host
+          - aps-workspaces.us-east-1.amazonaws.com
+        ports:
+          - containerPort: 8080      
+      volumes:
+      - name: volume-serving-cert
+        secret:
+          secretName: cm-adapter-serving-certs
+      - name: config
+        configMap:
+          name: adapter-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: custom-metrics-apiserver
+  namespace: monitoring
+spec:
+  ports:
+  - port: 443
+    targetPort: 6443
+  selector:
+    app: custom-metrics-apiserver
+---
+apiVersion: apiregistration.k8s.io/v1beta1
+kind: APIService
+metadata:
+  name: v1beta1.custom.metrics.k8s.io
+spec:
+  service:
+    name: custom-metrics-apiserver
+    namespace: monitoring
+  group: custom.metrics.k8s.io
+  version: v1beta1
+  insecureSkipTLSVerify: true
+  groupPriorityMinimum: 100
+  versionPriority: 100  

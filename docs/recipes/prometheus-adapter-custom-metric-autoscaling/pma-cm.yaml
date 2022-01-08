@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adapter-config
+  namespace: monitoring
+data:
+  config.yaml: |
+    rules:
+    - seriesQuery: 'envoy_cluster_upstream_rq {namespace!="",kubernetes_pod_name!=""}'
+      resources:
+        overrides:
+          namespace: {resource: "namespace"}
+          kubernetes_pod_name: {resource: "pod"}
+      name:
+        matches: "envoy_cluster_upstream_rq " 
+        as: "appmesh_requests_per_second"
+      metricsQuery: 'sum(rate(<<.Series>>{<<.LabelMatchers>>}[1m])) by (<<.GroupBy>>)' 
