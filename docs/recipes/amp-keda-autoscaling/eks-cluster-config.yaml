@@ -1,0 +1,28 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: $AMP_KEDA_CLUSTER
+  region: $AWS_REGION
+  version: '1.20'
+iam:
+  withOIDC: true
+  serviceAccounts:
+  - metadata:
+      name: keda-operator
+      namespace: keda
+      labels: {aws-usage: "application"}
+    attachPolicyARNs:
+    - "arn:aws:iam::aws:policy/AmazonPrometheusQueryAccess"
+managedNodeGroups:
+- name: default-ng
+  minSize: 1
+  maxSize: 3
+  desiredCapacity: 2
+  labels: {role: mngworker}
+  iam:
+    withAddonPolicies:
+      certManager: true
+      cloudWatch: true
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]
