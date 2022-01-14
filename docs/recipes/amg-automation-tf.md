@@ -1,29 +1,27 @@
 # Using Terraform for Amazon Managed Grafana automation
 
-In this recipe we show you how use Terraform to automate
-[Amazon Managed Grafana](https://aws.amazon.com/grafana/), 
-for example to add datasources or dashboards consistently
-across a number of workspaces.
+In this recipe we show you how use Terraform to automate [Amazon Managed Grafana](../../amg/), 
+for example to add datasources or dashboards consistently across a number of workspaces.
 
 !!! note
     This guide will take approximately 30 minutes to complete.
 
 ## Prerequisites
 
-* The [AWS CLI][aws-cli] is installed and [configured][aws-cli-conf] in your environment.
-* You have [Terraform][tf] installed into your environment.
-* You have an [Amazon Managed Service for Prometheus (AMP)](../../amp/) workspace created and
-  ready to use.
+* The [AWS command line][aws-cli] is installed and [configured][aws-cli-conf] in your local environment.
+* You have the [Terraform][tf] command line installed in your local environment.
+* You have an [Amazon Managed Service for Prometheus](../../amp/) workspace ready to use.
+* You have an [Amazon Managed Grafana](../../amg/) workspace ready to use.
 
 ## Set up Amazon Managed Grafana
 
-We first need a Grafana instance, so go ahead and set up a new workspace,
-for example by using the [Getting Started][amg-getting-started] guide.
-
 In order for Terraform to [authenticate][grafana-authn] against Grafana, we are 
-using an API Key. The API key is an [RFC 6750][rfc6750] HTTP Bearer header
-with a 51 character long alpha-numeric value authenticating the caller with
-every request against the Grafana API.
+using an API Key, which acts as a kind of password. 
+
+!!! info
+    The API key is an [RFC 6750][rfc6750] HTTP Bearer header
+    with a 51 character long alpha-numeric value authenticating the caller with
+    every request against the Grafana API.
 
 So, before we can set up the Terraform manifest, we first need to create an
 API key. You do this via the Grafana UI as follows.
@@ -38,7 +36,7 @@ hand, assign it `Admin` role and set the duration time to, for example, one day:
 
 ![API key creation](../images/api-key-creation.png)
 
-!!! info
+!!! note
     The API key is valid for a limited time, in AMG you can use values up to 30 days.
 
 Once you hit the `Add` button you should see a pop-up dialog that contains the
@@ -53,7 +51,7 @@ API key:
 With this we've set up everything we need in Amazon Managed Grafana in order to
 use Terraform for automation, so let's move on to this step.
 
-## Terraform
+## Automation with Terraform
 
 ### Preparing Terraform
 
@@ -259,10 +257,12 @@ resource "grafana_dashboard" "exampledashboard" {
 ```
 
 Terraform is a powerful tool for automation and you can use it as shown here
-to manage your Grafana resources. Keep in mind, though, that the [state in
-Terraform][tf-state], by default, is managed locally. This means, if you plan
-to collaboratively work with Terraform, you need to pick one of the options
-available that allow you to share the state across a team.
+to manage your Grafana resources. 
+
+!!! note
+    Keep in mind, though, that the [state in Terraform][tf-state] is, by default,
+    managed locally. This means, if you plan to collaboratively work with Terraform,
+    you need to pick one of the options available that allow you to share the state across a team.
 
 ## Cleanup
 
@@ -271,7 +271,6 @@ Remove the Amazon Managed Grafana workspace by removing it from the console.
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 [aws-cli-conf]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 [tf]: https://www.terraform.io/downloads.html
-[amg-getting-started]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/
 [grafana-authn]: https://grafana.com/docs/grafana/latest/http_api/auth/
 [rfc6750]: https://datatracker.ietf.org/doc/html/rfc6750
 [tf-grafana-provider]: https://registry.terraform.io/providers/grafana/grafana/latest/docs
