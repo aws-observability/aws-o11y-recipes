@@ -11,14 +11,14 @@ You will need the following to complete the steps in this blog post:
 * [Amazon EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html) 
 * [AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 * [Terraform CLI](https://www.terraform.io/downloads)
-* [AWS Distro for OpenTelemetry](https://aws-otel.github.io/)
+* [AWS Distro for OpenTelemetry(ADOT)](https://aws-otel.github.io/)
 * [eksctl](https://eksctl.io/)
 * [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
-* [jq](https://stedolan.github.io/jq/download/%20)
+* [jq](https://stedolan.github.io/jq/download/)
 * [helm](https://helm.sh/)
 * [SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html)
 
-In the recipe, we will use a sample application in order to demonstrate the metric scraping using ADOT and remote write the metrics to the workspace. Fork and clone the sample app from the repository at aws-otel-community (https://github.com/aws-observability/aws-otel-community). Execute the below commands to deploy application inside the EKS cluster. Make sure the terminal has access to the EKS cluster, follow the link (https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/) to connect to EKS cluster
+In the recipe, we will use a sample application in order to demonstrate the metric scraping using ADOT and remote write the metrics to the workspace. Fork and clone the sample app from the repository at aws-otel-community (https://github.com/aws-observability/aws-otel-community). Execute the below commands to deploy application inside the EKS cluster. 
 
 This Prometheus sample app generates all 4 Prometheus metric types (counter, gauge, histogram, summary) and exposes them at the /metrics endpoint
 
@@ -39,8 +39,16 @@ Then run the following commands.
 cd ./sample-apps/prometheus
 docker build . -t prometheus-sample-app:latest
 ```
-2. Push this image to a registry such as Amazon ECR or DockerHub.
-3. Deploy the sample app in the cluster by copying this Kubernetes configuration and applying it. Change the image to the image that you just pushed by replacing {{PUBLIC_SAMPLE_APP_IMAGE}} in the prometheus-sample-app.yaml file.
+2. Push this image to a registry such as Amazon ECR. You can use the following command to create a new ECR repository in your account. Make sure to set <YOUR_REGION> as well.
+
+```
+aws ecr create-repository \
+    --repository-name prometheus-sample-app \
+    --image-scanning-configuration scanOnPush=true \
+    --region <YOUR_REGION>
+```
+
+4. Deploy the sample app in the cluster by copying this Kubernetes configuration and applying it. Change the image to the image that you just pushed by replacing {{PUBLIC_SAMPLE_APP_IMAGE}} in the prometheus-sample-app.yaml file.
 
 ```
 curl https://raw.githubusercontent.com/aws-observability/aws-otel-collector/main/examples/eks/aws-prometheus/prometheus-sample-app.yaml -o prometheus-sample-app.yaml
@@ -61,7 +69,7 @@ kubectl apply -f eks-prometheus-daemonset.yaml
 
 ### Deploying the Terraform module to configure Amazon Managed service for Prometheus workspace, recording rules & alert manager
 
-Now, we will  provision a Amazon Managed service for Prometheus workspace and will define an alerting rule that causes the Alert Manager to send a notification if a certain condition (defined in expr) holds true for a specified time period (for). Code in the Terraform language is stored in plain text files with the .tf file extension. There is also a JSON-based variant of the language that is named with the .tf.json file extension.
+Now, we will  provision a Amazon Managed Service for Prometheus workspace and will define an alerting rule that causes the Alert Manager to send a notification if a certain condition (defined in ```expr```) holds true for a specified time period (```for```). Code in the Terraform language is stored in plain text files with the .tf file extension. There is also a JSON-based variant of the language that is named with the .tf.json file extension.
 
 ```
 export SNS_TOPIC=<your SNS topic ARN>
