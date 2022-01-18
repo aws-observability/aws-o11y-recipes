@@ -17,6 +17,7 @@ You will need the following to complete the steps in this blog post:
 * [jq](https://stedolan.github.io/jq/download/)
 * [helm](https://helm.sh/)
 * [SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html)
+* [awscurl](https://github.com/okigan/awscurl)
 
 In the recipe, we will use a sample application in order to demonstrate the metric scraping using ADOT and remote write the metrics to the workspace. Fork and clone the sample app from the repository at aws-otel-community (https://github.com/aws-observability/aws-otel-community). Execute the below commands to deploy application inside the EKS cluster. 
 
@@ -138,10 +139,6 @@ awscurl https://aps-workspaces.us-east-1.amazonaws.com/workspaces/$WORKSPACE_ID/
 
 Run the following command to terminate the Amazon Managed Service for Prometheus workspace. Make sure you delete the EKS Cluster created as well:
 
-
-## Cleanup
-
-Run the following command to terminate the Amazon Managed Service for Prometheus workspace. Make sure you delete the EKS Cluster created as well:
 
 ```
 terraform destroy
