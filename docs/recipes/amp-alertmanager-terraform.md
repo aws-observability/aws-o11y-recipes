@@ -72,55 +72,7 @@ kubectl apply -f eks-prometheus-daemonset.yaml
 
 Now, we will  provision a Amazon Managed Service for Prometheus workspace and will define an alerting rule that causes the Alert Manager to send a notification if a certain condition (defined in ```expr```) holds true for a specified time period (```for```). Code in the Terraform language is stored in plain text files with the .tf file extension. There is also a JSON-based variant of the language that is named with the .tf.json file extension.
 
-```
-export SNS_TOPIC=<your SNS topic ARN>
-cat << EOF > main.tf
-provider "aws" {
-  profile    = "default"
-  region     = "$AWS_REGION"
-}
-
-resource "aws_prometheus_workspace" "amp-terraform-ws" {
-  alias = "amp-terraform-ws"
-}
-
-resource "aws_prometheus_rule_group_namespace" "amp-terraform-ws" {
-  name         = "rules"
-  workspace_id = aws_prometheus_workspace.amp-terraform-ws.id
-  data         = <<EOF
-groups:
-  - name: test
-    rules:
-    - record: metric:recording_rule
-      expr: rate(adot_test_counter0[5m])
-  - name: alert-test
-    rules:
-    - alert: metric:alerting_rule
-      expr: rate(adot_test_counter0[5m]) > 0.014
-      for: 5m    
-EOF
-}
-
-resource "aws_prometheus_alert_manager_definition" "amp-terraform-ws" {
-  workspace_id = aws_prometheus_workspace.amp-terraform-ws.id
-  definition   = <<EOF
-alertmanager_config: |
-  route:
-    receiver: 'default'
-  receivers:
-    - name: 'default'
-      sns_configs:
-      - topic_arn: $SNS_TOPIC
-        sigv4:
-          region: $AWS_REGION
-        attributes:
-          key: severity
-          value: SEV2
-EOF
-}
-```
-
-Once the file is created, execute the below commands to provision the resource using terraform:
+We will now use the [main.tf](./amp-alertmanager-terraform/main.tf) to deploy the resources using terraform. Make sure the varibale SNS_TOPIC in the main.tf is properly set
 
 ```
 terraform init
