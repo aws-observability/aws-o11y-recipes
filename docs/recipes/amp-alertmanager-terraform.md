@@ -11,12 +11,12 @@ You will need the following to complete the steps in this blog post:
 * [Amazon EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html) 
 * [AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 * [Terraform CLI](https://www.terraform.io/downloads)
-* [AWS Distro for Opentelemetry](https://aws.amazon.com/blogs/mt/amazon-managed-service-for-prometheus-is-now-generally-available/)
+* [AWS Distro for OpenTelemetry](https://aws-otel.github.io/)
 * [eksctl](https://eksctl.io/)
 * [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
 * [jq](https://stedolan.github.io/jq/download/%20)
-* [helm](https://www.eksworkshop.com/beginner/060_helm/helm_intro/install/index.html)
-* [SNS topic]
+* [helm](https://helm.sh/)
+* [SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html)
 
 In the recipe, we will use a sample application in order to demonstrate the metric scraping using ADOT and remote write the metrics to the workspace. Fork and clone the sample app from the repository at aws-otel-community (https://github.com/aws-observability/aws-otel-community). Execute the below commands to deploy application inside the EKS cluster. Make sure the terminal has access to the EKS cluster, follow the link (https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/) to connect to EKS cluster
 
