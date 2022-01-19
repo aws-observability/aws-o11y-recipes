@@ -68,7 +68,7 @@ In this recipe, the ADOT Collector configuration uses an annotation (scrape=true
 kubectl apply -f eks-prometheus-daemonset.yaml
 ```
 
-### Deploying the Terraform module to configure Amazon Managed service for Prometheus workspace, recording rules & alert manager
+### Configure workspace with Terraform
 
 Now, we will  provision a Amazon Managed Service for Prometheus workspace and will define an alerting rule that causes the Alert Manager to send a notification if a certain condition (defined in ```expr```) holds true for a specified time period (```for```). Code in the Terraform language is stored in plain text files with the .tf file extension. There is also a JSON-based variant of the language that is named with the .tf.json file extension.
 
