@@ -72,7 +72,7 @@ kubectl apply -f eks-prometheus-daemonset.yaml
 
 Now, we will  provision a Amazon Managed Service for Prometheus workspace and will define an alerting rule that causes the Alert Manager to send a notification if a certain condition (defined in ```expr```) holds true for a specified time period (```for```). Code in the Terraform language is stored in plain text files with the .tf file extension. There is also a JSON-based variant of the language that is named with the .tf.json file extension.
 
-We will now use the [main.tf](./amp-alertmanager-terraform/main.tf) to deploy the resources using terraform. Make sure the varibale SNS_TOPIC in the main.tf is properly set
+We will now use the [main.tf](./amp-alertmanager-terraform/main.tf) to deploy the resources using terraform. Make sure the varibale `SNS_TOPIC` in the `main.tf` is properly set
 
 ```
 terraform init
