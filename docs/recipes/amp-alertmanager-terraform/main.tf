@@ -1,8 +1,11 @@
 provider "aws" {
   profile    = "default"
-  region     = "$AWS_REGION"
+  region     = us-east-1
 }
-
+variable "region" {
+}
+variable "sns_topic" {
+}
 resource "aws_prometheus_workspace" "amp-terraform-ws" {
   alias = "amp-terraform-ws"
 }
@@ -33,9 +36,9 @@ alertmanager_config: |
   receivers:
     - name: 'default'
       sns_configs:
-      - topic_arn: $SNS_TOPIC
+      - topic_arn: ${var.sns_topic}
         sigv4:
-          region: $AWS_REGION
+          region: ${var.region}
         attributes:
           key: severity
           value: SEV2
