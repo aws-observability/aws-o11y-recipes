@@ -17,11 +17,18 @@ In the following section we will be setting up the infrastructure for this recip
 
 ### Architecture
 
-The ADOT-AMP pipeline enables us to use the [ADOT Collector](https://github.com/aws-observability/aws-otel-collector) to scrape a Prometheus-instrumented application, and send the scraped metrics to AMP. 
 
-![Architecture](https://aws-otel.github.io/static/Prometheus_Pipeline-07344e5466b05299cff41d09a603e479.png)
+The ADOT pipeline enables us to use the 
+[ADOT Collector](https://github.com/aws-observability/aws-otel-collector) to 
+scrape a Prometheus-instrumented application, and ingest the scraped metrics to
+Amazon Managed Service for Prometheus.
 
-The ADOT Collector includes two AWS OpenTelemetry Collector components specific to Prometheus — the Prometheus Receiver and the AWS Prometheus Remote Write Exporter. 
+![Architecture](../images/adot-metrics-pipeline.png)
+
+The ADOT Collector includes two components specific to Prometheus: 
+
+* the Prometheus Receiver, and 
+* the AWS Prometheus Remote Write Exporter.
 
 !!! info 
     For more information on Prometheus Remote Write Exporter check out:
