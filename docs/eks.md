@@ -23,6 +23,9 @@ Check out the following recipes, grouped by compute engine:
 - [CloudWatch Container Insights][eks-ws-cw-ci]
 - [Set up cross-region metrics collection for AMP workspaces][amp-xregion]
 - [Monitoring App Mesh environment on EKS using Amazon Managed Service for Prometheus][eks-am-amp-amg]
+- [Monitor Istio on EKS using Amazon Managed Prometheus and Amazon Managed Grafana][eks-istio-monitoring]
+- [Proactive autoscaling of Kubernetes workloads with KEDA and Amazon CloudWatch][eks-keda-cloudwatch-scaling]
+- [Monitoring Amazon EKS Anywhere using Amazon Managed Service for Prometheus and Amazon Managed Grafana][eks-anywhere-monitoring]
 
 ### Traces
 
@@ -66,3 +69,6 @@ Check out the following recipes, grouped by compute engine:
 [eks-fb-example]: https://github.com/aws-samples/amazon-eks-fluent-logging-examples
 [eks-am-amp-amg]: recipes/servicemesh-monitoring-ampamg.md
 [fargate-eks-xray-go-adot-amg]: recipes/fargate-eks-xray-go-adot-amg.md
+[eks-istio-monitoring]: https://aws.amazon.com/blogs/mt/monitor-istio-on-eks-using-amazon-managed-prometheus-and-amazon-managed-grafana/
+[eks-keda-cloudwatch-scaling]: https://aws-blogs-prod.amazon.com/mt/proactive-autoscaling-of-kubernetes-workloads-with-keda-using-metrics-ingested-into-amazon-cloudwatch/
+[eks-anywhere-monitoring]: https://aws.amazon.com/blogs/containers/monitoring-amazon-eks-anywhere-using-amazon-managed-service-for-prometheus-and-amazon-managed-grafana/
