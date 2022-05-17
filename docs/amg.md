@@ -31,6 +31,8 @@ Check out the following recipes:
 - [Setting up cross-account data source using customer managed IAM roles][amg-xacc-ds]
 - [Managing Grafana and Loki in a regulated multitenant environment][grafana-loki-regenv]
 - [Workshop for Getting Started][amg-oow]
+- [Setting up Amazon Managed Grafana cross-account data source using customer managed IAM roles][amg-cross-account-access]
+- [Monitoring Amazon EKS Anywhere using Amazon Managed Service for Prometheus and Amazon Managed Grafana][amg-anywhere-monitoring]
 
 [amg-main]: https://aws.amazon.com/grafana/
 [amg-gettingstarted]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/
@@ -44,4 +46,6 @@ Check out the following recipes:
 [amg-tf-automation]: recipes/amg-automation-tf.md
 [amg-plugin-athena]: recipes/amg-athena-plugin.md
 [amg-plugin-redshift]: recipes/amg-redshift-plugin.md
+[amg-cross-account-access]: https://aws.amazon.com/blogs/opensource/setting-up-amazon-managed-grafana-cross-account-data-source-using-customer-managed-iam-roles/
+[amg-anywhere-monitoring]: https://aws.amazon.com/blogs/containers/monitoring-amazon-eks-anywhere-using-amazon-managed-service-for-prometheus-and-amazon-managed-grafana/
 
