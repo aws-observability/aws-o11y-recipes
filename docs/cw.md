@@ -22,6 +22,7 @@ Check out the following recipes:
 - [Exporting Cloudwatch Metric Streams via Firehose and AWS Lambda to Amazon Managed Service for Prometheus](recipes/lambda-cw-metrics-go-amp.md)
 - [Proactive autoscaling of Kubernetes workloads with KEDA and Amazon CloudWatch][cw-keda-eks-scaling]
 
+
 [cw-main]: https://aws.amazon.com/cloudwatch/
 [rds-cw]: https://aws.amazon.com/blogs/database/build-proactive-database-monitoring-for-amazon-rds-with-amazon-cloudwatch-logs-aws-lambda-and-amazon-sns/
 [swa-eks-cw]: https://aws.amazon.com/blogs/opensource/implementing-cloudwatch-centric-observability-for-kubernetes-native-developers-in-amazon-elastic-kubernetes-service/
