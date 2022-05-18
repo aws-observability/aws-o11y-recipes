@@ -21,7 +21,6 @@ Check out the following recipes:
 - [Monitoring EKS containerized Applications and Microservices using CW Container Insights][cwci-eks]
 - [Exporting Cloudwatch Metric Streams via Firehose and AWS Lambda to Amazon Managed Service for Prometheus](recipes/lambda-cw-metrics-go-amp.md)
 - [Proactive autoscaling of Kubernetes workloads with KEDA and Amazon CloudWatch][cw-keda-eks-scaling]
-- [Sending Envoy metrics from AWS App Mesh to Amazon CloudWatch][cwci-appmesh]
 
 
 [cw-main]: https://aws.amazon.com/cloudwatch/
@@ -37,5 +36,4 @@ Check out the following recipes:
 [cwci-ecs]: https://observability.workshop.aws/en/containerinsights/ecs.html
 [cwci-eks]: https://observability.workshop.aws/en/containerinsights/eks.html
 [cw-keda-eks-scaling]: https://aws-blogs-prod.amazon.com/mt/proactive-autoscaling-of-kubernetes-workloads-with-keda-using-metrics-ingested-into-amazon-cloudwatch/
-[cwci-appmesh]: https://aws.amazon.com/blogs/containers/sending-envoy-metrics-from-aws-app-mesh-to-amazon-cloudwatch/
 
