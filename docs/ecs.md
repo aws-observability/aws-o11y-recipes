@@ -21,6 +21,7 @@ Check out the following recipes, grouped by compute engine:
 
 - [Using AWS Distro for OpenTelemetry collector for cross-account metrics collection on Amazon ECS][adot-xaccount-metrics]
 - [Metrics collection from ECS using Amazon Managed Service for Prometheus][ecs-amp]
+- [Sending Envoy metrics from AWS App Mesh to Amazon CloudWatch][ecs-appmesh-cw]
 
 ## ECS on Fargate
 
@@ -36,4 +37,4 @@ Check out the following recipes, grouped by compute engine:
 [ecs-amp]: https://aws.amazon.com/blogs/opensource/metrics-collection-from-amazon-ecs-using-amazon-managed-service-for-prometheus/
 [firelens-fb]: https://github.com/aws-samples/amazon-ecs-firelens-examples#fluent-bit-examples
 [ecs-adot-integration]: https://aws.amazon.com/blogs/opensource/simplifying-amazon-ecs-monitoring-set-up-with-aws-distro-for-opentelemetry/
-
+[ecs-appmesh-cw]: https://aws.amazon.com/blogs/containers/sending-envoy-metrics-from-aws-app-mesh-to-amazon-cloudwatch/
