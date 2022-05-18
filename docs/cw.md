@@ -23,6 +23,7 @@ Check out the following recipes:
 - [Proactive autoscaling of Kubernetes workloads with KEDA and Amazon CloudWatch][cw-keda-eks-scaling]
 - [Sending Envoy metrics from AWS App Mesh to Amazon CloudWatch][cw-appmesh-ecs]
 
+
 [cw-main]: https://aws.amazon.com/cloudwatch/
 [rds-cw]: https://aws.amazon.com/blogs/database/build-proactive-database-monitoring-for-amazon-rds-with-amazon-cloudwatch-logs-aws-lambda-and-amazon-sns/
 [swa-eks-cw]: https://aws.amazon.com/blogs/opensource/implementing-cloudwatch-centric-observability-for-kubernetes-native-developers-in-amazon-elastic-kubernetes-service/
@@ -37,3 +38,4 @@ Check out the following recipes:
 [cwci-eks]: https://observability.workshop.aws/en/containerinsights/eks.html
 [cw-keda-eks-scaling]: https://aws-blogs-prod.amazon.com/mt/proactive-autoscaling-of-kubernetes-workloads-with-keda-using-metrics-ingested-into-amazon-cloudwatch/
 [cw-appmesh-ecs]: https://aws.amazon.com/blogs/containers/sending-envoy-metrics-from-aws-app-mesh-to-amazon-cloudwatch/
+
