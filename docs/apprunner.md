@@ -15,6 +15,7 @@ Check out the following recipes:
 ## Metrics
 
 - [Viewing App Runner service metrics reported to CloudWatch](apprunner-cwm)
+- [AWS Blog | Centralized observability for AWS App Runner services](https://aws.amazon.com/blogs/containers/centralized-observability-for-aws-app-runner-services/)
 
 ## Traces
 - [Getting Started with AWS X-Ray tracing for App Runner using AWS Distro for OpenTelemetry](apprunner-xray-adot)
