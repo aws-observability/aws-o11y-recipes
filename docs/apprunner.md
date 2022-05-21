@@ -1,9 +1,6 @@
 # AWS App Runner
 
-[AWS App Runner][apprunner-main] is a fully managed service that makes it easy for developers to quickly deploy containerized web applications and APIs at scale and with little to no infrastructure experience. 
-You can start with your source code or a container image, and App Runner will fully manage all infrastructure including servers, networking, and load balancing for your application. 
-App Runner provides you with a service URL that receives HTTPS requests to your application. As an option, App Runner can also configure a continuous deployment pipeline for you.
-
+[AWS App Runner][apprunner-main] is a fully managed service that makes it easy for developers to quickly deploy containerized web applications and APIs, at scale and with no prior infrastructure experience required. Start with your source code or a container image. App Runner builds and deploys the web application automatically, load balances traffic with encryption, scales to meet your traffic needs, and makes it easy for your services to communicate with other AWS services and applications that run in a private Amazon VPC. With App Runner, rather than thinking about servers or scaling, you have more time to focus on your applications.
 
 
 Check out the following recipes:
