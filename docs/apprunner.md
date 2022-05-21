@@ -24,7 +24,7 @@ Check out the following recipes:
 
 
 ## Traces
-- [Getting Started with AWS X-Ray tracing for App Runner using AWS Distro for OpenTelemetry](apprunner-xray-adot)
+- [Getting Started with AWS X-Ray tracing for App Runner using AWS Distro for OpenTelemetry](https://aws-otel.github.io/docs/getting-started/apprunner)
 - [Containers from the Couch | AWS App Runner X-Ray Integration](https://youtu.be/cVr8N7enCMM)
 - [AWS Blog | Tracing an AWS App Runner service using AWS X-Ray with OpenTelemetry](https://aws.amazon.com/blogs/containers/tracing-an-aws-app-runner-service-using-aws-x-ray-with-opentelemetry/)
 - [AWS Blog | Enabling AWS X-Ray tracing for AWS App Runner service using AWS Copilot CLI](https://aws.amazon.com/blogs/containers/enabling-aws-x-ray-tracing-for-aws-app-runner-service-using-aws-copilot-cli/)
@@ -33,4 +33,3 @@ Check out the following recipes:
 [aes-ws]: https://bookstore.aesworkshops.com/
 [apprunner-cwl]: https://docs.aws.amazon.com/apprunner/latest/dg/monitor-cwl.html
 [apprunner-cwm]: https://docs.aws.amazon.com/apprunner/latest/dg/monitor-cw.html
-[apprunner-xray-adot]: https://aws-otel.github.io/docs/getting-started/using-ecs-console-for-ecs-adot-observability
