@@ -8,6 +8,12 @@ App Runner provides you with a service URL that receives HTTPS requests to your 
 
 Check out the following recipes:
 
+## General
+- [Container Day - Docker Con | How Developers can get to production web applications at scale easily](https://www.youtube.com/watch?v=Iyp9Ugk9oRs)
+- [AWS Blog | Centralized observability for AWS App Runner services](https://aws.amazon.com/blogs/containers/centralized-observability-for-aws-app-runner-services/)
+- [AWS Blog | Observability for AWS App Runner VPC networking](https://aws.amazon.com/blogs/containers/observability-for-aws-app-runner-vpc-networking/)
+
+
 ## Logs
 
 - [Viewing App Runner logs streamed to CloudWatch Logs][apprunner-cwl]
@@ -15,19 +21,16 @@ Check out the following recipes:
 ## Metrics
 
 - [Viewing App Runner service metrics reported to CloudWatch](apprunner-cwm)
-- [AWS Blog | Centralized observability for AWS App Runner services](https://aws.amazon.com/blogs/containers/centralized-observability-for-aws-app-runner-services/)
+
 
 ## Traces
 - [Getting Started with AWS X-Ray tracing for App Runner using AWS Distro for OpenTelemetry](apprunner-xray-adot)
-- [AWS Blog | Tracing an AWS App Runner service using AWS X-Ray with OpenTelemetry](https://aws.amazon.com/blogs/containers/tracing-an-aws-app-runner-service-using-aws-x-ray-with-opentelemetry/)
-- [AWS Blog | Observability for AWS App Runner VPC networking](https://aws.amazon.com/blogs/containers/observability-for-aws-app-runner-vpc-networking/)
-- [AWS Blog | Enabling AWS X-Ray tracing for AWS App Runner service using AWS Copilot CLI](https://aws.amazon.com/blogs/containers/enabling-aws-x-ray-tracing-for-aws-app-runner-service-using-aws-copilot-cli/)
-- [Container Day - Docker Con | How Developers can get to production web applications at scale easily](https://www.youtube.com/watch?v=Iyp9Ugk9oRs)
 - [Containers from the Couch | AWS App Runner X-Ray Integration](https://youtu.be/cVr8N7enCMM)
-
+- [AWS Blog | Tracing an AWS App Runner service using AWS X-Ray with OpenTelemetry](https://aws.amazon.com/blogs/containers/tracing-an-aws-app-runner-service-using-aws-x-ray-with-opentelemetry/)
+- [AWS Blog | Enabling AWS X-Ray tracing for AWS App Runner service using AWS Copilot CLI](https://aws.amazon.com/blogs/containers/enabling-aws-x-ray-tracing-for-aws-app-runner-service-using-aws-copilot-cli/)
 
 [apprunner-main]: https://aws.amazon.com/apprunner/
 [aes-ws]: https://bookstore.aesworkshops.com/
 [apprunner-cwl]: https://docs.aws.amazon.com/apprunner/latest/dg/monitor-cwl.html
 [apprunner-cwm]: https://docs.aws.amazon.com/apprunner/latest/dg/monitor-cw.html
-[apprunner-xray-adot]: https://aws-otel.github.io/docs/getting-started/apprunner
+[apprunner-xray-adot]: https://aws-otel.github.io/docs/getting-started/apprunner.html
