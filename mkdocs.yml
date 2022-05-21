@@ -10,6 +10,7 @@ nav:
   - dimensions.md
   - telemetry.md
 - 'By Compute':
+  - apprunner.md
   - eks.md
   - ecs.md
   - lambda.md
