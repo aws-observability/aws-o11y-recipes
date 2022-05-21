@@ -33,4 +33,4 @@ Check out the following recipes:
 [aes-ws]: https://bookstore.aesworkshops.com/
 [apprunner-cwl]: https://docs.aws.amazon.com/apprunner/latest/dg/monitor-cwl.html
 [apprunner-cwm]: https://docs.aws.amazon.com/apprunner/latest/dg/monitor-cw.html
-[apprunner-xray-adot]: https://aws-otel.github.io/docs/getting-started/apprunner.html
+[apprunner-xray-adot]: https://aws-otel.github.io/docs/getting-started/apprunner
