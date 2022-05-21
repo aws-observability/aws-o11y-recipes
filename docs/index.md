@@ -15,7 +15,7 @@ The way we think about the o11y space is as follows: we decompose it into
 | agents        | [ADOT][adot] &middot; [Fluent Bit][fluentbit] &middot; CW agent &middot; X-Ray agent |
 | languages     | [Java][java] &middot; Python &middot; .NET &middot; [JavaScript][nodejs] &middot; Go &middot; Rust |
 | infra & databases  |  [RDS][rds] &middot; [DynamoDB][dynamodb] &middot; [MSK][msk] |
-| compute unit | [Batch][batch] &middot; [ECS][ecs] &middot; [EKS][eks] &middot; [AEB][beans] &middot; [Lambda][lambda] |
+| compute unit | [Batch][batch] &middot; [ECS][ecs] &middot; [EKS][eks] &middot; [AEB][beans] &middot; [Lambda][lambda] &middot; [AppRunner][apprunner] |
 | compute engine | [Fargate][fargate] &middot; [EC2][ec2] &middot; [Lightsail][lightsail] |
 
 For example, you might be looking for a solution to:
@@ -94,6 +94,7 @@ check out:
 [fluentbit]: https://fluentbit.io/ "Fluent Bit"
 [jaeger]: https://www.jaegertracing.io/ "Jaeger"
 [kafka]: https://kafka.apache.org/ "Apache Kafka"
+[apprunner]: apprunner.md "AWS App Runner"
 [lambda]: lambda.md "AWS Lambda"
 [lightsail]: https://aws.amazon.com/lightsail/ "Amazon Lightsail"
 [otel]: https://opentelemetry.io/ "OpenTelemetry"
