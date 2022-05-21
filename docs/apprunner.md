@@ -12,6 +12,7 @@ Check out the following recipes:
 - [Container Day - Docker Con | How Developers can get to production web applications at scale easily](https://www.youtube.com/watch?v=Iyp9Ugk9oRs)
 - [AWS Blog | Centralized observability for AWS App Runner services](https://aws.amazon.com/blogs/containers/centralized-observability-for-aws-app-runner-services/)
 - [AWS Blog | Observability for AWS App Runner VPC networking](https://aws.amazon.com/blogs/containers/observability-for-aws-app-runner-vpc-networking/)
+- [AWS Blog | Controlling and monitoring AWS App Runner applications with Amazon EventBridge](https://aws.amazon.com/blogs/containers/controlling-and-monitoring-aws-app-runner-applications-with-amazon-eventbridge/)
 
 
 ## Logs
