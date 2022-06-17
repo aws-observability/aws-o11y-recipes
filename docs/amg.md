@@ -12,27 +12,28 @@ Check out the following recipes:
 ## Basics
 
 - [Getting Started][amg-gettingstarted]
+- [Using Terraform for automation][amg-tf-automation]
 
-## Authentication
+## Authentication and Access Control
 
 - [Direct SAML integration with identity providers][amg-saml]
 - [Integrating identity providers (OneLogin, Ping Identity, Okta, and Azure AD) to SSO][amg-idps]
 - [Integrating Google authentication via SAMLv2][amg-google-idps]
+- [Setting up Amazon Managed Grafana cross-account data source using customer managed IAM roles][amg-cross-account-access]
 
-## Plugins
+## Data sources and Visualizations
 
 - [Using Athena in Amazon Managed Grafana][amg-plugin-athena]
 - [Using Redshift in Amazon Managed Grafana][amg-plugin-redshift]
+- [Viewing custom metrics from statsd with Amazon Managed Service for Prometheus and Amazon Managed Grafana][amg-amp-statsd]
+- [Setting up cross-account data source using customer managed IAM roles][amg-xacc-ds]
 
 ## Others
-
-- [Using Terraform for automation][amg-tf-automation]
 - [Monitoring hybrid environments][amg-hybridenvs]
-- [Setting up cross-account data source using customer managed IAM roles][amg-xacc-ds]
 - [Managing Grafana and Loki in a regulated multitenant environment][grafana-loki-regenv]
-- [Workshop for Getting Started][amg-oow]
-- [Setting up Amazon Managed Grafana cross-account data source using customer managed IAM roles][amg-cross-account-access]
 - [Monitoring Amazon EKS Anywhere using Amazon Managed Service for Prometheus and Amazon Managed Grafana][amg-anywhere-monitoring]
+- [Workshop for Getting Started][amg-oow]
+
 
 [amg-main]: https://aws.amazon.com/grafana/
 [amg-gettingstarted]: https://aws.amazon.com/blogs/mt/amazon-managed-grafana-getting-started/
@@ -48,4 +49,5 @@ Check out the following recipes:
 [amg-plugin-redshift]: recipes/amg-redshift-plugin.md
 [amg-cross-account-access]: https://aws.amazon.com/blogs/opensource/setting-up-amazon-managed-grafana-cross-account-data-source-using-customer-managed-iam-roles/
 [amg-anywhere-monitoring]: https://aws.amazon.com/blogs/containers/monitoring-amazon-eks-anywhere-using-amazon-managed-service-for-prometheus-and-amazon-managed-grafana/
+[amg-amp-statsd]: https://aws.amazon.com/blogs/mt/viewing-custom-metrics-from-statsd-with-amazon-managed-service-for-prometheus-and-amazon-managed-grafana/
 
