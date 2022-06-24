@@ -1,4 +1,5 @@
 # Introducing Amazon EKS Observability Accelerator
+
 Observability is critical for any application and understanding system behavior and performance. It takes time and effort to detect and remediate performance slowdowns or disruptions. Customers often spend much time writing configuration files and work quite to achieve end-to-end monitoring for applications. Infrastructure as Code (IaC) tools, such as AWS [CloudFormation](https://docs.aws.amazon.com/cloudformation/index.html), [Terraform](https://www.terraform.io/), and [Ansible](https://www.ansible.com/), reduce manual efforts by helping administrators and developers instantiate infrastructure using configuration files.
 
 [Amazon Elastic Kubernetes Service (Amazon EKS)](https://docs.aws.amazon.com/eks/index.html) is a powerful and  extensible container orchestration technology that lets you deploy and manage containerized applications at scale. Building a tailored [Amazon EKS](https://docs.aws.amazon.com/eks/index.html) cluster amidst the wide range of tooling and design choices available and making sure that it meets your application’s specific needs can take a significant amount of time. This situation becomes even more cumbersome when you implement observability, which is critical for analyzing any application’s performance.
@@ -240,3 +241,5 @@ terraform destroy -var-file=./dev.tfvars -auto-approve
 ## Conclusion
 
 Customers can now leverage EKS Observability Accelerator  to deploy the opinionated EKS clusters and configure observability for specific workloads without spending much time manually deploying the resources and configuring the agent to scrape the metrics. Furthermore, the solution provides the extensibility to connect the Amazon Managed Prometheus workspace with Amazon Managed Grafana and configure alerts and notifications.
+
+Test note...
