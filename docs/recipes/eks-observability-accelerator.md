@@ -57,8 +57,6 @@ Follow these steps to create the key
 
 ![WelcomeGrafana](../images/eks-observability-accelerator-images/Welcom_Amazon_Grafana.png)
 
-test line
-
 * Click Add API key, fill in the Name field and select the Role as Admin.
 * Fill in the Time to live field. It’s the API key life duration. For example, 1d to expire the key after one day. Supported units are: s,m,h,d,w,M,y
 
