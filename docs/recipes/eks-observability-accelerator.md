@@ -55,17 +55,21 @@ Follow these steps to create the key
 * Use your SAML/SSO credential to log in to the Amazon Managed Grafana workspace.
 * Hover to the left side control panel, and select the API keys tab under the gear icon.
 
-Add image here
+![WelcomeGrafana](../images/eks-observability-accelerator-images/Welcom_Amazon_Grafana.png)
+
+test line
 
 * Click Add API key, fill in the Name field and select the Role as Admin.
 * Fill in the Time to live field. It’s the API key life duration. For example, 1d to expire the key after one day. Supported units are: s,m,h,d,w,M,y
 
-Add image 2 here
+![GrafanaAPIkey1](../images/eks-observability-accelerator-images/grafanaAPIKey1.png)
 
 * Click Add
 * Copy and keep the API key safe, we will use this Key in our next step
 
-Add image 3 here
+![GrafanaAPIkey2](../images/eks-observability-accelerator-images/APIKeycreated2.png)
+
+![GrafanaAPIkey3](../images/eks-observability-accelerator-images/addAPIKey3.png)
 
 ### Step 3: Configuring the environment
 
@@ -73,8 +77,8 @@ Next, you’ll configure the environment to deploy the Terraform module to provi
 
 Deploying the Terraform module involves the below steps:
 
-* Plan: Terraform plan creates an execution plan and previews the infrastructure changes.
-* Apply: Terraform executes the plan’s action and modifies the environment.
+* **Plan**: Terraform plan creates an execution plan and previews the infrastructure changes.
+* **Apply**: Terraform executes the plan’s action and modifies the environment.
 
 Next, configure the environment either by creating the variables file or setting up the environment variables.
 
@@ -113,7 +117,7 @@ terraform init
 
 This command performs  initialization steps to prepare the current working directory for use with Terraform. Once the initialization completes, you should receive the following notification.
 
-add Image 4 here
+![TerraformModule](../images/eks-observability-accelerator-images/TerraformModules1.png)
 
 Additionally, we can execute the terraform validate command to evaluate the configuration files in a directory. Validate runs checks that verify whether or not a configuration is syntactically valid and internally consistent, regardless of any provided variables or existing state.
 
@@ -121,7 +125,7 @@ Additionally, we can execute the terraform validate command to evaluate the conf
 terraform validate
 ```
 
-Add Image 5 here
+![TerraformModule](../images/eks-observability-accelerator-images/TerraformModules2.png)
 
 The next step is to run the terraform plan command to create an execution plan, which lets you preview the Terraform infrastructure changes. By default, when terraform creates a plan it:
 
@@ -135,18 +139,20 @@ The plan command alone will not carry out the proposed changes. So you can use t
 terraform plan -var-file=./dev.tfvars
 ```
 
-add Screenshots here
+![Terraform](../images/eks-observability-accelerator-images/Terraform3.png)
 
-Finally, you’ll run the terraform apply command to provision the resources, and it takes about 20 minutes to complete. This command deploys the following resources:
+![Terraform](../images/eks-observability-accelerator-images/Terraform4.png)
+
+Finally, you’ll run the `terraform apply` command to provision the resources, and it takes about 20 minutes to complete. This command deploys the following resources:
 
 ```
 terraform apply -var-file=./dev.tfvars -auto-approve
 ```
 
 
-1. Creates an Amazon EKS cluster named aws001-preprod-dev-eks
-2. Creates an Amazon Managed Service for Prometheus workspace named amp-ws-aws001-preprod-dev-eks
-3. Creates a Kubernetes namespace named opentelemetry-operator-system, adot-collector-java
+1. Creates an Amazon EKS cluster named `aws001-preprod-dev-eks`
+2. Creates an Amazon Managed Service for Prometheus workspace named `amp-ws-aws001-preprod-dev-eks`
+3. Creates a Kubernetes namespace named `opentelemetry-operator-system, adot-collector-java`
 4. Deploys the AWS ADOT collector into the namespace with the configuration to collect metrics for Java/JMX workloads
 5. Builds a dashboard to visualize Java/JMX metrics in an existing Amazon Managed Grafana workspace specified in the earlier step and configures the Amazon Managed Service for Prometheus workspace as a data source
 
@@ -168,20 +174,23 @@ Listing all the pods from the cluster
 kubectl get pods -A
 ```
 
-Add image here
+![Terraform](../images/eks-observability-accelerator-images/Terraform5.png)
 
 We should be able to verify the connection between Amazon Managed Grafana and Amazon Managed Prometheus by heading to the configuration page and looking at the default data source.
 
-Add image here
-Add image here
+![ConnectionVerify](../images/eks-observability-accelerator-images/GrafanaConnectionVerify1.png)
+
+![ConnectionVerify](../images/eks-observability-accelerator-images/GrafanaConnectionVerify2.png)
 
 
-* Select the Data source named amp
-* Scroll down and select Save & test
+* Select the Data source named `amp`
+* Scroll down and select `Save & test`
 
-Add image here
+![ConnectionVerify](../images/eks-observability-accelerator-images/GrafanaConnectionVerify3.png)
 
 It should display a success message like below
+
+![ConnectionVerify](../images/eks-observability-accelerator-images/GrafanaConnectionVerify4.png)
 
 ### Step 5: Deploying sample Java/JMX application
 
@@ -210,23 +219,49 @@ aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --
 aws ecr create-repository --repository-name prometheus-sample-tomcat-jmx \
 --image-scanning-configuration scanOnPush=true \
 --region $AWS_REGION
+
+#Build Docker image and push to ECR
+
+cd ~/aws-otel-test-framework/sample-apps/jmx
+
+docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/prometheus-sample-tomcat-jmx:latest .
+
+docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/prometheus-sample-tomcat-jmx:latest
+
+#Deploy the sample application
+
+export SAMPLE_TRAFFIC_NAMESPACE=javajmx-sample
+
+curl https://raw.githubusercontent.com/aws-observability/aws-otel-test-framework/terraform/sample-apps/jmx/examples/prometheus-metrics-sample.yaml > metrics-sample.yaml
+
+sed -e "s/{{aws_account_id}}/$AWS_ACCOUNT_ID/g" metrics-sample.yaml -i
+sed -e "s/{{region}}/$AWS_REGION/g" metrics-sample.yaml -i
+sed -e "s/{{namespace}}/$SAMPLE_TRAFFIC_NAMESPACE/g" metrics-sample.yaml -i
+
+kubectl apply -f metrics-sample.yaml
+
+#Verify the application
+
+kubectl get pods -n $SAMPLE_TRAFFIC_NAMESPACE
 ```
 
-Add image here
+![JMXJavaApplication](../images/eks-observability-accelerator-images/JavaJMXImage1.png)
 
 ### Step 6: Visualize the JMX metrics on Amazon Managed Grafana
 
 To visualize the JMX metrics collected by the AWS ADOT operator, log in to the Grafana workspace.
 
 * Select Dashboards and choose Manage
-Add image here
+
+![JMXMetrix1](../images/eks-observability-accelerator-images/JMXMetrics1.png)
 
 * Select the Observability folder and choose the dashboard named EKS Accelerator – Observability – Java/JMX
-Add Image here
+
+![JMXMetrix2](../images/eks-observability-accelerator-images/JMXMetrics2.png)
 
 The Terraform module added the Amazon Managed Service for Prometheus workspace as the default data source, and created a custom dashboard to visualize the metrics.
 
-Add image here
+![JMXMetrix3](../images/eks-observability-accelerator-images/JMXMetrics3.png)
 
 You can also deploy sample applications for NGINX, HAProxy, and Memcached.
 
@@ -241,5 +276,3 @@ terraform destroy -var-file=./dev.tfvars -auto-approve
 ## Conclusion
 
 Customers can now leverage EKS Observability Accelerator  to deploy the opinionated EKS clusters and configure observability for specific workloads without spending much time manually deploying the resources and configuring the agent to scrape the metrics. Furthermore, the solution provides the extensibility to connect the Amazon Managed Prometheus workspace with Amazon Managed Grafana and configure alerts and notifications.
-
-Test note...
