@@ -36,6 +36,7 @@ nav:
 - about.md
 theme:
   name: 'material'
+  custom_dir: overrides
   features:
     - navigation.instant
     - navigation.tabs
