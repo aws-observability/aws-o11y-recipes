@@ -27,8 +27,8 @@ There are number of ways to create visualizations with Metrics explorer; in this
 4. Choose metrics you would like to explore; remove obsolete once, and add other metrics you would like to see
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-metrics.png" alt="Screen shot of EC2 metrics" width="424" height="393" style="vertical-align:left">
 
-5. Under <b>From</b>, choose a resource tag or a resource property you are looking for; in below example we are show number of CPU and Network related metrics for different EC2 instances with <b>Name: TeamX</b> Tag
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-tag-team-x-y.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left">
+5. Under <b>From</b>, choose a resource tag or a resource property you are looking for; in below example we show number of CPU and Network related metrics for different EC2 instances with <b>Name: TeamX</b> Tag
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-teamx-tag.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left">
 
 6. You can combine time series using an aggregation function under <b>Aggregated by</b>; in the below example <b>TeamX</b> metrics are aggregated by <b>Availability Zone</b>
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-name-dashboard.png" alt="Screen shot of EC2 metrics" style="vertical-align:left">
