@@ -1,6 +1,8 @@
-# Using Amazon CloudWatch Metrics explorer to filter, aggregate, and visualize your metrics by resource tags
+# Using Amazon CloudWatch Metrics explorer to filter, aggregate, and visualize your metrics filtered by resource tags
 
-In this recipe we show you how to use Metrics explorer to filter, aggregate, and visualize metrics by resource tags and resource properties  [Use metrics explorer to monitor resources by their tags and properties](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html) 
+In this recipe we show you how to use Metrics explorer to filter, aggregate, and visualize metrics by resource tags and resource properties  [Use metrics explorer to monitor resources by their tags and properties][metrics-explorer] 
+
+<!-- (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html)  -->
 
 
 !!! note
@@ -10,7 +12,7 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 
 * Access to AWS account(s)
 * Access to Amazon CloudWatch Metrics Explorer via AWS Console
-* Resoure tags should be set for the relevant resources 
+* Resoure tags set for the relevant resources 
 
 
 ## Metrics Explorer tag based queries
@@ -27,10 +29,11 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-metrics.png" alt="Screen shot of EC2 metrics" width="424" height="393" style="vertical-align:left">
 
 5. Under <b>From</b>, choose a resource tag or a resource property you are looking for; in below example we are using Tag named a <b>Team</b>, with <b>TeamX</b> or <b>TeamY</b> as a value
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-tag-team-x-y.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left;display: inline-block;margin:50px 0px">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-tag-team-x-y.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left>
 
 6. You can combine time series using an aggregation function under <b>Aggreagted by</b>; in below example TeamX metrics are aggreagted by Availibility Zone
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-name-dashboard.png" alt="Screen shot of EC2 metrics" width="1828" height="770" style="vertical-align:left">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-name-dashboard.png" alt="Screen shot of EC2 metrics" style="vertical-align:left">
+<!-- width="1828" height="770" -->
 
 or you could aggregate <b>TeamX</b> and <b>TeamY</b> by the <b>Team</b> Tag
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-team-dashboard.png" alt="Screen shot of EC2 metrics" style="vertical-align:left">
@@ -47,7 +50,7 @@ example: cpu utilization of all ec2 instances with the tag team:teamX
 
 ## Reference
 
-[metrics-explorer]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html
+[metrics-explorer]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorerhtml
 []: 
 []: 
 []: 
