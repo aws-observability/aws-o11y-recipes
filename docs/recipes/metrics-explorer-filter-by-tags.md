@@ -19,9 +19,12 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 1. Open the CloudWatch console 
 
 2. Under <b>Metrics</b>, click on the <b>Explorer</b> menu </br>
-<p>
+
 ![Screen shot of the CloudWatch menu](../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png)
-</p>
+
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png" alt="Smiley face" width="142" height="142" style="vertical-align:right;left:50px 0px">
+<!-- This is some text. This is some text. This is some text> -->
+
 3. 
 <p>
 ![Screen shot of instance tag](../images/metrics-explorer-filter-by-tags/metrics-explorer-teamx-tag.png)
