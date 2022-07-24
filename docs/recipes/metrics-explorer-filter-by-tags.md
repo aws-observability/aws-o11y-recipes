@@ -24,20 +24,20 @@ There are number of ways to create visualizations with Metrics explorer; in this
 3. You can either choose from one of the <b>Generic templates</b> or a <b>Service based templates</b> list; in this example we used the <b>EC2 Instances by type</b> template
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-by-type.png" alt="Screen shot of Explorer templates" width="250" height="601" style="vertical-align:left">
 
-4. Choose metrics you would like to explore (remove obsolete once, and add other metrics you would like to see)
+4. Choose metrics you would like to explore; remove obsolete once, and add other metrics you would like to see
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-metrics.png" alt="Screen shot of EC2 metrics" width="424" height="393" style="vertical-align:left">
 
-5. Under <b>From</b>, choose a resource tag or a resource property you are looking for; in below example we are using Tag named a <b>Name</b>, with <b>TeamX</b> as a value showing number of CPU and Network metrics for different EC2 instances with <b>Name: TeamX</b> Tag set
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-tag-team-x-y.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left>
+5. Under <b>From</b>, choose a resource tag or a resource property you are looking for; in below example we are show number of CPU and Network related metrics for different EC2 instances with <b>Name: TeamX</b> Tag
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-tag-team-x-y.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left">
 
-6. You can combine time series using an aggregation function under <b>Aggregated by</b>; in the below example TeamX metrics are aggregated by <b>Availability Zone</b>
+6. You can combine time series using an aggregation function under <b>Aggregated by</b>; in the below example <b>TeamX</b> metrics are aggregated by <b>Availability Zone</b>
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-name-dashboard.png" alt="Screen shot of EC2 metrics" style="vertical-align:left">
 
-Alternatively, you could aggregate <b>TeamX</b> and <b>TeamY</b> by the <b>Team</b> Tag, or choose any other configuration that suits your use-case
+Alternatively, you could aggregate <b>TeamX</b> and <b>TeamY</b> by the <b>Team</b> Tag, or choose any other configuration that suits your use case
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-team-dashboard.png" alt="Screen shot of EC2 metrics" style="vertical-align:left">
 
 ## Dynamic visualizations
-You can easily customize your visualizations by using <b>From</b>, <b>Aggregated by</b> and <b>Split by</b> options. Metrics explorer visualizations are dynamic, so any new tagged resource automatically appears in the explorer widget.
+You can easily customize resulting visualizations by using <b>From</b>, <b>Aggregated by</b> and <b>Split by</b> options. Metrics explorer visualizations are dynamic, so any new tagged resource automatically appears in the explorer widget.
 
 ## Reference
 
