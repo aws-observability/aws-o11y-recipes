@@ -10,7 +10,7 @@ There are number of ways to create visualizations with Metrics explorer; in this
 
 * Access to AWS account
 * Access to Amazon CloudWatch Metrics Explorer via AWS Console
-* Resoure tags set for the relevant resources 
+* Resource tags set for the relevant resources 
 
 
 ## Metrics Explorer tag based queries and visualizations
@@ -29,17 +29,18 @@ There are number of ways to create visualizations with Metrics explorer; in this
 5. Under <b>From</b>, choose a resource tag or a resource property you are looking for; in below example we are using Tag named a <b>Name</b>, with <b>TeamX</b> as a value showing number of CPU and Network metrics for different EC2 instances with <b>Name: TeamX</b> Tag set
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-tag-team-x-y.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left>
 
-6. You can combine time series using an aggregation function under <b>Aggreagted by</b>; in the below example TeamX metrics are aggreagted by <b>Availibility Zone</b>
+6. You can combine time series using an aggregation function under <b>Aggregated by</b>; in the below example TeamX metrics are aggregated by <b>Availability Zone</b>
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-name-dashboard.png" alt="Screen shot of EC2 metrics" style="vertical-align:left">
 
-Alternatively,  you could aggregate <b>TeamX</b> and <b>TeamY</b> by the <b>Team</b> Tag, or choose any other configuration that suits your use-case
+Alternatively, you could aggregate <b>TeamX</b> and <b>TeamY</b> by the <b>Team</b> Tag, or choose any other configuration that suits your use-case
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-team-dashboard.png" alt="Screen shot of EC2 metrics" style="vertical-align:left">
 
 ## Dynamic visualizations
-You can easily customize your visualizations by using <b>From</b>, <b>Aggreagted by</b> and <b>Split by</b> options. Metrics explorer visualizations are dynamic, so any new tagged resource automatically appears in the explorer widget.
+You can easily customize your visualizations by using <b>From</b>, <b>Aggregated by</b> and <b>Split by</b> options. Metrics explorer visualizations are dynamic, so any new tagged resource automatically appears in the explorer widget.
 
 ## Reference
 
+For more information on Metrics explorer please refer to following article:
 https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html
 
 [metrics-explorer]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html
