@@ -33,8 +33,8 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-name-dashboard.png" alt="Screen shot of EC2 metrics" width="1828" height="770" style="vertical-align:left">
 
 or you could aggregate <b>TeamX</b> and <b>TeamY</b> by the <b>Team</b> Tag
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-team-dashboard.png" alt="Screen shot of EC2 metrics" width="1622" height="1015" style="vertical-align:left">
-
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-team-dashboard.png" alt="Screen shot of EC2 metrics" style="vertical-align:left">
+<!-- width="1622" height="1015" -->
 
 to enhance observability for your services. This gives you a flexible and dynamic troubleshooting experience, so that you to create multiple graphs at a time and use these graphs to build your application health dashboards.
 
