@@ -20,9 +20,9 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 
 2. Under <b>Metrics</b>, click on the <b>Explorer</b> menu </br>
 
-![Screen shot of the CloudWatch menu](../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png)
+<!-- ![Screen shot of the CloudWatch menu](../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png) -->
 
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png" alt="Smiley face" width="271" height="382" style="vertical-align:left;left:50px 0px">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png" alt="Screen shot of the CloudWatch menu" width="271" height="382" style="vertical-align:left;left:250px 0px">
 <!-- This is some text. This is some text. This is some text> -->
 3.  ddddddddddd
 <p>
