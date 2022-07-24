@@ -50,7 +50,4 @@ example: cpu utilization of all ec2 instances with the tag team:teamX
 
 ## Reference
 
-[metrics-explorer]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorerhtml
-[]: 
-[]: 
-[]: 
+[metrics-explorer]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html
