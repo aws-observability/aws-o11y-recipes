@@ -23,19 +23,19 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 <!-- ![Screen shot of the CloudWatch menu](../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png) -->
 
 3. You can either choose one of the <b>Generic templates</b> or from a <b>Service based templates</b> list; in the below examples we used the <b>EC2 Instances by type</b> template
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-by-type.png" alt="Screen shot of Explorer templates" width="271" height="382" style="vertical-align:left;">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-by-type.png" alt="Screen shot of Explorer templates" width="271" height="382" style="vertical-align:left;left:250px 100px">
 
 4. Choose metrics you would like to explore (remove obsolete once, add other metrics you would like to see)
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-metrics.png" alt="Screen shot of EC2 metrics" width="271" height="382" style="vertical-align:left;">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-metrics.png" alt="Screen shot of EC2 metrics" width="271" height="382" style="vertical-align:left;left:250px 100px">
 
 5. Under <b>From</b>, choose a resource tag or a resource property you are looking for; in below example we are using Tag named a <b>Team</b>, with <b>TeamX</b> or <b>TeamY</b> as a value
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-tag-name.png" alt="Screen shot of EC2 metrics" width="271" height="382" style="vertical-align:left;">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-tag-name.png" alt="Screen shot of EC2 metrics" width="271" height="382" style="vertical-align:left">
 
 6. You can combine time series using an aggregation function under <b>Aggreagted by</b>; in below example TeamX metrics are aggreagted by Availibility Zone
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-team-tag.png" alt="Screen shot of EC2 metrics" width="271" height="382" style="vertical-align:left;">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-team-tag.png" alt="Screen shot of EC2 metrics" width="271" height="382" style="vertical-align:left">
 
 or you could aggregate TeamX and TeamY by the Team Tag
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-team-tag-dashboard.png" alt="Screen shot of EC2 metrics" width="271" height="382" style="vertical-align:left;">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-team-tag-dashboard.png" alt="Screen shot of EC2 metrics" width="271" height="382" style="vertical-align:left">
 
 <!-- metrics-explorer-ec2-cpu-utilization-dashboard -->
 
