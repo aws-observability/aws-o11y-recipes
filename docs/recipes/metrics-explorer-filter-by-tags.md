@@ -41,7 +41,7 @@ You can easily customize resulting visualizations by using <b>From</b>, <b>Aggre
 
 ## Reference
 
-For more information on Metrics explorer please refer to following article:
+For more information on Metrics explorer please refer to the following article:
 https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html
 
 [metrics-explorer]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html
