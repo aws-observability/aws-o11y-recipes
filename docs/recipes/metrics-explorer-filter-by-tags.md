@@ -18,16 +18,16 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 1. Open the CloudWatch console 
 
 2. Under <b>Metrics</b>, click on the <b>Explorer</b> menu </br>
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png" alt="Screen shot of the CloudWatch menu" width="271" height="382" style="vertical-align:left;left:250px 100px">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png" alt="Screen shot of the CloudWatch menu" width="271" height="382" style="vertical-align:left">
 
 3. You can either choose one of the <b>Generic templates</b> or from a <b>Service based templates</b> list; in the below examples we used the <b>EC2 Instances by type</b> template
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-by-type.png" alt="Screen shot of Explorer templates" width="250" height="601" style="vertical-align:left;left:250px 100px">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-by-type.png" alt="Screen shot of Explorer templates" width="250" height="601" style="vertical-align:left">
 
 4. Choose metrics you would like to explore (remove obsolete once, add other metrics you would like to see)
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-metrics.png" alt="Screen shot of EC2 metrics" width="424" height="393" style="vertical-align:left;left:250px 100px">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-metrics.png" alt="Screen shot of EC2 metrics" width="424" height="393" style="vertical-align:left">
 
 5. Under <b>From</b>, choose a resource tag or a resource property you are looking for; in below example we are using Tag named a <b>Team</b>, with <b>TeamX</b> or <b>TeamY</b> as a value
-<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-tag-team-x-y.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left">
+<img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-templates-ec2-tag-team-x-y.png" alt="Screen shot of EC2 metrics" width="386" height="176" style="vertical-align:left;display: inline-block;margin:50px 0px">
 
 6. You can combine time series using an aggregation function under <b>Aggreagted by</b>; in below example TeamX metrics are aggreagted by Availibility Zone
 <img src="../images/metrics-explorer-filter-by-tags/metrics-explorer-ec2-by-tag-name-dashboard.png" alt="Screen shot of EC2 metrics" width="1828" height="770" style="vertical-align:left">
