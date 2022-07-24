@@ -19,13 +19,24 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 1. Open the CloudWatch console 
 
 2. Under <b>Metrics</b>, click on the <b>Explorer</b> menu </br>
-
+<p>
 ![Screen shot of the CloudWatch menu](../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png)
-
+</p>
 3. 
+<p>
 ![Screen shot of instance tag](../images/metrics-explorer-filter-by-tags/metrics-explorer-teamx-tag.png)
+</p>
 
 metrics-explorer-ec2-cpu-utilization-dashboard
+
+
+
+Select the data sources you want to choose and click **Next**:
+![Create Workspace - Permission settings](../images/amg-saml-google-auth/3.png)
+
+Click on **Create workspace** button in the **Review and create** screen:
+![Create Workspace - Review settings](../images/amg-saml-google-auth/4.png)
+
 
 to enhance observability for your services. This gives you a flexible and dynamic troubleshooting experience, so that you to create multiple graphs at a time and use these graphs to build your application health dashboards.
 
