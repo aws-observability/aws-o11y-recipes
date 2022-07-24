@@ -35,7 +35,8 @@ nav:
   - 'Workshops': workshops.md
 - about.md
 theme:
-  name: 'material'
+  # name: 'material'
+  name: 'readthedocs'
   custom_dir: overrides
   features:
     - navigation.instant

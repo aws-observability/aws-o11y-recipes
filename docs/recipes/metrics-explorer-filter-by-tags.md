@@ -4,6 +4,26 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 
 
 
+!!! note
+    This guide will take approximately 5 minutes to complete.
+
+## Prerequisites
+
+* Access to Amazon account(s)
+* Access to Amazon CloudWatch Metrics Explorer via AWS Console
+* Resoure tags should be set for the relevant resources 
+
+
+## Metrics Explorer queries
+
+1. Open the CloudWatch console 
+2. Under <b>Metrics</b>, click on the Explorer menu
+![Screen shot of the CloudWatch menu](../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png)
+3. 
+![Screen shot of instance tag](../images/metrics-explorer-filter-by-tags/metrics-explorer-teamx-tag.png)
+
+metrics-explorer-ec2-cpu-utilization-dashboard
+
 to enhance observability for your services. This gives you a flexible and dynamic troubleshooting experience, so that you to create multiple graphs at a time and use these graphs to build your application health dashboards.
 
 Metrics explorer visualizations are dynamic, so if a matching resource is created after you create a metrics explorer widget and add it to a CloudWatch dashboard, the new resource automatically appears in the explorer widget.
@@ -12,3 +32,10 @@ For example, if all of your EC2 production instances have the production tag, yo
 
 As an Observability engineer, I would like to be able to filter metric results using resource tags to be able to have group elements form the same resource
 example: cpu utilization of all ec2 instances with the tag team:teamX
+
+## Reference
+
+[metrics-explorer]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metrics-Explorer.html
+[]: 
+[]: 
+[]: 
