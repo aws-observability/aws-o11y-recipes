@@ -17,8 +17,11 @@ In this recipe we show you how to use Metrics explorer to filter, aggregate, and
 ## Metrics Explorer queries
 
 1. Open the CloudWatch console 
-2. Under <b>Metrics</b>, click on the Explorer menu
+
+2. Under <b>Metrics</b>, click on the <b>Explorer</b> menu </br>
+
 ![Screen shot of the CloudWatch menu](../images/metrics-explorer-filter-by-tags/metrics-explorer-cw-menu.png)
+
 3. 
 ![Screen shot of instance tag](../images/metrics-explorer-filter-by-tags/metrics-explorer-teamx-tag.png)
 
