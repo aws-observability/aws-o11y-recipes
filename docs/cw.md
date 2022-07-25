@@ -21,7 +21,7 @@ Check out the following recipes:
 - [Monitoring EKS containerized Applications and Microservices using CW Container Insights][cwci-eks]
 - [Exporting Cloudwatch Metric Streams via Firehose and AWS Lambda to Amazon Managed Service for Prometheus](recipes/lambda-cw-metrics-go-amp.md)
 - [Proactive autoscaling of Kubernetes workloads with KEDA and Amazon CloudWatch][cw-keda-eks-scaling]
-- [Using Amazon CloudWatch Metrics explorer to aggregate and visualize metrics filtered by resource tags[metrics-explorer-filter-by-tags]
+- [Using Amazon CloudWatch Metrics explorer to aggregate and visualize metrics filtered by resource tags][metrics-explorer-filter-by-tags]
 
 
 [cw-main]: https://aws.amazon.com/cloudwatch/
