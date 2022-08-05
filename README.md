@@ -18,12 +18,40 @@ edit to static HTML pages which are then served as via GitHub pages
 
 ### Local preview
 
-In order to locally preview the recipes site you need to have MkDocs installed,
-for example on macOS you can use `brew install mkdocs`. Further, we depend on
-the Material theme and some p[lugins you can install as follows:
+In order to locally preview the recipes site you need to have MkDocs installed.
 
 ```
-pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-macros-plugin
+# Make sure to upgrade your pip installer
+
+$ pip3 install --upgrade pip
+$ pip --version
+```
+
+```
+# Install mkdocs
+
+$ pip install mkdocs
+```
+
+```
+# Validate mkdocs setup
+
+$ pip check mkdocs
+$ pip show mkdocs
+```
+
+```
+# Depending on python version and system configuration, execute mkdocs by running one of the below commands
+
+$ python -m mkdocs
+or
+$ mkdocs
+```
+
+Further, we depend on the Material theme and some plugins you can install as follows:
+
+```
+$ pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-macros-plugin
 ```
 
 To generate a local preview do:
