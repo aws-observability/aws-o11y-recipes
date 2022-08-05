@@ -21,7 +21,7 @@ edit to static HTML pages which are then served as via GitHub pages
 In order to locally preview the recipes site you need to have MkDocs installed.
 
 ```
-# Make sure to upgrade your pip installer
+# Make sure to upgrade pip installer
 
 $ pip3 install --upgrade pip
 $ pip --version
@@ -41,7 +41,8 @@ $ pip show mkdocs
 ```
 
 ```
-# Depending on python version and system configuration, execute mkdocs by running one of the below commands
+# Depending on python version and system configuration, 
+# execute mkdocs by running one of the following commands
 
 $ python -m mkdocs
 or
