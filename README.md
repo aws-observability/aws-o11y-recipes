@@ -40,9 +40,9 @@ pip show mkdocs
 * Depending on python version and OS configuration, execute mkdocs by running one of the following commands
 ```
 $ python -m mkdocs
-
-# or 
-
+```
+or 
+```
 $ mkdocs
 ```
 
