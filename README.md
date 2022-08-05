@@ -45,7 +45,7 @@ $ python -m mkdocs [OPTIONS] COMMAND [ARGS]...
 $ mkdocs [OPTIONS] COMMAND [ARGS]...
 ```
 
-* Further, we depend on the Material theme and some plugins you can install as follows:
+Further, we depend on the Material theme and some plugins you can install as follows:
 
 ```
 pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-macros-plugin
