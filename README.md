@@ -41,7 +41,6 @@ pip show mkdocs
 ```
 $ python -m mkdocs
 ```
-  or 
 ```
 $ mkdocs
 ```
