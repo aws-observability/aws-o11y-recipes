@@ -39,10 +39,10 @@ pip show mkdocs
 
 * Depending on python version and OS configuration, execute mkdocs by running one of the following commands
 ```
-$ python -m mkdocs
+$ python -m mkdocs [OPTIONS] COMMAND [ARGS]...
 ```
 ```
-$ mkdocs
+$ mkdocs [OPTIONS] COMMAND [ARGS]...
 ```
 
 * Further, we depend on the Material theme and some plugins you can install as follows:
