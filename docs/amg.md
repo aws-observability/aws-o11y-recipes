@@ -20,6 +20,7 @@ Check out the following recipes:
 - [Integrating identity providers (OneLogin, Ping Identity, Okta, and Azure AD) to SSO][amg-idps]
 - [Integrating Google authentication via SAMLv2][amg-google-idps]
 - [Setting up Amazon Managed Grafana cross-account data source using customer managed IAM roles][amg-cross-account-access]
+- [Fine-grained access control in Amazon Managed Grafana using Grafana Teams][amg-grafana-teams]
 
 ## Data sources and Visualizations
 
@@ -50,4 +51,5 @@ Check out the following recipes:
 [amg-cross-account-access]: https://aws.amazon.com/blogs/opensource/setting-up-amazon-managed-grafana-cross-account-data-source-using-customer-managed-iam-roles/
 [amg-anywhere-monitoring]: https://aws.amazon.com/blogs/containers/monitoring-amazon-eks-anywhere-using-amazon-managed-service-for-prometheus-and-amazon-managed-grafana/
 [amg-amp-statsd]: https://aws.amazon.com/blogs/mt/viewing-custom-metrics-from-statsd-with-amazon-managed-service-for-prometheus-and-amazon-managed-grafana/
+[amg-grafana-teams]: https://aws.amazon.com/blogs/mt/fine-grained-access-control-in-amazon-managed-grafana-using-grafana-teams/
 
