@@ -9,7 +9,7 @@ A managed monitoring solution on your Amazon Workspaces environments yields foll
 
 In this blog post, we will set up Amazon Managed Service for Prometheus, Amazon Managed Grafana, and a Prometheus server on Amazon Elastic Compute Cloud (EC2) to provide a monitoring solution for Amazon Workspaces.  We will automate the deployment of Prometheus agents on any new Amazon Workspace using Active Directory Group Policy Objects (GPO).
 
-*Solution Architecture*
+**Solution Architecture**
 
 The following diagram demonstrates the solution to monitor your Amazon Workspaces environment using AWS native managed services such as Amazon Managed Service for Prometheus and Amazon Managed Grafana. This solution will deploy a Prometheus server on Amazon Elastic Compute Cloud (EC2) instance which polls prometheus agents on your Amazon Workspace periodically and remote writes metrics to Amazon Managed Service for Prometheus. We will be using Amazon Managed Grafana to query and visualize metrics on your Amazon Workspaces infrastructure.
 ![Screenshot](prometheus.drawio-dotted.drawio.png)
