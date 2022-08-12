@@ -114,6 +114,10 @@ aws ec2 run-instances \
   --user-data file://workspacesprometheus.txt \
   --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=PROMETHEUSFORWARDERSERVER}]'
 
+printf "waiting for EC2 to finish configuration. \n"
+
+sleep 600
+
 printf "Setting up security groups.\n"
 
 aws ec2 create-security-group  \

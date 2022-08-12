@@ -72,7 +72,7 @@ aws iam detach-role-policy --role-name PromWrite \
 aws iam remove-role-from-instance-profile --instance-profile-name \
   PromWrite --role-name PromWrite
 
-aws --region=$AWS_REGION 
+aws iam delete-instance-profile --instance-profile-name PromWrite
 
 iam delete-instance-profile --instance-profile-name PromWrite
 
@@ -80,5 +80,5 @@ aws iam delete-role --role-name PromWrite
 
 aws amp delete-workspace --workspace-id $AMP_WORKSPACE_ID
 
-printf "Cleanup Complete!!!\n"
+printf "Automation Complete!!!\n"
 
