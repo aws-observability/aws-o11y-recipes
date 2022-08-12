@@ -214,7 +214,7 @@ aws iam attach-role-policy \
   --policy-arn arn:aws:iam::aws:policy/AmazonPrometheusRemoteWriteAccess \
   --role-name PromWrite
 
-#This Role must be attached to an instance profile so EC2 can use the Role
+#This Role must be attached to an instance profile so Amazon EC2 can use the Role
 
 aws iam create-instance-profile \
   --instance-profile-name PromWrite
@@ -226,7 +226,7 @@ aws iam add-role-to-instance-profile \
 printf "waiting five minutes for the instance profile creation and assign it to EC2. \n"
 sleep 300
 
-#Now the the role & instance profile is created successfully, it must be attached to the PrometheusServer EC2.
+#Now the the role & instance profile is created successfully, it must be attached to the PrometheusServer on EC2.
 
 aws ec2 associate-iam-instance-profile \
 --iam-instance-profile Name=PromWrite \
