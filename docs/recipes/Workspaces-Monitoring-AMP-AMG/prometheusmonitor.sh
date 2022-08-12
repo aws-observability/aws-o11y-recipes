@@ -7,7 +7,7 @@
 # 5. Create Workspaces
 # This script should be run using the command ". ./prometheusmonitor.sh" to preserve the environment variables.
 
-printf "Setting up network.\n"
+printf "Starting Automation --- Setting up network.\n"
 
 PROMETHEUS_CIDR=192.168.100.0/24
 PROMETHEUS_VPCID=$(aws ec2 create-vpc \
