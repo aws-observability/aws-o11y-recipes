@@ -250,4 +250,4 @@ EOF
 aws workspaces create-workspaces \
   --cli-input-json file://create-workspaces.json
 
-printf "complete.\n"
+printf "Automation Complete!!!\n"
