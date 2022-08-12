@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script will perform the following:
+# This script will do the following:
 # 1. Create networking
 # 2. Create AMP
 # 3. Create EC2 & SG
