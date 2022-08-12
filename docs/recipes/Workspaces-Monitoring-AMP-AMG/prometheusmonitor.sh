@@ -74,7 +74,6 @@ aws ec2 create-route --route-table-id $(aws ec2 describe-route-tables --filter \
 
 printf "Setting up AMP workspace.\n"
 
-
 aws amp create-workspace \
   --alias $AMP_WORKSPACE_NAME \
   --region $AWS_REGION
@@ -91,7 +90,6 @@ aws amp describe-workspace \
   --workspace-id  $AMP_WORKSPACE_ID
 
 printf "Setting up Prometheus EC2.\n"
-
 
 PROMETHEUS_IMAGEID=$(aws ssm get-parameters --names \
   /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 \
