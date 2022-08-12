@@ -7,6 +7,8 @@
 # 5. Clean up the AMP workspace
 # This script should be run using the command ". ./cleanup.sh" to preserve the environment variables.
 
+printf "Starting Cleanup.\n"
+
 aws ec2 stop-instances --instance-ids $(aws ec2 describe-instances \
   --filters Name=tag:Name,Values=PROMETHEUSFORWARDERSERVER \
   "Name=instance-state-name,Values=running" --query \
