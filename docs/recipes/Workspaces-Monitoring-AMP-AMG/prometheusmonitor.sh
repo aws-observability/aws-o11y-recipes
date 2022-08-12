@@ -84,7 +84,7 @@ AMP_WORKSPACE_ID=$(aws amp list-workspaces \
   --query 'workspaces[0].[workspaceId]' \
   --output text)
 
-# Be sure the status code is ACTIVE with the below command and it takes couple of minutes for status code to becomet ACTIVE.
+# Be sure that the status code is ACTIVE with the below commands and it takes couple of minutes for status code to become ACTIVE.
 
 aws amp describe-workspace \
   --workspace-id  $AMP_WORKSPACE_ID
