@@ -80,3 +80,5 @@ aws iam delete-role --role-name PromWrite
 
 aws amp delete-workspace --workspace-id $AMP_WORKSPACE_ID
 
+printf "Cleanup Complete!!!\n"
+
