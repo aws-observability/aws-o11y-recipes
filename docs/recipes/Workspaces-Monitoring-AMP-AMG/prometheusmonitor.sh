@@ -214,7 +214,7 @@ aws iam attach-role-policy \
   --policy-arn arn:aws:iam::aws:policy/AmazonPrometheusRemoteWriteAccess \
   --role-name PromWrite
 
-#The Role must be attached to an instance profile so EC2 can use the Role
+#This Role must be attached to an instance profile so EC2 can use the Role
 
 aws iam create-instance-profile \
   --instance-profile-name PromWrite
