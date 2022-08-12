@@ -99,7 +99,7 @@ aws ec2 create-key-pair \
   --key-name MyKeyPair \
   --output text > MyKeyPair.pem
 
-# Now, we will create the EC2 that will run the Prometheus Server that sends Workspaces data to the AWS AMP Service. 
+# Now, we will create the EC2 which will run the Prometheus Server to send Workspaces metrics to the AWS AMP Service. 
 
 aws ec2 run-instances \
   --image-id $PROMETHEUS_IMAGEID \
