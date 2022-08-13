@@ -7,6 +7,8 @@
 # 5. Clean up the AMP workspace
 # This script should be run using the command ". ./cleanup.sh" to preserve the environment variables.
 
+printf "Starting Cleanup.\n"
+
 aws ec2 stop-instances --instance-ids $(aws ec2 describe-instances \
   --filters Name=tag:Name,Values=PROMETHEUSFORWARDERSERVER \
   "Name=instance-state-name,Values=running" --query \
@@ -70,11 +72,11 @@ aws iam detach-role-policy --role-name PromWrite \
 aws iam remove-role-from-instance-profile --instance-profile-name \
   PromWrite --role-name PromWrite
 
-aws --region=$AWS_REGION 
-
-iam delete-instance-profile --instance-profile-name PromWrite
+aws iam delete-instance-profile --instance-profile-name PromWrite
 
 aws iam delete-role --role-name PromWrite
 
 aws amp delete-workspace --workspace-id $AMP_WORKSPACE_ID
+
+printf "Automation Complete!!!\n"
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script will perform the following:
+# This script will do the following:
 # 1. Create networking
 # 2. Create AMP
 # 3. Create EC2 & SG
@@ -7,7 +7,7 @@
 # 5. Create Workspaces
 # This script should be run using the command ". ./prometheusmonitor.sh" to preserve the environment variables.
 
-printf "Setting up network.\n"
+printf "Starting Automation --- Setting up network.\n"
 
 PROMETHEUS_CIDR=192.168.100.0/24
 PROMETHEUS_VPCID=$(aws ec2 create-vpc \
@@ -74,7 +74,6 @@ aws ec2 create-route --route-table-id $(aws ec2 describe-route-tables --filter \
 
 printf "Setting up AMP workspace.\n"
 
-
 aws amp create-workspace \
   --alias $AMP_WORKSPACE_NAME \
   --region $AWS_REGION
@@ -85,13 +84,12 @@ AMP_WORKSPACE_ID=$(aws amp list-workspaces \
   --query 'workspaces[0].[workspaceId]' \
   --output text)
 
-# Be sure the status code is ACTIVE with the below command and it takes couple of minutes for status code to becomet ACTIVE.
+# Be sure that the status code is ACTIVE with the below commands and it takes couple of minutes for status code to become ACTIVE.
 
 aws amp describe-workspace \
   --workspace-id  $AMP_WORKSPACE_ID
 
 printf "Setting up Prometheus EC2.\n"
-
 
 PROMETHEUS_IMAGEID=$(aws ssm get-parameters --names \
   /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 \
@@ -101,7 +99,7 @@ aws ec2 create-key-pair \
   --key-name MyKeyPair \
   --output text > MyKeyPair.pem
 
-# Now, we will create the EC2 that will run the Prometheus Server that sends Workspaces data to the AWS AMP Service. 
+# Now, we will create the EC2 which will run the Prometheus Server to send Workspaces metrics to the AWS AMP Service. 
 
 aws ec2 run-instances \
   --image-id $PROMETHEUS_IMAGEID \
@@ -115,6 +113,10 @@ aws ec2 run-instances \
         --output text) \
   --user-data file://workspacesprometheus.txt \
   --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=PROMETHEUSFORWARDERSERVER}]'
+
+printf "waiting for EC2 to finish configuration. \n"
+
+sleep 600
 
 printf "Setting up security groups.\n"
 
@@ -216,7 +218,7 @@ aws iam attach-role-policy \
   --policy-arn arn:aws:iam::aws:policy/AmazonPrometheusRemoteWriteAccess \
   --role-name PromWrite
 
-#The Role must be attached to an instance profile so EC2 can use the Role
+#This Role must be attached to an instance profile so Amazon EC2 can use the Role
 
 aws iam create-instance-profile \
   --instance-profile-name PromWrite
@@ -228,7 +230,7 @@ aws iam add-role-to-instance-profile \
 printf "waiting five minutes for the instance profile creation and assign it to EC2. \n"
 sleep 300
 
-#Now the the role & instance profile is created successfully, it must be attached to the PrometheusServer EC2.
+#Now the the role & instance profile is created successfully, it must be attached to the PrometheusServer on EC2.
 
 aws ec2 associate-iam-instance-profile \
 --iam-instance-profile Name=PromWrite \
@@ -252,4 +254,4 @@ EOF
 aws workspaces create-workspaces \
   --cli-input-json file://create-workspaces.json
 
-printf "complete.\n"
+printf "Automation Complete!!!\n"
