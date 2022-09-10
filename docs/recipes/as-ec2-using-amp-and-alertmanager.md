@@ -121,7 +121,7 @@ Stack prerequisites:
 * An [Amazon Virtual Private Cloud (Amazon VPC)](https://aws.amazon.com/vpc/)
 * An AWS Security Group that allows outbound traffic
 
-Select the ### Launch Stack button to set up the template in your account. As part of the configuration process, you must specify the subnets and the security groups that you want associated with the Amazon EC2 instances. See the following figure for details.
+Select the Download Launch Stack Template link to download and set up the template in your account. As part of the configuration process, you must specify the subnets and the security groups that you want associated with the Amazon EC2 instances. See the following figure for details.
 
 [## Download Launch Stack Template ](https://prometheus-autoscale.s3.amazonaws.com/prometheus-autoscale.template)
 

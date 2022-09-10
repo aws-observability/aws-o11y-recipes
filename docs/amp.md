@@ -20,7 +20,9 @@ Check out the following recipes:
 - [Exporting Cloudwatch Metric Streams via Firehose and AWS Lambda to Amazon Managed Service for Prometheus](recipes/lambda-cw-metrics-go-amp.md)
 - [Terraform as Infrastructure as a Code to deploy Amazon Managed Service for Prometheus and configure Alert manager](recipes/amp-alertmanager-terraform.md)
 - [Monitor Istio on EKS using Amazon Managed Prometheus and Amazon Managed Grafana][amp-istio-monitoring]
-- [Monitoring Amazon EKS Anywhere using Amazon Managed Service for Prometheus and Amazon Managed Grafana][amp-anywhere-monitoring]
+- [Auto-scaling Amazon EC2 using Amazon Managed Service for Prometheus and alert manager](recipes/as-ec2-using-amp-and-alertmanager.md)
+- [Monitoring Amazon EKS Anywhere using Amazon Managed Service for Prometheus and Amazon Managed Grafana]
+[amp-anywhere-monitoring]
 [amp-main]: https://aws.amazon.com/prometheus/
 [amp-gettingstarted]: https://aws.amazon.com/blogs/mt/getting-started-amazon-managed-service-for-prometheus/
 [amp-xaccount]: https://aws.amazon.com/blogs/opensource/setting-up-cross-account-ingestion-into-amazon-managed-service-for-prometheus/
