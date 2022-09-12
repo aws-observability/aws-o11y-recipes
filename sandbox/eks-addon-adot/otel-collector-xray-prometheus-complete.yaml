@@ -310,13 +310,18 @@ spec:
       # Prometheus Remote Write exporter
       # This exporter is used to send metrics to a workspace in Amazon Managed Prometheus
       #
-      awsprometheusremotewrite:
+      prometheusremotewrite:
         endpoint: "https://aps-workspaces.REGION.amazonaws.com/workspaces/WORKSPACE/api/v1/remote_write"
-        aws_auth:
-          region: "REGION"
-          service: "aps"
+        auth:
+          authenticator: sigv4auth
+    
+    extensions:
+      sigv4auth:
+        region: "REGION"
+        service: "aps"
 
     service:
+      extensions: [sigv4auth]
       pipelines:
         #
         # Traces pipeline with X-Ray receiver and exporter
@@ -330,7 +335,7 @@ spec:
         metrics:
           receivers: [prometheus]
           processors: [batch/metrics]
-          exporters: [awsprometheusremotewrite]
+          exporters: [prometheusremotewrite]
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
