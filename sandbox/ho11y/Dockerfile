@@ -1,4 +1,6 @@
 FROM golang:1.15-alpine AS build
+RUN go env -w GOPROXY=direct
+RUN apk add --no-cache git
 RUN apk update && apk add ca-certificates
 WORKDIR /usr/src/app
 COPY . .

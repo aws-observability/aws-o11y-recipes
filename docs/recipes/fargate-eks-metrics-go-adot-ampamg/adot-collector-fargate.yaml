@@ -24,13 +24,11 @@ data:
               action: keep
               regex: true
     exporters:
-      awsprometheusremotewrite:
+      prometheusremotewrite:
         # replace this with your endpoint, in double quotes:
         endpoint: <YOUR_ENDPOINT>
-        aws_auth:
-          # replace this with your region, in double quotes:
-          region: <YOUR_REGION>
-          service: "aps"
+        auth:
+          authenticator: sigv4auth
       logging:
         loglevel: debug
     extensions:
@@ -39,12 +37,16 @@ data:
         endpoint: :1888
       zpages:
         endpoint: :55679
+      sigv4auth:
+        # replace this with your region, in double quotes:
+        region: <YOUR_REGION>
+        service: "aps"
     service:
-      extensions: [pprof, zpages, health_check]
+      extensions: [pprof, zpages, health_check, sigv4auth]
       pipelines:
         metrics:
           receivers: [prometheus]
-          exporters: [logging, awsprometheusremotewrite]
+          exporters: [logging, prometheusremotewrite]
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
