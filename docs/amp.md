@@ -33,3 +33,4 @@ Check out the following recipes:
 [amp-istio-monitoring]: https://aws.amazon.com/blogs/mt/monitor-istio-on-eks-using-amazon-managed-prometheus-and-amazon-managed-grafana/
 [amp-anywhere-monitoring]: https://aws.amazon.com/blogs/containers/monitoring-amazon-eks-anywhere-using-amazon-managed-service-for-prometheus-and-amazon-managed-grafana/
 [eks-accelerator]: recipes/eks-observability-accelerator.md
+- [Auto-scaling Amazon EC2 using Amazon Managed Service for Prometheus and alert manager](recipes/as-ec2-using-amp-and-alertmanager.md)
