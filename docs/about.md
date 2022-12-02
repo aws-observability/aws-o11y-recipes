@@ -1,5 +1,13 @@
 # About
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 The content on this site is maintained by AWS open source observability 
 service team members. Our goal is to improve the discovery of relevant
 good practices on how to set up and use AWS managed services and 

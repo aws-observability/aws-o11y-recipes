@@ -1,5 +1,13 @@
 # Amazon Managed Grafana
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 [Amazon Managed Grafana][amg-main] is a fully managed service based on open 
 source Grafana, enabling you to analyze your metrics, logs, and traces without
 having to provision servers, configure and update software, or do the heavy 

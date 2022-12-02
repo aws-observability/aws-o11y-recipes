@@ -1,5 +1,13 @@
 # Using Amazon Managed Service for Prometheus to monitor App Mesh environment configured on EKS
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 In this recipe we show you how to ingest [App Mesh](https://docs.aws.amazon.com/app-mesh/) Envoy 
 metrics in an [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS) cluster 
 to [Amazon Managed Service for Prometheus](https://aws.amazon.com/prometheus/) (AMP)

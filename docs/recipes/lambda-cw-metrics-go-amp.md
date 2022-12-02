@@ -1,5 +1,13 @@
 # Exporting CloudWatch Metric Streams via Firehose and AWS Lambda to Amazon Managed Service for Prometheus
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 In this recipe we show you how to instrument a [CloudWatch Metric Stream](https://console.aws.amazon.com/cloudwatch/home#metric-streams:streamsList) and use [Kinesis Data Firehose](https://aws.amazon.com/kinesis/data-firehose/) and [AWS Lambda](https://aws.amazon.com/lambda) to ingest metrics into [Amazon Managed Service for Prometheus (AMP)](https://aws.amazon.com/prometheus/).
 
 We will be setting up a stack using [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/) to create a Firehose Delivery Stream, Lambda, and a S3 Bucket to demonstrate a complete scenario.

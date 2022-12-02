@@ -1,5 +1,13 @@
 # Terraform as Infrastructure as a Code to deploy Amazon Managed Service for Prometheus and configure Alert manager
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 In this recipe, we will demonstrate how you can use [Terraform](https://www.terraform.io/) to provision [Amazon Managed Service for Prometheus](https://aws.amazon.com/prometheus/) and configure rules management and alert manager to send notification to a [SNS](https://docs.aws.amazon.com/sns/) topic if a certain condition is met.
 
 

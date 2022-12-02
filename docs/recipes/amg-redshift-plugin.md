@@ -1,5 +1,13 @@
 # Using Redshift in Amazon Managed Grafana
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 In this recipe we show you how to use [Amazon Redshift][redshift]—a petabyte-scale data 
 warehouse service using standard SQL—in [Amazon Managed Grafana][amg]. This integration
 is enabled by the [Redshift data source for Grafana][redshift-ds], an open source

@@ -1,5 +1,13 @@
 # Auto-scaling Amazon EC2 using Amazon Managed Service for Prometheus and alert manager
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 Customers want to migrate their existing Prometheus workloads to the cloud and utilize all that the cloud offers. AWS has services like Amazon [EC2 Auto Scaling](https://aws.amazon.com/ec2/autoscaling/), which lets you scale out [Amazon Elastic Compute Cloud (Amazon EC2)](https://aws.amazon.com/pm/ec2/) instances based on metrics like CPU or memory utilization. Applications that use Prometheus metrics can easily integrate into EC2 Auto Scaling without needing to replace their monitoring stack. In this post, I will walk you through configuring Amazon EC2 Auto Scaling to work with [Amazon Managed Service for Prometheus Alert Manager](https://aws.amazon.com/prometheus/). This approach lets you move a Prometheus-based workload to the cloud while taking advantage of services like autoscaling.
 
 Amazon Managed Service for Prometheus provides support for [alerting rules](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-Ruler.html) that use [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/). The [Prometheus alerting rules documentation](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) provides the syntax and examples of valid alerting rules. Likewise, the Prometheus alert manager documentation references both the [syntax](https://prometheus.io/docs/prometheus/latest/configuration/template_reference/) and [examples](https://prometheus.io/docs/prometheus/latest/configuration/template_examples/) of valid alert manager configurations.

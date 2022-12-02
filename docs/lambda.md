@@ -1,5 +1,13 @@
 # AWS Lambda
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 [AWS Lambda][lambda-main] is a serverless compute service that lets you run
 code without provisioning or managing servers, creating workload-aware cluster 
 scaling logic, maintaining event integrations, or managing runtimes.
