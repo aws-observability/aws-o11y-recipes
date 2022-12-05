@@ -1,5 +1,13 @@
 # Amazon OpenSearch Service
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 [Amazon OpenSearch Service][aes-main] (AOS), successor to Amazon Elasticsearch Service,
 makes it easy for you to perform interactive log analytics, real-time application
 monitoring, website search, and more. OpenSearch is an open source, distributed 

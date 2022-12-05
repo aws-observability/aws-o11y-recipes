@@ -1,5 +1,13 @@
 # Amazon Elastic Container Service
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 [Amazon Elastic Container Service][ecs-main] (ECS) is a fully managed container
 orchestration service that helps you easily deploy, manage, and scale 
 containerized applications, deeply integrating with the rest of AWS.

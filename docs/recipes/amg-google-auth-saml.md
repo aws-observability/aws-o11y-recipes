@@ -1,5 +1,13 @@
 # Configure Google Workspaces authentication with Amazon Managed Grafana using SAML
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 In this guide, we will walk through how you can setup Google Workspaces as an
 identity provider (IdP) for Amazon Managed Grafana using SAML v2.0 protocol.
 

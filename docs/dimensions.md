@@ -1,5 +1,13 @@
 # Dimensions
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 In the context of this site we consider the o11y space along six dimensions.
 Looking at each dimension independently is beneficial from an synthetic
 point-of-view, that is, when you're trying to build out a concrete o11y solution

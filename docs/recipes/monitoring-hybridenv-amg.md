@@ -1,5 +1,13 @@
 # Monitoring hybrid environments using Amazon Managed Service for Grafana
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 In this recipe we show you how to visualize metrics from an Azure Cloud environment to [Amazon Managed Service for Grafana](https://aws.amazon.com/grafana/) (AMG) and create alert notifications in AMG to be sent to [Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) and Slack.
 
 

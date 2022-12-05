@@ -1,5 +1,13 @@
 # Welcome!
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 We are covering recipes for observability (o11y) solutions at AWS on this site.
 This includes managed services such as [Amazon Managed Service for Prometheus][amp]
 and [Amazon Managed Grafana][amg] as well as agents, for example [OpenTelemetry][otel]

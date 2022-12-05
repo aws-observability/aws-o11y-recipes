@@ -1,5 +1,13 @@
 # Using Amazon CloudWatch Metrics explorer to aggregate and visualize metrics filtered by resource tags
 
+!!! warning
+    This site is being merged into the broader [Observability Best Practices](https://aws-observability.github.io/observability-best-practices/recipes/) content. Please head over there for the latest updates, plus prescriptive guidance on the use of AWS observability tools.
+
+!!! warning
+    This site will be kept as-is until January 2023, when it will be decommissioned.
+
+***
+
 In this recipe we show you how to use Metrics explorer to filter, aggregate, and visualize metrics by resource tags and resource properties - [Use metrics explorer to monitor resources by their tags and properties][metrics-explorer].
 
 There are number of ways to create visualizations with Metrics explorer; in this walkthrough we simply leverage the AWS Console.
