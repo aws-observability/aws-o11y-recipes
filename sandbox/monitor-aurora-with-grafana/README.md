@@ -22,8 +22,8 @@ This setting enables the AWS CLI v2 to load JSON events from a file, matching th
 # Setup
 Download or clone this repository.
 
-    $ git clone https://github.com/awsdocs/aws-lambda-developer-guide.git
-    $ cd aws-lambda-developer-guide/sample-apps/blank-python
+    $ git clone https://github.com/aws-observability/aws-o11y-recipes.git
+    $ cd sandbox/monitor-aurora-with-grafana
 
 To create a new bucket for deployment artifacts, run `1-create-bucket.sh`.
 
@@ -33,23 +33,16 @@ To create a new bucket for deployment artifacts, run `1-create-bucket.sh`.
 # Deploy
 To deploy the application, run `2-deploy.sh`.
 
-    blank-python$ ./2-deploy.sh
+    $ ./2-deploy.sh
     Uploading to e678bc216e6a0d510d661ca9ae2fd941  9519118 / 9519118.0  (100.00%)
     Successfully packaged artifacts and wrote output template to file out.yml.
     Waiting for changeset to be created..
     Waiting for stack create/update to complete
-    Successfully created/updated stack - blank-python
+    Successfully created/updated stack 
 
 This script uses AWS CloudFormation to deploy the Lambda functions and an IAM role. If the AWS CloudFormation stack that contains the resources already exists, the script updates it with any changes to the template or function code.
-
-
-![Service Map](/sample-apps/blank-python/images/blank-python-servicemap.png)
-
-Choose a node in the main function graph. Then choose **View traces** to see a list of traces. Choose any trace to view a timeline that breaks down the work done by the function.
-
-![Trace](/sample-apps/blank-python/images/blank-python-trace.png)
 
 # Cleanup
 To delete the application, run `3-cleanup.sh`.
 
-    blank-python$ ./3-cleanup.sh
+    $ ./3-cleanup.sh
