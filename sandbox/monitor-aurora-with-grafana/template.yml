@@ -28,7 +28,7 @@ Resources:
         Schedule:
           Type: ScheduleV2
           Properties:
-            ScheduleExpression: rate(15 minutes)
+            ScheduleExpression: rate(10 minutes)
             Name: RunPIExtractorLambda
             Description: Trigger Lambda execution on a schedule
             State: ENABLED
