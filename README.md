@@ -1,3 +1,9 @@
+## IMPORTANT NOTE
+
+This repo has been archived and the project merged into https://github.com/aws-observability/observability-best-practices. 
+
+***
+
 ## AWS o11y recipes
 
 See [aws-observability.github.io/aws-o11y-recipes/][recipes-live].
